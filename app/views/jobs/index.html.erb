@@ -1,5 +1,6 @@
 <div class="container-fluid">
-  <h1>Jobs#index</h1>
-  <%= link_to 'New Job', new_job_path, class: 'btn btn-success' %>
-
+  <ul class="nav nav-tabs" role="tablist">
+  <li class="active"><%= link_to 'View list', jobs_path %></li>
+  <li><%= link_to 'New Job', new_job_path %></li>
+</ul>
 </div>

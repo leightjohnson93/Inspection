@@ -1,0 +1,22 @@
+<%= form_with scope: :job, url: jobs_path, local: true do |form| %>
+<table id="mfg" class="table">
+<tr>
+  <td><%= form.label :wv, 'WV/PV#' %><%= form.text_field :wv, class: 'form-control' %></td>
+  <td><%= form.label :line, "Release/Line#" %><%= form.text_field :line, class: 'form-control' %></td>
+  <td><%= form.label :part, "Part#" %><%= form.text_field :part, class: 'form-control' %></td>
+  <td><%= form.label :date, "Coating Date" %><%= form.date_field :date, class: 'form-control' %></td>
+  <td><%= form.label :time, "Coating Time" %><%= form.time_field :time, class: 'form-control' %></td><br>
+</tr>
+<tr>
+  <td><%= form.label :description %><%= form.text_field :description, class: 'form-control' %></td>
+  <td><%= form.label :lot_qantity, "Lot Quantity" %><%= form.text_field :lot_quantity, class: 'form-control' %></td>
+  <td><%= form.label :test_quantity, "Quantity of Test Samples" %><%= form.text_field :test_quantity, class: 'form-control' %></td>
+  <td><%= form.label :bin, "Bin/Box Count" %><%= form.text_field :bin, class: 'form-control' %></td>
+  <td><%= form.label :mfg_int, "Initial" %><%= form.text_field :mfg_int, class: 'form-control' %></td>
+</tr>
+<tr>
+  <td><%= form.submit %></td>
+</table>
+</hr>
+</div>
+<% end %>

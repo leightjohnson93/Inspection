@@ -1,35 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>F-63</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-  <link rel="icon" type="image/x-icon" href="https://www.revisionmilitary.com/pub/media/favicon/default/revision.png">
 </head>
-
 <body>
-  <%= form_with scope: :job, local: true do |form| %>
-<div class="container-fluid">
-  <table id="mfg" class="table">
-  <tr>
-    <td><%= form.label :wv, 'WV/PV#' %><%= form.text_field :wv, class: 'form-control' %></td>
-    <td><%= form.label :line, "Release/Line#" %><%= form.text_field :line, class: 'form-control' %></td>
-    <td><%= form.label :part, "Part#" %><%= form.text_field :part, class: 'form-control' %></td>
-    <td><%= form.label :date, "Coating Date" %><%= form.text_field :date, class: 'form-control' %></td>
-    <td><%= form.label :time, "Coating Time" %><%= form.text_field :time, class: 'form-control' %></td><br>
-  </tr>
-  <tr>
-    <td><%= form.label :description %><%= form.text_field :description, class: 'form-control' %></td>
-    <td><%= form.label :lot_qantity, "Lot Quantity" %><%= form.text_field :lot_quantity, class: 'form-control' %></td>
-    <td><%= form.label :test_quantity, "Quantity of Test Samples" %><%= form.text_field :test_quantity, class: 'form-control' %></td>
-    <td><%= form.label :bin, "Bin/Box Count" %><%= form.text_field :bin, class: 'form-control' %></td>
-    <td><%= form.label :mfg_int, "Initial" %><%= form.text_field :mfg_int, class: 'form-control' %></td>
-  </tr>
-  <tr>
-    <td><button type="submit" class="btn btn-primary">Save</button>
-  </table>
-</hr>
-</div>
+  <div class="container-fluid">
+  <ul class="nav nav-tabs" role="tablist">
+  <li><%= link_to 'View list', jobs_path %></li>
+  <li class="active"><%= link_to 'New Job', new_job_path %></li>
+  </ul>
 
+<%= render 'mfg_form' %>
 
 <div class="container-fluid">
   <div class="form-group">
@@ -90,7 +70,8 @@
   </div>
   </div>
 
+  <%= link_to 'Back', jobs_path %>
 </div>
-<% end %>
+</div>
 </body>
 </html>
