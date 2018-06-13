@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>F-63</title>
+    <link rel="icon" type="image/x-icon" href="https://www.revisionmilitary.com/pub/media/favicon/default/revision.png">
+  </head>
+<body>
+<div class="form-group container-fluid">
+  <table id="mfg" style="width: 100%">
+  <tr>
+    <td>WV/PV#<input id="wv" class="form-control" placeholder="WV/PV#"></td>
+    <td>Release/Line# <input id="line" class="form-control"></td>
+    <td>Part# <input id="part" class="form-control"></td>
+    <td>Coating Date <input id="date" type="date" class="form-control" placeholder="Coating Date"></td>
+    <td>Coating Time <input id="time" type="time" class="form-control" placeholder="Coating Time"></td><br>
+  </tr>
+  <tr>
+    <td>Description <input id="desc" class="form-control"></td>
+    <td>Lot Quanitity <input id="lot-quant" class="form-control"></td>
+    <td>Quantity of Test Samples <input id="test-quant" class="form-control"></td>
+    <td>Bin/Box Count <input id="bin" class="form-control"></td>
+    <td>Initial <input id="int" class="form-control"></td>
+  </tr>
+  <tr>
+    <td><button type="submit" class="btn btn-primary">Save</button>
+  </table>
+</hr>
+</div>
+
+
+<div class="container-fluid">
+  <div class="form-group">
+  <div class="row">
+    <div class="col">
+      <h4>VLT</h4>
+    </div>
+  </div >
+  <div class="form-row">
+    <div class="col">
+      <input id="VLT-1" class="form-control" placeholder="Sample 1">
+    </div>
+    <div class="col">
+      <input id="VLT-2" class="form-control" placeholder="Sample 2">
+    </div>
+    <div class="col">
+      <input id="VLT-3" class="form-control" placeholder="Sample 3">
+    </div>
+    <div class="col">
+      <select class="form-control" id="VLT-ass" placeholder="Sample 3">
+        <option value="" disabled selected>Assessment</option>
+        <option>Pass</option>
+        <option>Fail</option>
+      </select>
+    </div>
+    <div class="col">
+      <input id="VLT-int" class="form-control" placeholder="Initial">
+    </div>
+  </div>
+  </div>
+
+  <div class="form-group">
+  <div class="row">
+    <div class="col">
+      <h4>Neutrality</h4>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <input id="Neutrality-1" class="form-control" placeholder="Sample 1">
+    </div>
+    <div class="col">
+      <input id="Neutrality-2" class="form-control" placeholder="Sample 2">
+    </div>
+    <div class="col">
+      <input id="Neutrality-3" class="form-control" placeholder="Sample 3">
+    </div>
+    <div class="col">
+      <select class="form-control" id="Neutrality-ass" placeholder="Sample 3">
+        <option value="" disabled selected>Assessment</option>
+        <option>Pass</option>
+        <option>Fail</option>
+      </select>
+    </div>
+    <div class="col">
+      <input id="Neutrality-int" class="form-control" placeholder="Initial">
+    </div>
+  </div>
+  </div>
+
+</div>
+</body>
+</html>
