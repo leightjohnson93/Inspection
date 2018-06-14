@@ -3,7 +3,7 @@
 <head>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
   <ul class="nav nav-tabs" role="tablist">
   <li class="active"><%= link_to 'View list', jobs_path %></li>
   <li><%= link_to 'New Job', new_job_path %></li>
@@ -15,6 +15,7 @@
     <th>Part</th>
     <th>Description</th>
     <th>Lot Quantity</th>
+    <th class=text-right>Actions</th>
     <th></th>
   </tr>
   <% @jobs.each do |job| %>
@@ -23,7 +24,12 @@
     <td><%= job.part %></td>
     <td><%= job.description %></td>
     <td><%= job.lot_quantity %></td>
-    <td><%= link_to 'Show', job, class: 'btn btn-primary btn-xs' %></td>
+    <td class=text-right><div>
+      <%= link_to 'Show', job, class: 'btn btn-primary btn-xs' %>
+      <%= link_to 'Edit', edit_job_path(job), class: 'btn btn-info btn-xs' %>
+      <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+    </div>
+    </td>
   </tr>
   <% end %>
 </table>
