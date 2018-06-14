@@ -9,12 +9,18 @@ class JobsController < ApplicationController
 
 
   def new
+    @job = Job.new
   end
 
   def create
     @job = Job.new(job_params)
-    @job.save
-    redirect_to @job
+    if @job.save
+      flash[:success] = 'Job was successfully created.'
+      redirect_to @job
+    else
+      flash[:danger] = 'There was a problem creating the Job.'
+      render 'new'
+    end
   end
 
 
