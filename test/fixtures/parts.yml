@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  part: MyString
+  description: MyString
+  shape: MyString
+  color: MyString
+  coating: MyString
+  mfg: MyString
+
+two:
+  part: MyString
+  description: MyString
+  shape: MyString
+  color: MyString
+  coating: MyString
+  mfg: MyString

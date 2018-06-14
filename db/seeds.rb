@@ -1,3 +1,17 @@
+require 'csv'
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'parts.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  t = Part.new
+  t.part = row['part']
+  t.description = row['description']
+  t.shape = row['shape']
+  t.color = row['color']
+  t.coating = row['coating']
+  t.mfg = row['mfg']
+  t.save
+end
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #

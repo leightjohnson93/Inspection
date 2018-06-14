@@ -11,6 +11,7 @@ class CreateJobs < ActiveRecord::Migration[5.2]
       t.integer :test_quantity
       t.integer :bin
       t.string :mfg_int
+      #t.integer :part_id
 
       t.timestamps
     end
