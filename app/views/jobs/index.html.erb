@@ -1,6 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
 <div class="container-fluid">
   <ul class="nav nav-tabs" role="tablist">
   <li class="active"><%= link_to 'View list', jobs_path %></li>
   <li><%= link_to 'New Job', new_job_path %></li>
 </ul>
+
+<table class="table table-sm table-striped">
+  <tr>
+    <th>WV/PV</th>
+    <th>Part</th>
+    <th>Description</th>
+    <th>Lot Quantity</th>
+    <th></th>
+  </tr>
+  <% @jobs.each do |job| %>
+  <tr>
+    <td><%= job.wv %></td>
+    <td><%= job.part %></td>
+    <td><%= job.description %></td>
+    <td><%= job.lot_quantity %></td>
+    <td><%= link_to 'Show', job, class: 'btn btn-primary btn-xs' %></td>
+  </tr>
+  <% end %>
+</table>
 </div>
+</body>
+</html>

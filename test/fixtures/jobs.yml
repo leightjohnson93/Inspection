@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wv: 
+  line: 1
+  part: MyString
+  coat_date: 2018-06-14
+  coat_time: 2018-06-14 07:36:59
+  lot_quanity: 1
+  test_quantity: 1
+  bin: 1
+  mfg_int: MyString
+
+two:
+  wv: 
+  line: 1
+  part: MyString
+  coat_date: 2018-06-14
+  coat_time: 2018-06-14 07:36:59
+  lot_quanity: 1
+  test_quantity: 1
+  bin: 1
+  mfg_int: MyString

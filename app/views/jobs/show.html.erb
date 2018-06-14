@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <div class="container-fluid">
+    <ul class="nav nav-tabs" role="tablist">
+      <li><%= link_to 'View list', jobs_path %></li>
+      <li><%= link_to 'New Job', new_job_path %></li>
+      <li class="active"><%= link_to @job.wv, job_path(@job) %></li>
+    </ul>
+    <ul>
+
+  <p>
+  <strong>WV:</strong>
+  <%= @job.wv %>
+</p>
+<p>
+  <strong>Part:</strong>
+  <%= @job.part %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @job.description %>
+</p>
+<p>
+  <strong>Lot Quantity:</strong>
+  <%= @job.lot_quantity %>
+</p>
+<p>
+  <strong>Sample Quantity:</strong>
+  <%= @job.test_quantity %>
+</p>
+<p>
+  <strong>Initial:</strong>
+  <%= @job.mfg_int %>
+</p>
+
+</div>
+</body>
+</html>
