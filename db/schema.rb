@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_14_182650) do
+ActiveRecord::Schema.define(version: 2018_06_14_200949) do
 
   create_table "jobs", force: :cascade do |t|
     t.string "wv"
     t.integer "line"
-    t.string "part"
+    t.string "part_number"
     t.date "coat_date"
     t.time "coat_time"
     t.integer "lot_quanity"
