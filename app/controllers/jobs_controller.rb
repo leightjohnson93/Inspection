@@ -39,6 +39,6 @@ class JobsController < ApplicationController
   end
   private
     def job_params
-      params.require(:job).permit(:wv, :line, :part_number, :coat_date, :coat_time, :description, :lot_quantity, :test_quantity, :bin, :mfg_int)
+      params.require(:job).permit(:wv, :line, :part_id, :coat_date, :coat_time, :description, :lot_quantity, :test_quantity, :bin, :mfg_int)
     end
 end
