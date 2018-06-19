@@ -1,7 +1,7 @@
 class PartsController < ApplicationController
   def create
     @job = Job.find(params[:job_id])
-    @part = @job.parts.create(part_params)
+    @part = @job.parts.find(part_params)
     redirect_to job_path(@job)
   end
 

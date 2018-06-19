@@ -26,22 +26,18 @@
   <div class="form-group">
     <div class="row form-group">
       <div class="col"><%= form.label :wv, 'WV/PV#'%><%= form.text_field :wv, class: 'form-control'%></div>
-      <div class="col"><%= form.label :line, "Release/Line#"%><%= form.text_field :line, class: 'form-control' %></div class="col">
       <div class="col"><%= form.label :part_id, "Part#"%><%= form.text_field :part_id, class: 'form-control'%></div class="col">
+      <div class="col"><%= form.label :line, "Release/Line#"%><%= form.text_field :line, class: 'form-control' %></div class="col">
       <div class="col"><%= form.label :coat_date, "Coating Date"%><%= form.date_field :coat_date, class: 'form-control'%></div class="col">
       <div class="col"><%= form.label :coat_time, "Coating Time"%><%= form.time_field :coat_time, class: 'form-control'%></div class="col">
     </div>
 
     <div class="row form-group">
-      <div class="col"><%= form.label :description%><%= form.text_field :description, class: 'form-control' %></div class="col">
       <div class="col"><%= form.label :lot_quantity, "Lot Quantity"%><%= form.text_field :lot_quantity, class: 'form-control'%></div class="col">
       <div class="col"><%= form.label :test_quantity, "Sample Quantity" %><%= form.text_field :test_quantity, class: 'form-control'%></div class="col">
       <div class="col"><%= form.label :bin, "Bin/Box Count"%><%= form.text_field :bin, class: 'form-control'%></div class="col">
       <div class="col"><%= form.label :mfg_int, "Initial"%><%= form.text_field :mfg_int, class: 'form-control'%></div class="col">
-    </div>
-
-    <div class="row form-group">
-      <div class="col"><%= form.submit class: "btn btn-primary"%></div>
+      <div class="col" style="padding-top: 24px"><%= form.submit class: "btn btn-primary btn-block"%></div>
     </div>
 
   </div>
