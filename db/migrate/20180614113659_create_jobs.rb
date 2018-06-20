@@ -3,7 +3,7 @@ class CreateJobs < ActiveRecord::Migration[5.2]
     create_table :jobs do |t|
       t.string :wv
       t.integer :line
-      t.string :part
+      t.string :part_id
       t.date :coat_date
       t.time :coat_time
       t.string :description
@@ -11,6 +11,7 @@ class CreateJobs < ActiveRecord::Migration[5.2]
       t.integer :test_quantity
       t.integer :bin
       t.string :mfg_int
+      #t.integer :part_id
 
       t.timestamps
     end

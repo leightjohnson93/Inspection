@@ -7,21 +7,18 @@
     <ul class="nav nav-tabs" role="tablist">
       <li><%= link_to 'View list', jobs_path %></li>
       <li><%= link_to 'New Job', new_job_path %></li>
+      <li><%= link_to 'Edit Job', edit_job_path(@job) %></li>
       <li class="active"><%= link_to @job.wv, job_path(@job) %></li>
     </ul>
-    <ul>
-
+<div class='row'>
+  <div class='col-3'>
   <p>
   <strong>WV:</strong>
   <%= @job.wv %>
 </p>
 <p>
   <strong>Part:</strong>
-  <%= @job.part %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @job.description %>
+  <%= @job.part_id %>
 </p>
 <p>
   <strong>Lot Quantity:</strong>
@@ -35,6 +32,37 @@
   <strong>Initial:</strong>
   <%= @job.mfg_int %>
 </p>
+</div>
+<div class='col'>
+  <p>
+    <strong>Description:</strong>
+    <%= @job.part.description %>
+    <!-- <%= @job.part.tests.first.test_name %> -->
+  </p>
+  <p>
+    <strong>Shape:</strong>
+    <%= @job.part.shape %>
+  </p>
+  <p>
+    <strong>Color:</strong>
+    <%= @job.part.color %>
+  </p>
+  <p>
+    <strong>Coating:</strong>
+    <%= @job.part.coating %>
+  </p>
+  <p>
+    <strong>Manufacturer:</strong>
+    <%= @job.part.mfg %>
+  </p>
+</div>
+<div class='col'>
+    <% @job.part.tests.each do |test| %>
+      <%= test.test_name %>
+    <% end %>
+</div>
+</div>
+
 
 </div>
 </body>

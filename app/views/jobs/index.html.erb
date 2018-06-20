@@ -21,8 +21,8 @@
   <% @jobs.each do |job| %>
   <tr>
     <td><%= job.wv %></td>
-    <td><%= job.part %></td>
-    <td><%= job.description %></td>
+    <td><%= job.part_id %></td>
+    <td><%= job.part.description %></td>
     <td><%= job.lot_quantity %></td>
     <td class=text-right><div>
       <%= link_to 'Show', job, class: 'btn btn-primary btn-xs' %>
