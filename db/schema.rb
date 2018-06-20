@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_19_120830) do
+ActiveRecord::Schema.define(version: 2018_06_20_182704) do
 
   create_table "items", primary_key: "part", id: :string, force: :cascade do |t|
     t.string "description"
@@ -23,29 +23,12 @@ ActiveRecord::Schema.define(version: 2018_06_19_120830) do
     t.index ["part"], name: "sqlite_autoindex_items_1", unique: true
   end
 
-  create_table "jobs", force: :cascade do |t|
-    t.string "wv"
-    t.integer "line"
-    t.string "part_id"
-    t.date "coat_date"
-    t.time "coat_time"
-    t.integer "lot_quanity"
-    t.integer "test_quantity"
-    t.integer "bin"
-    t.string "mfg_int"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "description"
-    t.string "lot_quantity"
-  end
+# Could not dump table "jobs" because of following StandardError
+#   Unknown type 'bolean' for column 'dimensions_assess'
 
-  create_table "parts", force: :cascade do |t|
-    t.string "part"
-    t.string "description"
-    t.string "shape"
-    t.string "color"
-    t.string "coating"
-    t.string "mfg"
+  create_table "tests", force: :cascade do |t|
+    t.string "part_id"
+    t.string "test_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

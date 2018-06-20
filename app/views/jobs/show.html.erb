@@ -37,6 +37,7 @@
   <p>
     <strong>Description:</strong>
     <%= @job.part.description %>
+    <!-- <%= @job.part.tests.first.test_name %> -->
   </p>
   <p>
     <strong>Shape:</strong>
@@ -54,6 +55,11 @@
     <strong>Manufacturer:</strong>
     <%= @job.part.mfg %>
   </p>
+</div>
+<div class='col'>
+    <% @job.part.tests.each do |test| %>
+      <%= test.test_name %>
+    <% end %>
 </div>
 </div>
 

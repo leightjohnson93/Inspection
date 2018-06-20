@@ -11,7 +11,9 @@ class JobsController < ApplicationController
 
   def edit
     @job = Job.find(params[:id])
+    @quantity_t1 = 3
   end
+
   def create
     @job = Job.new(job_params)
     if @job.save
@@ -39,6 +41,6 @@ class JobsController < ApplicationController
   end
   private
     def job_params
-      params.require(:job).permit(:wv, :line, :part_id, :coat_date, :coat_time, :description, :lot_quantity, :test_quantity, :bin, :mfg_int)
+      params.require(:job).permit(:wv, :line, :part_id, :coat_date, :coat_time, :lot_quantity, :test_quantity, :bin, :mfg_int)
     end
 end
