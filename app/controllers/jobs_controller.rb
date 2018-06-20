@@ -11,7 +11,17 @@ class JobsController < ApplicationController
 
   def edit
     @job = Job.find(params[:id])
-    @quantity_t1 = 3
+    if @job.lot_quantity <= 4500
+      @quantity_t1 = 3
+      @quantity_t2 = 4
+      @quantity_t3 = 6
+      @quantity_t4 = 20
+    else
+      @quantity_t1 = (@job.lot_quantity / 1500.to_f).ceil
+      @quantity_t2 = (@job.lot_quantity / 1125.to_f).ceil
+      @quantity_t3 = (@job.lot_quantity / 750.to_f).ceil
+      @quantity_t4 = (@job.lot_quantity / 450.to_f).ceil
+    end
   end
 
   def create
