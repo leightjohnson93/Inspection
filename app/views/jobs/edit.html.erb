@@ -49,7 +49,7 @@
     <div class='row form-group'><div class='col'><h4><%= test.upcase %></h4></div></div>
     <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
-      <div class='col'><%= form.input :"#{test}_#{n}", placeholder: "Sample #{n}", label: false %></div>
+      <div class='col'><%= form.input :"#{test}_#{n}", placeholder: "S#{n}", label: false %></div>
     <% end %>
     </div>
     <% end %>
