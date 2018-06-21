@@ -39,23 +39,11 @@
       <div class="col"><%= form.label :mfg_int%><%= form.text_field :mfg_int, class: 'form-control'%></div class="col">
       <div class="col" style="padding-top: 24px"><%= form.submit class: "btn btn-primary btn-block"%></div>
     </div>
-
+<hr>
   </div>
   <% end %>
 
-  <%= simple_form_for @job do |form| %>
-  <div class='form-group'>
-  <% @base_tests.each do |test| %>
-    <div class='row form-group'><div class='col'><h4><%= test.upcase %></h4></div></div>
-    <div class='row form-group'>
-    <% (1..@quantity_t1).each do |n| %>
-      <div class='col'><%= form.input :"#{test}_#{n}", placeholder: "S#{n}", label: false %></div>
-    <% end %>
-    </div>
-    <% end %>
-    </div>
-    <%= form.button :submit, "Save Tests", class: "btn btn-success" %>
-    <% end %>
+<%= render :partial  => 'jobs/base_tests.html.erb'%>
 
   <% @job.attributes.each do |attr_name, attr_value| %>
     <div class="work_profile_attribute">

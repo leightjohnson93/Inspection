@@ -11,7 +11,7 @@ class JobsController < ApplicationController
 
   def edit
     @job = Job.find(params[:id])
-    @base_tests = ['vlt', 'neutrality', 'chromaticity', 'uv']
+    @base_tests = ['vlt', 'neutrality', 'chromaticity_x', 'chromaticity_y', 'uv']
     if @job.lot_quantity <= 4500
       @quantity_t1 = 3
       @quantity_t2 = 4

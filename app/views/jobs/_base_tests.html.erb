@@ -1,0 +1,17 @@
+<div class='form-group'>
+  <%= simple_form_for @job do |form| %>
+  <div class='row form-group'>
+    <div class='col'><%= form.input :visual_inspection, label: "Visual Inspection" ,placeholder: "Inspect #{@quantity_t4} Samples & Record Observations" %></div>
+    <div class='col-2'><%= form.input :visual_inspection_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
+  </div>
+<% @base_tests.each do |test| %>
+  <div class='row form-group'>
+  <div class='col-2'><strong><%= "#{test.upcase}:" %></strong></div>
+  <% (1..@quantity_t1).each do |n| %>
+    <div class='col'><%= form.input :"#{test}_#{n}", placeholder: "S#{n}", label: false %></div>
+  <% end %>
+  </div>
+  <% end %>
+  </div>
+  <%= form.button :submit, "Save Tests", class: "btn btn-success" %>
+  <% end %>

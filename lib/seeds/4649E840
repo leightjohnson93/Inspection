@@ -5,6 +5,7 @@ part,description,shape,color,coating,mfg
 1-0026-0001,Toroidal Blank Visor Clr Lg/Xlg #109,#109 Toroidal Blank,Clr,AF,MXL VV20294
 1-0026-5001,Toroidal Blank Visor Lg/XL #109,#109 Toroidal Blank,Clr,HC,Revision VI20197
 1-0026-5002,Toroidal Blank Visor Lg/XL #109,#109 Toroidal Blank,Clr,AF,Revision VI20197
+1-0026-5002,Toroidal Blank Visor 109 Clr HC/AF,Blank Visor,Clr,AF,Revision VI20198
 1-0078-0001,SF Lens Clr SC Lg,Saw Fly,Clr,HC,Jiann Lih VV21234
 1-0078-0002,SF Lens Smk SC Lg,Saw Fly,Smk,HC,Jiann Lih VV21234
 1-0078-0003,SF Lens Yel SC Lg,Saw Fly,Yel,HC,Jiann Lih VV21234
@@ -82,6 +83,7 @@ part,description,shape,color,coating,mfg
 1-0263-9001,SF Lens Clr ANSI HC Lg,SF MTS Lg,Clr,HC,Revision VI20197
 1-0263-9002,SF Lens Smk ANSI HC Lg,SF MTS Lg,Smk,HC,Revision VI20197
 1-0263-9003,SF Lens Yel ANSI HC Lg,SF MTS Lg,Yel,HC,Revision VI20197
+1-0600-5001,AB Outsert Lens Smk HC S/M,Air Boss Outsert,Clr,HC,Revision VI20197
 1-0600-5001,AB Outsert Lens Smk HC S/M,AB Outsert,Smk,HC,Revision VI20197
 1-0600-5002,AB Outsert Lens Yel HC S/M,AB Outsert,Yel,HC,Revision VI20197
 1-0601-5001,AB Outsert Lens Smk HC L/XL,AB Outsert,Smk,HC,Revision VI20197
@@ -103,6 +105,7 @@ part,description,shape,color,coating,mfg
 1-0714-5030,Base 5.5 Cyl Blank E2-5 AF (Visgard Plus AF),Base 5.5,E2-5,AF,Revision VI20197
 1-0714-5031,Base 5.5 Cyl Blank VER AF,Base 5.5,Ver,AF,Revision VI20197
 1-0714-5032,Base 5.5 Cyl Blank YEL AF,Base 5.5,Yel,AF,Revision VI20197
+1-0714-5032,Base 5.5 Cyl Blank YEL AF,Base 5.5,Yel,AF,Revision VI20198
 1-0714-5033,Base 5.5 Cyl Blank Smk AF,Base 5.5,Smk,AF,Revision VI20197
 1-0714-5034,Base 5.5 Cyl Blank NG AF,Base 5.5,NG,AF,Revision VI20197
 1-0714-5037,Base 5.5 Cyl Blank Smk AF Intl,Base 5.5,Smk Int,AF,Revision VI20197
@@ -168,6 +171,7 @@ part,description,shape,color,coating,mfg
 1-0716-0024,SF Lens NG Max EN Rg DE,SF Max Rg,NG,AF,Foresight VV20575
 1-0716-0025,SF Lens Ver Max EN Rg DE,SF Max Rg,Ver,AF,Foresight VV20575
 1-0716-0026,SF Lens Clr Max Nomk Rg,SF Max Rg,Clr,AF,-
+1-0716-0027,SF Lens Smk Max Nomk Rg,SF Max Rg,Smk,AF,-
 1-0716-0027,SF Lens Smk Max Nomk Rg,SF Max  Rg,Smk,AF,Taroko VV21312
 1-0716-0028,SF Lens Yel Max EN Rg DE,SF Max Rg,Yel,AF,-
 1-0716-0033,SF Lens Clr Max EN HC2/NK50 Rg DE,SF Max Rg,Clr,AF,Taroko VV21312
@@ -221,13 +225,17 @@ part,description,shape,color,coating,mfg
 1-0725-5057,Base 6 Sphr Blank E2-5 UVS Lsr HC,Base 6.0,E2-5,HC,Revision VI20197
 1-0725-5058,Base 6 Sphr Blank T64 Lsr HC,Base 6.0,T64,HC,Revision VI20197
 1-0725-5060,Base 6 Sphr Blank Clr AF Int'l,Base 6.0,CLR UV400,AF,Revision VI20197
+1-0725-5060,Base 6.0 Sphr Blank Int'l Clr ,Base 6.0,CLR UV380,AF,Revision VI20198
 1-0725-5061,Base 6 Sphr Blank Clr AF US,Base 6.0,CLR UV380,AF,Revision VI20197
 1-0725-5062,Base 6 Sphr Blank E25 AF,Base 6.0,E2-5,AF,Revision VI20197
 1-0725-5063,Base 6 Sphr Blank NG AF,Base 6.0,NG,AF,Revision VI20197
 1-0725-5064,Base 6 Sphr Blank Smk AF,Base 6.0,Smk,AF,Revision VI20197
-1-0725-5065,Base 6 Sphr Blank Ver UV400,base 6.0 ,Ver,AF,Revision VI20198
-1-0725-5066,Base 6 Sphr Blank Yel ,Base 6.0,Yel,AF,Revision VI20198
+1-0725-5065,Base 6 Sphr Blank Ver AF ( VPGG AF ),Base 6.0,Ver,AF,Revision VI20197
+1-0725-5065,Base 6.0 Sphr Blank Ver UV400,base 6.0 ,Ver,AF,Revision VI20198
+1-0725-5066,Base 6 Sphr Blank YEL AF,Base 6.0,Yel,AF,Revision VI20197
+1-0725-5066,Base 6.0 Sphr Blank Yel ,Base 6.0,Yel,AF,Revision VI20198
 1-0725-5068,Base 6 Sphr Blank C5-6-10 AF,Base 6.0,C5-6-10,AF,Revision VI20197
+1-0725-5070,Base 6.0 Clr Int'l HC,Base 6.0,CLR UV400,HC,Revision VI20198
 1-0725-5071,Base 6 Sphr Blank NG UV400 HC,Base 6.0,NG,HC,Revision VI20198
 1-0725-5074,Base 6 Sphr Blank Yel UV400 HC (Current),Base 6.0,Yel,HC,Revision VI20198
 1-0728-0001,Base 8 Darwin 85mm PHC Blank,Base 8.0,PHC,HC,Darwin VV20747
@@ -243,6 +251,7 @@ part,description,shape,color,coating,mfg
 1-0790-0001,SF Lens Clr Max Nomk Sm,Saw Fly Max Sm,Clr,HC,Taroko VV21312
 1-0790-0041,SF Lens Clr Max AF Sm CH,Saw Fly Max Sm,Clr,AF,Taroko VV21312
 1-0790-0043,SF Lens Ver Max AF Sm CH,Saw Fly Max Sm,Ver,AF,Taroko VV21312
+1-0790-0100,SF Lens Clr Max EN HC2/NK50 Sm DE,SF Max Sm,Clr,AF,Taroko VV21312
 1-0790-0100,SF Lens Clr Max EN HC2/NK50 Sm DE,Saw Fly Max Sm,Clr,AF,Taroko VV21312
 1-0790-0101,SF Lens Clr Max EN AF Sm,Saw Fly Max Sm,Clr,AF,Taroko VV21312
 1-0790-0200,SF Lens NG Max EN HC2/NK50 Sm DE,Saw Fly Max Sm,NG,AF,Taroko VV21312
@@ -303,7 +312,8 @@ part,description,shape,color,coating,mfg
 1-0868-5026,Base 6.8 Sphr Blank E2-5 UVS Lsr AF,Base 6.8,E2-5,AF,Revision VI20197
 1-0868-5033,Base 6.8 Sphr Blank C5-6-10 Lsr HC,Base 6.8,C5-6-10,HC,Revision VI20197
 1-0868-5034,Base 6.8 Sphr Blank C5-6-10 Lsr AF,Base 6.8 ,C5-6-10,AF,Revision VI20198
-1-0868-5035,Base 6.8 Sphr Blank V6-10 Lsr HC,Base 6.8,V6-10,HC,Revision VI20198
+1-0868-5035,Vase 6.8 Sphr Blank V6-10 Lsr HC,Base 6.8,V6-10,HC,Revision VI20198
+1-0868-5036,Vase 6.8 Sphr Blank V6-10 Lsr AF,Base 6.8,V6-10,AF ,Revision VI20198
 1-0868-5037,Base 6.8 Sphr Blank Clr UV400 HC,Base 6.8,CLR UV400,HC,Revision VI20198
 1-0868-5038,Base 6.8 Sphr Blank NG UV400 HC,Base 6.8,NG,HC,Revision VI20197
 1-0868-5039,Base 6.8 Sphr Blank Ver UV400 HC,Base 6.8,Ver,HC,Revision VI20197
@@ -313,6 +323,7 @@ part,description,shape,color,coating,mfg
 1-0868-5043,Base 6.8 Sphr Blank Clr AF US,Base 6.8,CLR UV380,AF,Revision VI20197
 1-0868-5044,Base 6.8 Sphr Blank Smk AF,Base 6.8,smk,AF,Revision VI20197
 1-0868-5045,Base 6.8 Sphr Blank VER AF,Base 6.8,Ver,AF,Revision VI20197
+1-0868-5046,Base 6.8 Sphr Blank YEL AF,Base 6.8,Yel,AF,Revision VI20197
 1-0868-5046,Base 6.8 Sphr Blank Yel UV400,Base 6.8,Yel,AF,Revision VI20198
 1-0868-5047,Base 6.8 Sphr Blank NG AF,Base 6.8,NG,AF,Revision VI20197
 1-0868-5048,Base 6.8 Sphr Blank Yel AF,Base 6.8,Yel,AF,Revision VI20197
@@ -417,10 +428,11 @@ part,description,shape,color,coating,mfg
 2-0496-0004,Deltawing SG Asm Solar,Deltawing,Solar,HC,LUXOL SRL VV21319
 2-0749-9001,Rx OLC Carrier + Lenses Fulfilled,RX OLC,Clr,-,Pech VV21320
 2-0749-9001-OS,Rx OLC Carrier + Lenses Fulfilled,RX OLC,Clr,-,Pech VV21320
+1-0025-5002,104 Visor Clr HC/Af,104,Clr,AF,Revision
 1-0725-5073,Base 6 Sphr Blank Ver UV400 HC,Base 6.0,Ver,HC,Revision VI20197
 1-0916-5001,AB Prime Smk L/XL AF,AB Prime,Smk,AF,Revision VI20197
-1-0725-5070,Base 6 Clr Int'l HC,Base 6.0,CLR UV400,HC,Revision VI20197
-1-0725-5041,Base 6 V6-10 HC,Base 6.0,V6-10,HC,Revision VI20197
-1-0725-5054,Base 6 Sphr Sng,Base 6.0 ,Smk,AF,Revision VI20198
+1-0725-5070,Base 6.0 Clr Int'l HC,Base 6.0,CLR UV400,HC,Revision VI20197
+1-0725-5041,Base 6.0 V6-10 HC,Base 6.0,V6-10,HC,Revision VI20197
+1-0725-5054,Base 6.0 Sphr Sng,Base 6.0 ,Smk,AF,Revision VI20198
 1-0868-5054,Base 6.8 Sphr Sng,Base 6.8,Smk,AF,Revision VI20198
 1-0868-5036,Base 6.8 Sphr Blank  V6-10 Lsr AF,Base 6.8,V6-10 Lsr,AF ,Revision VI20197
