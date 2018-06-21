@@ -2,10 +2,24 @@ en:
   activerecord:
     attributes:
       job:
-        wv: "WV/PV#"
+        wv: "WV/PV"
         part: "Part#"
         coat_date: "Coating Date"
         coat_time: "Coating Time"
         lot_quantity: "Lot Quantity"
         test_quantity: "Sample Quantity"
         mfg_int: "Initial"
+        line: Release/Line
+        bin: "Bin/Box Count"
+        vlt_1: "VLT 1"
+        vlt_2: "VLT 2"
+        vlt_3: "VLT 3"
+        vlt_4: "VLT 4"
+        vlt_5: "VLT 5"
+        vlt_6: "VLT 6"
+        uv_1: "Max UV 1"
+        uv_2: "Max UV 2"
+        uv_3: "Max UV 3"
+        uv_4: "Max UV 4"
+        uv_5: "Max UV 5"
+        uv_6: "Max UV 6"

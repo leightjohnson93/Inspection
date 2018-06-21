@@ -11,6 +11,7 @@ class JobsController < ApplicationController
 
   def edit
     @job = Job.find(params[:id])
+    @base_tests = ['vlt', 'neutrality', 'chromaticity', 'uv']
     if @job.lot_quantity <= 4500
       @quantity_t1 = 3
       @quantity_t2 = 4
@@ -51,6 +52,6 @@ class JobsController < ApplicationController
   end
   private
     def job_params
-      params.require(:job).permit(:wv, :line, :part_id, :coat_date, :coat_time, :lot_quantity, :test_quantity, :bin, :mfg_int)
+      params.require(:job).permit!
     end
 end

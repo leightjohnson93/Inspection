@@ -25,34 +25,44 @@
 
   <div class="form-group">
     <div class="row form-group">
-      <div class="col"><%= form.label :wv, 'WV/PV#'%><%= form.text_field :wv, class: 'form-control'%></div>
-      <div class="col"><%= form.label :part_id, "Part#"%><%= form.text_field :part_id, class: 'form-control'%></div class="col">
-      <div class="col"><%= form.label :line, "Release/Line#"%><%= form.text_field :line, class: 'form-control' %></div class="col">
-      <div class="col"><%= form.label :coat_date, "Coating Date"%><%= form.date_field :coat_date, class: 'form-control'%></div class="col">
-      <div class="col"><%= form.label :coat_time, "Coating Time"%><%= form.time_field :coat_time, class: 'form-control'%></div class="col">
+      <div class="col"><%= form.label :wv%><%= form.text_field :wv, class: 'form-control'%></div>
+      <div class="col"><%= form.label :part_id%><%= form.text_field :part_id, class: 'form-control'%></div class="col">
+      <div class="col"><%= form.label :line%><%= form.text_field :line, class: 'form-control' %></div class="col">
+      <div class="col"><%= form.label :coat_date%><%= form.date_field :coat_date, class: 'form-control'%></div class="col">
+      <div class="col"><%= form.label :coat_time%><%= form.time_field :coat_time, class: 'form-control'%></div class="col">
     </div>
 
     <div class="row form-group">
-      <div class="col"><%= form.label :lot_quantity, "Lot Quantity"%><%= form.text_field :lot_quantity, class: 'form-control'%></div class="col">
-      <div class="col"><%= form.label :test_quantity, "Sample Quantity" %><%= form.text_field :test_quantity, class: 'form-control'%></div class="col">
-      <div class="col"><%= form.label :bin, "Bin/Box Count"%><%= form.text_field :bin, class: 'form-control'%></div class="col">
-      <div class="col"><%= form.label :mfg_int, "Initial"%><%= form.text_field :mfg_int, class: 'form-control'%></div class="col">
+      <div class="col"><%= form.label :lot_quantity%><%= form.text_field :lot_quantity, class: 'form-control'%></div class="col">
+      <div class="col"><%= form.label :test_quantity%><%= form.text_field :test_quantity, class: 'form-control'%></div class="col">
+      <div class="col"><%= form.label :bin%><%= form.text_field :bin, class: 'form-control'%></div class="col">
+      <div class="col"><%= form.label :mfg_int%><%= form.text_field :mfg_int, class: 'form-control'%></div class="col">
       <div class="col" style="padding-top: 24px"><%= form.submit class: "btn btn-primary btn-block"%></div>
     </div>
 
   </div>
+  <% end %>
+
+  <%= simple_form_for @job do |form| %>
   <div class='form-group'>
-    <div class='row form_group'>
-      <%= @quantity_t1 %>
+  <% @base_tests.each do |test| %>
+    <div class='row form-group'><div class='col'><h4><%= test.upcase %></h4></div></div>
+    <div class='row form-group'>
+    <% (1..@quantity_t1).each do |n| %>
+      <div class='col'><%= form.input :"#{test}_#{n}", placeholder: "Sample #{n}", label: false %></div>
+    <% end %>
     </div>
-  </div>
+    <% end %>
+    </div>
+    <%= form.button :submit, "Save Tests", class: "btn btn-success" %>
+    <% end %>
+
   <% @job.attributes.each do |attr_name, attr_value| %>
     <div class="work_profile_attribute">
       <%= attr_name %>: <%= attr_value %>
     </div>
   <% end %>
 
-  <% end %>
 </div>
 </body>
 </html>

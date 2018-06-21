@@ -204,6 +204,17 @@ ActiveRecord::Schema.define(version: 2018_06_20_204114) do
     t.string "qc_inital"
   end
 
+  create_table "parts", force: :cascade do |t|
+    t.string "part"
+    t.string "description"
+    t.string "shape"
+    t.string "color"
+    t.string "coating"
+    t.string "mfg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tests", force: :cascade do |t|
     t.string "part_id"
     t.string "test_name"

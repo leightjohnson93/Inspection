@@ -57,6 +57,5 @@ class AddResultsToJobs < ActiveRecord::Migration[5.2]
     add_column :jobs, :job_assess, :boolean
     add_column :jobs, :job_notes, :text
     add_column :jobs, :qc_inital, :string
-    rename_column :jobs, :lot_quanity, :lot_quantity
   end
 end
