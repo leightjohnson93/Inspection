@@ -9,7 +9,7 @@
       <li class="active"><%= link_to 'New Job', new_job_path %></li>
   </ul>
 
-  <%= form_with scope: :job, url: jobs_path, local: true do |form| %>
+  <%= form_with scope: :job, url: jobs_path do |form| %>
     <% if @job.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
@@ -21,12 +21,14 @@
         </ul>
       </div>
     <% end %>
+    <hr>
 
-  <div class="form-group">
+  <div class="form-group well">
+    <legend>Manufacturing</legend>
     <div class="row form-group">
-      <div class="col"><%= form.label :wv, 'WV/PV#'%><%= form.text_field :wv, class: 'form-control'%></div>
-      <div class="col"><%= form.label :part_id, "Part#"%><%= form.text_field :part_id, class: 'form-control'%></div class="col">
-      <div class="col"><%= form.label :line, "Release/Line#"%><%= form.text_field :line, class: 'form-control'%></div class="col">
+      <div class="col"><%= form.label :wv, 'WV/PV'%><%= form.text_field :wv, class: 'form-control'%></div>
+      <div class="col"><%= form.label :part_id, "Part"%><%= form.text_field :part_id, class: 'form-control'%></div class="col">
+      <div class="col"><%= form.label :line, "Release/Line"%><%= form.text_field :line, class: 'form-control'%></div class="col">
       <div class="col"><%= form.label :coat_date, "Coating Date"%><%= form.date_field :coat_date, class: 'form-control'%></div class="col">
       <div class="col"><%= form.label :coat_time, "Coating Time"%><%= form.time_field :coat_time, class: 'form-control'%></div class="col">
     </div>
@@ -38,10 +40,8 @@
       <div class="col"><%= form.label :mfg_int, "Initial"%><%= form.text_field :mfg_int, class: 'form-control'%></div class="col">
       <div class="col" style="padding-top: 24px"><%= form.submit class: "btn btn-primary btn-block"%></div>
     </div>
-
   </div>
   <% end %>
-
 </div>
 </body>
 </html>

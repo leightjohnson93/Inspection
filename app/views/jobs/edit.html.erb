@@ -10,7 +10,7 @@
       <li class="active"><%= link_to @job.wv, job_path(@job) %></li>
   </ul>
 
-  <%= form_with(model: @job, local: true) do |form| %>
+  <%= form_with(model: @job) do |form| %>
     <% if @job.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
@@ -22,8 +22,9 @@
         </ul>
       </div>
     <% end %>
-
-  <div class="form-group">
+    <hr>
+  <div class="form-group well">
+    <legend>Manufacturing</legend>
     <div class="row form-group">
       <div class="col"><%= form.label :wv%><%= form.text_field :wv, class: 'form-control'%></div>
       <div class="col"><%= form.label :part_id%><%= form.text_field :part_id, class: 'form-control'%></div class="col">
@@ -39,8 +40,8 @@
       <div class="col"><%= form.label :mfg_int%><%= form.text_field :mfg_int, class: 'form-control'%></div class="col">
       <div class="col" style="padding-top: 24px"><%= form.submit class: "btn btn-primary btn-block"%></div>
     </div>
-<hr>
   </div>
+  <hr>
   <% end %>
 
 <%= render :partial  => 'jobs/base_tests.html.erb'%>

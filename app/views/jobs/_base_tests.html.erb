@@ -1,17 +1,85 @@
-<div class='form-group'>
-  <%= simple_form_for @job do |form| %>
+<%= javascript_include_tag('haze_gain.js') %>
+<% content_for :javascript do %>
+  <script type="text/javascript">
+  $(document).ready(function(){
+
+  $('#job_haze_gain_1').change(function() {
+      haze_gain();
+  });
+  });
+
+  function haze_gain()
+  {
+  var haze_gain_1 = 0;
+
+  var haze_initial_1 = $("#job_haze_initial_1").val();
+  var haze_abraded_1 = $("#job_haze_abraded_1").val();
+  haze_gain_1 = haze_abraded_1 - haze_initial_1
+
+  $('#job_haze_gain_1').val(haze_gain_1);
+  }
+
+</script>
+<% end %>
+<%= simple_form_for @job do |form| %>
+<div class='form-group well'>
+  <legend>Observational</legend>
   <div class='row form-group'>
     <div class='col'><%= form.input :visual_inspection, label: "Visual Inspection" ,placeholder: "Inspect #{@quantity_t4} Samples & Record Observations" %></div>
     <div class='col-2'><%= form.input :visual_inspection_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
   </div>
-<% @base_tests.each do |test| %>
+</div>
+
+<div class='form-group well'>
+  <legend>Transmission</legend>
   <div class='row form-group'>
-  <div class='col-2'><strong><%= "#{test.upcase}:" %></strong></div>
-  <% (1..@quantity_t1).each do |n| %>
-    <div class='col'><%= form.input :"#{test}_#{n}", placeholder: "S#{n}", label: false %></div>
-  <% end %>
+    <% (1..@quantity_t1).each do |n| %>
+      <div class='col'><%= (n == 1) ? (form.label :"vlt_#{n}", "Luminous Transmittance") : (form.label :"vlt_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"vlt_#{n}", placeholder: "VLT S#{n}", label: false %></div>
+    <% end %>
   </div>
-  <% end %>
+
+  <div class='row form-group'>
+    <% (1..@quantity_t1).each do |n| %>
+      <div class='col'>
+        <%= (n == 1) ? (form.label :"chromaticity_x_#{n}", "Chromaticity") : (form.label :"chromaticity_x_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"chromaticity_x_#{n}", placeholder: "X Coordinate S#{n}", label: false %>
+        <%= form.label :"chromaticity_y_#{n}", label: '&nbsp;'.html_safe %><%= form.input :"chromaticity_y_#{n}", placeholder: "Y Coordinate S#{n}", label: false %>
+      </div>
+      <% end %>
   </div>
-  <%= form.button :submit, "Save Tests", class: "btn btn-success" %>
-  <% end %>
+
+
+  <div class='row form-group'>
+    <% (1..@quantity_t1).each do |n| %>
+      <div class='col'><%= (n == 1) ? (form.label :"neutrality_#{n}", "Neutrality") : (form.label :"neutrality_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"neutrality_#{n}", placeholder: "Neutrality S#{n}", label: false %></div>
+    <% end %>
+  </div>
+
+  <div class='row form-group'>
+    <% (1..@quantity_t1).each do |n| %>
+      <div class='col'><%= (n == 1) ? (form.label :"uv_#{n}", "Maximum Ultraviolet Transmission") : (form.label :"uv_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"uv_#{n}", placeholder: "UV S#{n}", label: false %></div>
+    <% end %>
+  </div>
+</div>
+
+<div class='form-group well'>
+  <div class='row form-group'>
+    <% (1..@quantity_t1).each do |n| %>
+      <div class='col'><%= (n == 1) ? (form.label :"haze_initial_#{n}", "Initial Haze") : (form.label :"haze_initial_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"haze_initial_#{n}", placeholder: "Initial S#{n}", label: false %></div>
+    <% end %>
+  </div>
+
+  <div class='row form-group'>
+    <% (1..@quantity_t1).each do |n| %>
+      <div class='col'><%= (n == 1) ? (form.label :"haze_abraded_#{n}", "Abraded Haze") : (form.label :"haze_abraded_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"haze_abraded_#{n}", placeholder: "Abraded S#{n}", label: false %></div>
+    <% end %>
+  </div>
+
+  <div class='row form-group'>
+    <% (1..@quantity_t1).each do |n| %>
+      <div class='col'><%= (n == 1) ? (form.label :"haze_gain_#{n}", "Haze Gain") : (form.label :"haze_gain_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"haze_gain_#{n}", placeholder: "Gain S#{n}", label: false %></div>
+    <% end %>
+  </div>
+</div>
+
+<%= form.button :submit, "Save Tests", class: "btn btn-success" %>
+<% end %>
