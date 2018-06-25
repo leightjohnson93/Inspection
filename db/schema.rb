@@ -240,4 +240,15 @@ ActiveRecord::Schema.define(version: 2018_06_25_192048) do
     t.float "vertical_right_6"
   end
 
+  create_table "parts", force: :cascade do |t|
+    t.string "part"
+    t.string "description"
+    t.string "shape"
+    t.string "color"
+    t.string "coating"
+    t.string "mfg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
