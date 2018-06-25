@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_21_143221) do
+ActiveRecord::Schema.define(version: 2018_06_25_192048) do
 
   create_table "items", primary_key: "part", id: :string, force: :cascade do |t|
     t.string "description"
@@ -206,38 +206,38 @@ ActiveRecord::Schema.define(version: 2018_06_21_143221) do
     t.integer "resolving_right_1"
     t.float "refractive_right_1"
     t.float "astigmatism_right_1"
-    t.float "horizontal_prism_right_1"
-    t.float "vertical_prism_right_1"
+    t.float "horizontal_right_1"
+    t.float "vertical_right_1"
     t.float "chromaticity_y_2"
     t.integer "resolving_right_2"
     t.float "refractive_right_2"
     t.float "astigmatism_right_2"
-    t.float "horizontal_prism_right_2"
-    t.float "vertical_prism_right_2"
+    t.float "horizontal_right_2"
+    t.float "vertical_right_2"
     t.float "chromaticity_y_3"
     t.integer "resolving_right_3"
     t.float "refractive_right_3"
     t.float "astigmatism_right_3"
-    t.float "horizontal_prism_right_3"
-    t.float "vertical_prism_right_3"
+    t.float "horizontal_right_3"
+    t.float "vertical_right_3"
     t.float "chromaticity_y_4"
     t.integer "resolving_right_4"
     t.float "refractive_right_4"
     t.float "astigmatism_right_4"
-    t.float "horizontal_prism_right_4"
-    t.float "vertical_prism_right_4"
+    t.float "horizontal_right_4"
+    t.float "vertical_right_4"
     t.float "chromaticity_y_5"
     t.integer "resolving_right_5"
     t.float "refractive_right_5"
     t.float "astigmatism_right_5"
-    t.float "horizontal_prism_right_5"
-    t.float "vertical_prism_right_5"
+    t.float "horizontal_right_5"
+    t.float "vertical_right_5"
     t.float "chromaticity_y_6"
     t.integer "resolving_right_6"
     t.float "refractive_right_6"
     t.float "astigmatism_right_6"
-    t.float "horizontal_prism_right_6"
-    t.float "vertical_prism_right_6"
+    t.float "horizontal_right_6"
+    t.float "vertical_right_6"
   end
 
 end
