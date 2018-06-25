@@ -40,7 +40,7 @@ class JobsController < ApplicationController
     @job.destroy
     redirect_to jobs_path
   end
-  
+
   def calculate_test_quantities
     if @job.lot_quantity <= 4500
       @quantity_t1 = 3

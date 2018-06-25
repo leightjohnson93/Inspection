@@ -1,26 +1,4 @@
 <%= javascript_include_tag('haze_gain.js') %>
-<% content_for :javascript do %>
-  <script type="text/javascript">
-  $(document).ready(function(){
-
-  $('#job_haze_gain_1').change(function() {
-      haze_gain();
-  });
-  });
-
-  function haze_gain()
-  {
-  var haze_gain_1 = 0;
-
-  var haze_initial_1 = $("#job_haze_initial_1").val();
-  var haze_abraded_1 = $("#job_haze_abraded_1").val();
-  haze_gain_1 = haze_abraded_1 - haze_initial_1
-
-  $('#job_haze_gain_1').val(haze_gain_1);
-  }
-
-</script>
-<% end %>
 <%= simple_form_for @job do |form| %>
 <div class='form-group well'>
   <legend>Observational</legend>
@@ -47,7 +25,6 @@
       <% end %>
   </div>
 
-
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
       <div class='col'><%= (n == 1) ? (form.label :"neutrality_#{n}", "Neutrality") : (form.label :"neutrality_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"neutrality_#{n}", placeholder: "Neutrality S#{n}", label: false %></div>
@@ -62,6 +39,7 @@
 </div>
 
 <div class='form-group well'>
+  <legend>MCEPS Abrasion</legend>
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
       <div class='col'><%= (n == 1) ? (form.label :"haze_initial_#{n}", "Initial Haze") : (form.label :"haze_initial_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"haze_initial_#{n}", placeholder: "Initial S#{n}", label: false %></div>
