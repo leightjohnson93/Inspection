@@ -105,7 +105,18 @@
       </div>
       <% end %>
   </div>
-</div>
 
+  <div class='row form-group'>
+    <% (1..@quantity_t1).each do |n| %>
+      <div class='col'><%= (n == 1) ? (form.label :"horizontal_imbalance_#{n}", "Horizontal Prism Imbalance") : (form.label :"horizontal_imbalance_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"horizontal_imbalance_#{n}", placeholder: "Horizontal Imbalance S#{n}", label: false %></div>
+    <% end %>
+  </div>
+
+  <div class='row form-group'>
+  <% (1..@quantity_t1).each do |n| %>
+    <div class='col'><%= (n == 1) ? (form.label :"vertical_imbalance_#{n}", "Vertical Prism Imbalance") : (form.label :"vertical_imbalance_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"vertical_imbalance_#{n}", placeholder: "vertical Imbalance S#{n}", label: false %></div>
+  <% end %>
+  </div>
+</div>
 <%= form.button :submit, "Save Tests", class: "btn btn-success" %>
 <% end %>

@@ -10,7 +10,7 @@
       <li class="active"><%= link_to @job.wv, job_path(@job) %></li>
   </ul>
 
-  <%= form_with(model: @job) do |form| %>
+  <%= form_with(model: @job, local: true) do |form| %>
     <% if @job.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
