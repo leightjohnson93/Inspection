@@ -3,16 +3,16 @@
 <%= simple_form_for @job do |form| %>
 <div class='form-group well'>
   <legend>
-
-      <div class="row">
-        <div class="col-xs-8 text-left">
-          <p>Observational</p>
-        </div>
-        <div class="col-xs-4 text-right">
-          <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-minus"></span></button>
-        </div>
+    <div class="row">
+      <div class="col-xs-8 text-left">
+        <p>Observational</p>
       </div>
+      <div class="col-xs-4 text-right">
+         <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#obs_tests"><span class="glyphicon glyphicon-minus"></span></button>
+      </div>
+    </div>
   </legend>
+  <div class="collapse" id="obs_tests">
   <div class='row form-group'>
     <div class='col'><%= form.input :visual_inspection, label: "Visual Inspection" ,placeholder: "Inspect #{@quantity_t4} Samples & Record Observations" %></div>
     <div class='col-2'><%= form.input :visual_inspection_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
@@ -32,13 +32,24 @@
     <div class='col'><%= form.input :adhesion, label: "Adhesion" ,placeholder: "Test #{@quantity_t1} Samples & Record Observations" %></div>
     <div class='col-2'><%= form.input :adhesion_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
   </div>
+  </div>
 </div>
 
 <div class='form-group well'>
-  <legend>Transmission</legend>
+  <legend>
+    <div class="row">
+      <div class="col-xs-8 text-left">
+        <p>Transmittance</p>
+      </div>
+      <div class="col-xs-4 text-right">
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#trans_tests"><span class="glyphicon glyphicon-minus"></span></button>
+      </div>
+    </div>
+  </legend>
+  <div class="collapse" id="trans_tests">
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"vlt_#{n}", "Luminous Transmittance") : (form.label :"vlt_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"vlt_#{n}", placeholder: "VLT S#{n}", label: false %></div>
+      <div class='col'><%= (n == 1) ? (form.label :"vlt_#{n}", "Luminous Transmittance (%)") : (form.label :"vlt_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"vlt_#{n}", placeholder: "VLT S#{n}", label: false %></div>
     <% end %>
   </div>
 
@@ -53,58 +64,91 @@
 
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"neutrality_#{n}", "Neutrality") : (form.label :"neutrality_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"neutrality_#{n}", placeholder: "Neutrality S#{n}", label: false %></div>
+      <div class='col'><%= (n == 1) ? (form.label :"neutrality_#{n}", "Neutrality (%)") : (form.label :"neutrality_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"neutrality_#{n}", placeholder: "Neutrality S#{n}", label: false %></div>
     <% end %>
   </div>
 
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"uv_#{n}", "Maximum Ultraviolet Transmission") : (form.label :"uv_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"uv_#{n}", placeholder: "UV S#{n}", label: false %></div>
+      <div class='col'><%= (n == 1) ? (form.label :"uv_#{n}", "Maximum Ultraviolet Transmission (%)") : (form.label :"uv_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"uv_#{n}", placeholder: "UV S#{n}", label: false %></div>
     <% end %>
+  </div>
   </div>
 </div>
 
 <div class='form-group well'>
-  <legend>MCEPS Abrasion</legend>
+    <legend>
+      <div class="row">
+        <div class="col-xs-8 text-left">
+          <p>MCEPS Abrasion</p>
+        </div>
+        <div class="col-xs-4 text-right">
+          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#mceps_abrasion"><span class="glyphicon glyphicon-minus"></span></button>
+        </div>
+      </div>
+  </legend>
+  <div class="collapse" id="mceps_abrasion">
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"haze_initial_#{n}", "Initial Haze") : (form.label :"haze_intial_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"haze_initial_#{n}", placeholder: "Initial S#{n}", label: false %></div>
+      <div class='col'><%= (n == 1) ? (form.label :"haze_initial_#{n}", "Initial Haze (%)") : (form.label :"haze_intial_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"haze_initial_#{n}", placeholder: "Initial S#{n}", label: false %></div>
     <% end %>
   </div>
 
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"haze_abraded_#{n}", "Abraded Haze") : (form.label :"haze_abraded_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"haze_abraded_#{n}", placeholder: "Abraded S#{n}", label: false %></div>
+      <div class='col'><%= (n == 1) ? (form.label :"haze_abraded_#{n}", "Abraded Haze (%)") : (form.label :"haze_abraded_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"haze_abraded_#{n}", placeholder: "Abraded S#{n}", label: false %></div>
     <% end %>
   </div>
 
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"haze_gain_#{n}", "Haze Gain") : (form.label :"haze_gain_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"haze_gain_#{n}", placeholder: "Gain S#{n}", label: false %></div>
+      <div class='col'><%= (n == 1) ? (form.label :"haze_gain_#{n}", "Haze Gain (%)") : (form.label :"haze_gain_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"haze_gain_#{n}", placeholder: "Gain S#{n}", label: false %></div>
     <% end %>
+  </div>
   </div>
 </div>
 
 <div class='form-group well'>
-  <legend>Diffusion of Light & EN Abrasion</legend>
+  <legend>
+      <div class="row">
+        <div class="col-xs-8 text-left">
+          <p>Diffusion of Light & Falling Sand</p>
+        </div>
+        <div class="col-xs-4 text-right">
+          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#dol"><span class="glyphicon glyphicon-minus"></span></button>
+        </div>
+      </div>
+  </legend>
+  <div class="collapse" id="dol">
   <div class='row form-group'>
     <% (1..@quantity_t3).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"dol_#{n}", "Diffusion") : (form.label :"dol_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"dol_#{n}", placeholder: "Abraded S#{n}", label: false %></div>
+      <div class='col'><%= (n == 1) ? (form.label :"dol_#{n}", "Diffusion") : (form.label :"dol_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"dol_#{n}", placeholder: "Initial S#{n}", label: false %></div>
     <% end %>
   </div>
   <div class='row form-group'>
     <% (1..@quantity_t2).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"en_abrasion_#{n}", "Falling Sand") : (form.label :"en_abrasion_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"en_abrasion_#{n}", placeholder: "Initial S#{n}", label: false %></div>
+      <div class='col'><%= (n == 1) ? (form.label :"en_abrasion_#{n}", "Falling Sand") : (form.label :"en_abrasion_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"en_abrasion_#{n}", placeholder: "Abraded S#{n}", label: false %></div>
     <% end %>
+  </div>
   </div>
 </div>
 
 <div class='form-group well'>
-  <legend>Optics</legend>
+  <legend>
+      <div class="row">
+        <div class="col-xs-8 text-left">
+          <p>Optics</p>
+        </div>
+        <div class="col-xs-4 text-right">
+          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#optics"><span class="glyphicon glyphicon-minus"></span></button>
+        </div>
+      </div>
+  </legend>
+  <div class="collapse" id="optics">
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
       <div class='col'>
-        <%= (n == 1) ? (form.label :"resolving_left_#{n}", "Resolving Power") : (form.label :"resolving_left_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"resolving_left_#{n}", placeholder: "Left S#{n}", label: false %>
+        <%= (n == 1) ? (form.label :"resolving_left_#{n}", "Resolving Power (cy/mm)") : (form.label :"resolving_left_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"resolving_left_#{n}", placeholder: "Left S#{n}", label: false %>
         <%= form.label :"resolving_right_#{n}", label: '&nbsp;'.html_safe %><%= form.input :"resolving_right_#{n}", placeholder: "Right S#{n}", label: false %>
       </div>
       <% end %>
@@ -113,7 +157,7 @@
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
       <div class='col'>
-        <%= (n == 1) ? (form.label :"refractive_left_#{n}", "Refractive Power") : (form.label :"refractive_left_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"refractive_left_#{n}", placeholder: "Left S#{n}", label: false %>
+        <%= (n == 1) ? (form.label :"refractive_left_#{n}", "Refractive Power (D)") : (form.label :"refractive_left_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"refractive_left_#{n}", placeholder: "Left S#{n}", label: false %>
         <%= form.label :"refractive_right_#{n}", label: '&nbsp;'.html_safe %><%= form.input :"refractive_right_#{n}", placeholder: "Right S#{n}", label: false %>
       </div>
       <% end %>
@@ -122,7 +166,7 @@
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
       <div class='col'>
-        <%= (n == 1) ? (form.label :"astigmatism_left_#{n}", "Astigmatism") : (form.label :"astigmatism_left_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"astigmatism_left_#{n}", placeholder: "Left S#{n}", label: false %>
+        <%= (n == 1) ? (form.label :"astigmatism_left_#{n}", "Astigmatism (D)") : (form.label :"astigmatism_left_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"astigmatism_left_#{n}", placeholder: "Left S#{n}", label: false %>
         <%= form.label :"astigmatism_right_#{n}", label: '&nbsp;'.html_safe %><%= form.input :"astigmatism_right_#{n}", placeholder: "Right S#{n}", label: false %>
       </div>
       <% end %>
@@ -131,7 +175,7 @@
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
       <div class='col'>
-        <%= (n == 1) ? (form.label :"horizontal_left_#{n}", "Horizontal Prism") : (form.label :"horizontal_left_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"horizontal_left_#{n}", placeholder: "Left S#{n}", label: false %>
+        <%= (n == 1) ? (form.label :"horizontal_left_#{n}", "Horizontal Prism (Δ)") : (form.label :"horizontal_left_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"horizontal_left_#{n}", placeholder: "Left S#{n}", label: false %>
         <%= form.label :"horizontal_right_#{n}", label: '&nbsp;'.html_safe %><%= form.input :"horizontal_right_#{n}", placeholder: "Right S#{n}", label: false %>
       </div>
       <% end %>
@@ -140,7 +184,7 @@
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
       <div class='col'>
-        <%= (n == 1) ? (form.label :"vertical_left_#{n}", "Vertical Prism") : (form.label :"vertical_left_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"vertical_left_#{n}", placeholder: "Left S#{n}", label: false %>
+        <%= (n == 1) ? (form.label :"vertical_left_#{n}", "Vertical Prism (Δ)") : (form.label :"vertical_left_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"vertical_left_#{n}", placeholder: "Left S#{n}", label: false %>
         <%= form.label :"vertical_right_#{n}", label: '&nbsp;'.html_safe %><%= form.input :"vertical_right_#{n}", placeholder: "Right S#{n}", label: false %>
       </div>
       <% end %>
@@ -148,46 +192,79 @@
 
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"horizontal_imbalance_#{n}", "Horizontal Prism Imbalance") : (form.label :"horizontal_imbalance_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"horizontal_imbalance_#{n}", placeholder: "Horizontal Imbalance S#{n}", label: false %></div>
+      <div class='col'><%= (n == 1) ? (form.label :"horizontal_imbalance_#{n}", "Horizontal Prism Imbalance (Δ)") : (form.label :"horizontal_imbalance_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"horizontal_imbalance_#{n}", placeholder: "Horizontal Imbalance S#{n}", label: false %></div>
     <% end %>
   </div>
 
   <div class='row form-group'>
   <% (1..@quantity_t1).each do |n| %>
-    <div class='col'><%= (n == 1) ? (form.label :"vertical_imbalance_#{n}", "Vertical Prism Imbalance") : (form.label :"vertical_imbalance_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"vertical_imbalance_#{n}", placeholder: "vertical Imbalance S#{n}", label: false %></div>
+    <div class='col'><%= (n == 1) ? (form.label :"vertical_imbalance_#{n}", "Vertical Prism Imbalance (Δ)") : (form.label :"vertical_imbalance_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"vertical_imbalance_#{n}", placeholder: "vertical Imbalance S#{n}", label: false %></div>
   <% end %>
+  </div>
   </div>
 </div>
 
 <div class='form-group well'>
-  <legend>Anti-Fog</legend>
+  <legend>
+      <div class="row">
+        <div class="col-xs-8 text-left">
+          <p>Anti-Fog</p>
+        </div>
+        <div class="col-xs-4 text-right">
+          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#antifog"><span class="glyphicon glyphicon-minus"></span></button>
+        </div>
+      </div>
+  </legend>
+  <div class="collapse" id="antifog">
   <div class='row form-group'>
     <div class='col-3'><%= form.input :relative_humidity, placeholder: "RH%" %></div>
   </div>
   <div class='row form-group'>
     <% (1..@quantity_t2).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"antifog_time#{n}", "Time Fog Free") : (form.label :"antifog_time#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"antifog_time#{n}", placeholder: "Time S#{n}", label: false %></div>
+      <div class='col'><%= (n == 1) ? (form.label :"antifog_time#{n}", "Time to Fog (s)") : (form.label :"antifog_time#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"antifog_time#{n}", placeholder: "Fog S#{n}", label: false %></div>
     <% end %>
+  </div>
   </div>
 </div>
 
 <div class='form-group well'>
-  <legend>Coating Thickness</legend>
+  <legend>
+      <div class="row">
+        <div class="col-xs-8 text-left">
+          <p>Coating Thickness</p>
+        </div>
+        <div class="col-xs-4 text-right">
+          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#thickness"><span class="glyphicon glyphicon-minus"></span></button>
+        </div>
+      </div>
+  </legend>
+  <div class="collapse" id="thickness">
   <div class='row form-group'>
     <% (1..@quantity_t2).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"hard_thickness_#{n}", "Hardcoat") : (form.label :"hard_thickness_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"hard_thickness_#{n}", placeholder: "HC S#{n}", label: false %></div>
+      <div class='col'><%= (n == 1) ? (form.label :"hard_thickness_#{n}", "Hardcoat (μm)") : (form.label :"hard_thickness_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"hard_thickness_#{n}", placeholder: "HC S#{n}", label: false %></div>
     <% end %>
   </div>
 
   <div class='row form-group'>
     <% (1..@quantity_t2).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"antifog_thickness_#{n}", "Anti-Fog Coat") : (form.label :"antifog_thickness_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"antifog_thickness_#{n}", placeholder: "AF S#{n}", label: false %></div>
+      <div class='col'><%= (n == 1) ? (form.label :"antifog_thickness_#{n}", "Anti-Fog Coat (μm)") : (form.label :"antifog_thickness_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"antifog_thickness_#{n}", placeholder: "AF S#{n}", label: false %></div>
     <% end %>
+  </div>
   </div>
 </div>
 
 <div class='form-group well'>
-  <legend>Ballistics</legend>
+  <legend>
+      <div class="row">
+        <div class="col-xs-8 text-left">
+          <p>Ballistics</p>
+        </div>
+        <div class="col-xs-4 text-right">
+          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#ballistics"><span class="glyphicon glyphicon-minus"></span></button>
+        </div>
+      </div>
+  </legend>
+  <div class="collapse" id="ballistics">
   <div class='row'>
     <div class='col'><%= form.input :"ballistic_method_1", placeholder: "Method 1" %></div>
     <div class='col'><%= form.input :"ballistic_samples_1", placeholder: "Samples 1" %></div>
@@ -195,13 +272,14 @@
     <div class='col'><%= form.input :"ballistic_fractures_1", placeholder: "Fractures 1" %></div>
     <div class='col-2'><%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
   </div>
-  <div class='row'>
+  <div class='row' style="margin-top:3%">
     <div class='col'><%= form.input :"ballistic_method_2", placeholder: "Method 2", label: false %></div>
     <div class='col'><%= form.input :"ballistic_samples_2", placeholder: "Samples 2", label: false %></div>
     <div class='col'><%= form.input :"ballistic_spalls_2", placeholder: "Spalls 2", label: false %></div>
     <div class='col'><%= form.input :"ballistic_fractures_2", placeholder: "Fractures 2", label: false %></div>
     <div class='col-2'><%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
   </div>
+</div>
 </div>
 <%= form.button :submit, "Save Tests", class: "btn btn-success" %>
 <% end %>

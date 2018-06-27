@@ -12,7 +12,7 @@ en:
         line: Release/Line
         bin: "Bin/Box Count"
         chromaticity_x_1: "ChromaticityX 1"
-        relative_humidity: "Relative Humidity"
+        relative_humidity: "Relative Humidity (%)"
         ballistic_method_1: "Ballistic Method"
         ballistic_samples_1: "Samples Impacted"
         ballistic_spalls_1: "Spalls"
