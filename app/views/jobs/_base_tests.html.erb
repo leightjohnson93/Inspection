@@ -147,5 +147,50 @@
   <% end %>
   </div>
 </div>
+
+<div class='form-group well'>
+  <legend>Anti-Fog</legend>
+  <div class='row form-group'>
+    <div class='col-3'><%= form.input :relative_humidity, placeholder: "RH%" %></div>
+  </div>
+  <div class='row form-group'>
+    <% (1..@quantity_t2).each do |n| %>
+      <div class='col'><%= (n == 1) ? (form.label :"antifog_time#{n}", "Time Fog Free") : (form.label :"antifog_time#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"antifog_time#{n}", placeholder: "Time S#{n}", label: false %></div>
+    <% end %>
+  </div>
+</div>
+
+<div class='form-group well'>
+  <legend>Coating Thickness</legend>
+  <div class='row form-group'>
+    <% (1..@quantity_t2).each do |n| %>
+      <div class='col'><%= (n == 1) ? (form.label :"hard_thickness_#{n}", "Hardcoat") : (form.label :"hard_thickness_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"hard_thickness_#{n}", placeholder: "HC S#{n}", label: false %></div>
+    <% end %>
+  </div>
+
+  <div class='row form-group'>
+    <% (1..@quantity_t2).each do |n| %>
+      <div class='col'><%= (n == 1) ? (form.label :"antifog_thickness_#{n}", "Anti-Fog Coat") : (form.label :"antifog_thickness_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"antifog_thickness_#{n}", placeholder: "AF S#{n}", label: false %></div>
+    <% end %>
+  </div>
+</div>
+
+<div class='form-group well'>
+  <legend>Ballistics</legend>
+  <div class='row'>
+    <div class='col'><%= form.input :"ballistic_method_1", placeholder: "Method 1" %></div>
+    <div class='col'><%= form.input :"ballistic_samples_1", placeholder: "Samples 1" %></div>
+    <div class='col'><%= form.input :"ballistic_spalls_1", placeholder: "Spalls 1"%></div>
+    <div class='col'><%= form.input :"ballistic_fractures_1", placeholder: "Fractures 1" %></div>
+    <div class='col-2'><%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
+  </div>
+  <div class='row'>
+    <div class='col'><%= form.input :"ballistic_method_2", placeholder: "Method 2", label: false %></div>
+    <div class='col'><%= form.input :"ballistic_samples_2", placeholder: "Samples 2", label: false %></div>
+    <div class='col'><%= form.input :"ballistic_spalls_2", placeholder: "Spalls 2", label: false %></div>
+    <div class='col'><%= form.input :"ballistic_fractures_2", placeholder: "Fractures 2", label: false %></div>
+    <div class='col-2'><%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
+  </div>
+</div>
 <%= form.button :submit, "Save Tests", class: "btn btn-success" %>
 <% end %>
