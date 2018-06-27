@@ -12,7 +12,6 @@ class JobsController < ApplicationController
   def edit
     @job = Job.find(params[:id])
     calculate_test_quantities
-    haze_gain
   end
 
   def create
@@ -55,14 +54,6 @@ class JobsController < ApplicationController
     end
   end
 
-  def haze_gain
-    if @job.haze_abraded_1 && @job.haze_initial_1 then @job.haze_gain_1 = (@job.haze_abraded_1 - @job.haze_initial_1).round(2) end
-    if @job.haze_abraded_2 && @job.haze_initial_2 then @job.haze_gain_2 = (@job.haze_abraded_2 - @job.haze_initial_2).round(2) end
-    if @job.haze_abraded_3 && @job.haze_initial_3 then @job.haze_gain_3 = (@job.haze_abraded_3 - @job.haze_initial_3).round(2) end
-    if @job.haze_abraded_4 && @job.haze_initial_4 then @job.haze_gain_4 = (@job.haze_abraded_4 - @job.haze_initial_4).round(2) end
-    if @job.haze_abraded_5 && @job.haze_initial_5 then @job.haze_gain_5 = (@job.haze_abraded_5 - @job.haze_initial_5).round(2) end
-    if @job.haze_abraded_6 && @job.haze_initial_6 then @job.haze_gain_6 = (@job.haze_abraded_6 - @job.haze_initial_6).round(2) end
-  end
   private
     def job_params
       params.require(:job).permit!
