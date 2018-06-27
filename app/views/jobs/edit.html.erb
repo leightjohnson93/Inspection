@@ -14,7 +14,6 @@
     <% if @job.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
-
         <ul>
         <% @job.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -44,13 +43,10 @@
   <hr>
   <% end %>
 
-<%= render :partial  => 'jobs/base_tests.html.erb'%>
-
-  <% @job.attributes.each do |attr_name, attr_value| %>
-    <div class="work_profile_attribute">
-      <%= attr_name %>: <%= attr_value %>
-    </div>
+  <% if @quantity_t1 %>
+    <%= render :partial  => 'jobs/base_tests.html.erb'%>
   <% end %>
+
 
 </div>
 </body>
