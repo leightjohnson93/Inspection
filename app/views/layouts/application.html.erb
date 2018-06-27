@@ -14,7 +14,8 @@
   </head>
 
   <body>
-    <!-- <%= render 'shared/navigation' %> -->
+ <%= render 'shared/navigation' %>
+   <div class='container'>
     <div class="row">
         <div class="col-xs-12">
           <% flash.each do |name, msg| -%>
@@ -23,6 +24,6 @@
         </div>
       </div>
     <%= yield %>
-
+</div>
   </body>
 </html>

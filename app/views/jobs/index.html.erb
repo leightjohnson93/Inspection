@@ -15,7 +15,8 @@
     <th>Part</th>
     <th>Description</th>
     <th>Lot Quantity</th>
-    <th></th>
+    <th>Test Quantity</th>
+    <th width>Action</th>
   </tr>
   <% @jobs.each do |job| %>
   <tr>
@@ -23,7 +24,8 @@
     <td><%= job.part_id %></td>
     <td><%= job.part.description %></td>
     <td><%= job.lot_quantity %></td>
-    <td class=text-right><div>
+    <td><%= job.test_quantity %></td>
+    <td width="15%"><div>
       <%= link_to 'Show', job, class: 'btn btn-primary btn-xs' %>
       <%= link_to 'Edit', edit_job_path(job), class: 'btn btn-info btn-xs' %>
       <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>

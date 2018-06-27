@@ -6,6 +6,21 @@
     <div class='col'><%= form.input :visual_inspection, label: "Visual Inspection" ,placeholder: "Inspect #{@quantity_t4} Samples & Record Observations" %></div>
     <div class='col-2'><%= form.input :visual_inspection_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
   </div>
+
+  <div class='row form-group'>
+    <div class='col'><%= form.input :dimensions, label: "Dimensions" ,placeholder: "Measure #{@quantity_t1} Samples & Record Observations" %></div>
+    <div class='col-2'><%= form.input :dimensions_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
+  </div>
+
+  <div class='row form-group'>
+    <div class='col'><%= form.input :fit, label: "Fit & Function" ,placeholder: "Test #{@quantity_t1} Samples & Record Observations" %></div>
+    <div class='col-2'><%= form.input :fit_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
+  </div>
+
+  <div class='row form-group'>
+    <div class='col'><%= form.input :adhesion, label: "Adhesion" ,placeholder: "Test #{@quantity_t1} Samples & Record Observations" %></div>
+    <div class='col-2'><%= form.input :adhesion_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
+  </div>
 </div>
 
 <div class='form-group well'>
@@ -42,7 +57,7 @@
   <legend>MCEPS Abrasion</legend>
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"haze_initial_#{n}", "Initial Haze") : (form.label :"haze_initial_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"haze_initial_#{n}", placeholder: "Initial S#{n}", label: false %></div>
+      <div class='col'><%= (n == 1) ? (form.label :"en_abrasion_#{n}", "Initial Haze") : (form.label :"en_abrasion_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"en_abrasion_#{n}", placeholder: "Initial S#{n}", label: false %></div>
     <% end %>
   </div>
 
@@ -55,6 +70,20 @@
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
       <div class='col'><%= (n == 1) ? (form.label :"haze_gain_#{n}", "Haze Gain") : (form.label :"haze_gain_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"haze_gain_#{n}", placeholder: "Gain S#{n}", label: false %></div>
+    <% end %>
+  </div>
+</div>
+
+<div class='form-group well'>
+  <legend>Diffusion of Light & EN Abrasion</legend>
+  <div class='row form-group'>
+    <% (1..@quantity_t3).each do |n| %>
+      <div class='col'><%= (n == 1) ? (form.label :"dol_#{n}", "Diffusion") : (form.label :"dol_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"dol_#{n}", placeholder: "Abraded S#{n}", label: false %></div>
+    <% end %>
+  </div>
+  <div class='row form-group'>
+    <% (1..@quantity_t2).each do |n| %>
+      <div class='col'><%= (n == 1) ? (form.label :"en_abrasion_#{n}", "Falling Sand") : (form.label :"en_abrasion_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"en_abrasion_#{n}", placeholder: "Initial S#{n}", label: false %></div>
     <% end %>
   </div>
 </div>
