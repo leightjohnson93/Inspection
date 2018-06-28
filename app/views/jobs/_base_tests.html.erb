@@ -251,7 +251,7 @@
   </div>
 </div>
 
-<div class='form-group well'>
+<div class='form-group well' style="margin-bottom:7%">
   <legend>
       <div class="row">
         <div class="col-xs-8 text-left">
@@ -279,14 +279,12 @@
   </div>
 </div>
 </div>
-<%= form.button :submit, "Save Tests", class: "btn btn-success" %>
-<div class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
 
-      <%= form.button :submit, "Save Current Progress", class: "btn btn-primary navbar-btn" %>
-      <%= form.button :submit, "Submit Test Data", class: "btn btn-success navbar-btn" %>
-      <%= form.button :submit, "Reset All Fields", class: "btn btn-danger navbar-btn" %>
-
+<div class="navbar navbar-default navbar-fixed-bottom" style="background-color:#333">
+    <div class="btn-group">
+      <%= form.button :submit, "Save Progress", class: "btn btn-primary navbar-btn" %>
+      <%= form.button :submit, "Testing Complete", data: { disable_with: false }, class: "btn btn-info navbar-btn" %>
+      <%= submit_tag("Discard Changes", { :name => 'reset', :id => 'reset', :type => 'reset', :class => 'btn btn-danger navbar-btn'}) %>
     </div>
 </div>
 <% end %>

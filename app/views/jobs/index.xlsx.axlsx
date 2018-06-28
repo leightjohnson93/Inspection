@@ -1,0 +1,10 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Jobs") do |sheet|
+  #this is the head row of spreadsheet
+  sheet.add_row %w(wv part_id description lot_quantity test_quantity)
+
+  @jobs.each do |job|
+    sheet.add_row [job.wv, job.part_id, job.part.description, job.lot_quantity, job.test_quantity]
+  end
+end

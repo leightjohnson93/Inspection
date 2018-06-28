@@ -5,7 +5,7 @@
 <body>
 <div class="container">
   <ul class="nav nav-tabs" role="tablist">
-  <li class="active"><%= link_to 'View list', jobs_path %></li>
+  <li class="active"><%= link_to 'View List', jobs_path %></li>
   <li><%= link_to 'New Job', new_job_path %></li>
 </ul>
 
@@ -16,7 +16,7 @@
     <th>Description</th>
     <th>Lot Quantity</th>
     <th>Test Quantity</th>
-    <th width>Action</th>
+    <th>Actions</th>
   </tr>
   <% @jobs.each do |job| %>
   <tr>
@@ -27,13 +27,14 @@
     <td><%= job.test_quantity %></td>
     <td width="15%"><div>
       <%= link_to 'Show', job, class: 'btn btn-primary btn-xs' %>
-      <%= link_to 'Edit', edit_job_path(job), class: 'btn btn-info btn-xs' %>
+      <%= link_to 'Test', edit_job_path(job), class: 'btn btn-info btn-xs' %>
       <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
     </div>
     </td>
   </tr>
   <% end %>
 </table>
+<%= link_to "Export test data with Excel", jobs_path(format: "xlsx") %>
 </div>
 </body>
 </html>

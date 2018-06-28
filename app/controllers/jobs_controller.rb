@@ -1,7 +1,13 @@
 class JobsController < ApplicationController
   def index
     @jobs = Job.all
+
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
   end
+
   def show
     @job = Job.find(params[:id])
   end
@@ -27,8 +33,16 @@ class JobsController < ApplicationController
   def update
     @job = Job.find(params[:id])
     if @job.update(job_params)
-      flash[:success] = 'Job was successfully updated.'
-      redirect_to @job
+      if params[:commit] == "Testing Complete"
+        flash[:success] = 'Test data successfully saved.'
+        redirect_to @job
+      elsif params[:commit] == "Save Progress"
+        flash[:success] = 'Progress successfully saved.'
+        redirect_back fallback_location: root_path
+      else
+        flash[:success] = "Job successfully updated."
+        redirect_to @job
+      end
     else
       flash[:danger] = 'There was a problem updating the Job.'
       render 'edit'

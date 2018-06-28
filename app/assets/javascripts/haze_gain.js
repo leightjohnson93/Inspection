@@ -29,6 +29,8 @@ $('.test_toggle').click( function(){
     $(this).find('span').toggleClass('glyphicon-minus').toggleClass('glyphicon-plus');
 });
 
+setTimeout(function() { $(".alert").fadeOut(); }, 5000)
+
 });
 
 function haze_gain_1()
@@ -96,4 +98,3 @@ haze_gain_6 = (haze_abraded_6 - haze_initial_6).toFixed(2);
 
 $('#job_haze_gain_6').val(haze_gain_6);
 }
-
