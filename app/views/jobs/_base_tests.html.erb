@@ -8,7 +8,7 @@
         <p>Observational</p>
       </div>
       <div class="col-xs-4 text-right">
-         <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#obs_tests"><span class="glyphicon glyphicon-minus"></span></button>
+         <button type="button" class="btn btn-primary test_toggle" data-toggle="collapse" data-target="#obs_tests"><span class="glyphicon glyphicon-plus"></span></button>
       </div>
     </div>
   </legend>
@@ -42,7 +42,7 @@
         <p>Transmittance</p>
       </div>
       <div class="col-xs-4 text-right">
-        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#trans_tests"><span class="glyphicon glyphicon-minus"></span></button>
+        <button type="button" class="btn btn-primary test_toggle" data-toggle="collapse" data-target="#trans_tests"><span class="glyphicon glyphicon-plus"></span></button>
       </div>
     </div>
   </legend>
@@ -83,7 +83,7 @@
           <p>MCEPS Abrasion</p>
         </div>
         <div class="col-xs-4 text-right">
-          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#mceps_abrasion"><span class="glyphicon glyphicon-minus"></span></button>
+          <button type="button" class="btn btn-primary test_toggle" data-toggle="collapse" data-target="#mceps_abrasion"><span class="glyphicon glyphicon-plus"></span></button>
         </div>
       </div>
   </legend>
@@ -115,7 +115,7 @@
           <p>Diffusion of Light & Falling Sand</p>
         </div>
         <div class="col-xs-4 text-right">
-          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#dol"><span class="glyphicon glyphicon-minus"></span></button>
+          <button type="button" class="btn btn-primary test_toggle" data-toggle="collapse" data-target="#dol"><span class="glyphicon glyphicon-plus"></span></button>
         </div>
       </div>
   </legend>
@@ -140,7 +140,7 @@
           <p>Optics</p>
         </div>
         <div class="col-xs-4 text-right">
-          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#optics"><span class="glyphicon glyphicon-minus"></span></button>
+          <button type="button" class="btn btn-primary test_toggle" data-toggle="collapse" data-target="#optics"><span class="glyphicon glyphicon-plus"></span></button>
         </div>
       </div>
   </legend>
@@ -211,7 +211,7 @@
           <p>Anti-Fog</p>
         </div>
         <div class="col-xs-4 text-right">
-          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#antifog"><span class="glyphicon glyphicon-minus"></span></button>
+          <button type="button" class="btn btn-primary test_toggle" data-toggle="collapse" data-target="#antifog"><span class="glyphicon glyphicon-plus"></span></button>
         </div>
       </div>
   </legend>
@@ -234,7 +234,7 @@
           <p>Coating Thickness</p>
         </div>
         <div class="col-xs-4 text-right">
-          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#thickness"><span class="glyphicon glyphicon-minus"></span></button>
+          <button type="button" class="btn btn-primary test_toggle" data-toggle="collapse" data-target="#thickness"><span class="glyphicon glyphicon-plus"></span></button>
         </div>
       </div>
   </legend>
@@ -260,7 +260,7 @@
           <p>Ballistics</p>
         </div>
         <div class="col-xs-4 text-right">
-          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#ballistics"><span class="glyphicon glyphicon-minus"></span></button>
+          <button type="button" class="btn btn-primary test_toggle" data-toggle="collapse" data-target="#ballistics"><span class="glyphicon glyphicon-plus"></span></button>
         </div>
       </div>
   </legend>
@@ -272,14 +272,23 @@
     <div class='col'><%= form.input :"ballistic_fractures_1", placeholder: "Fractures 1" %></div>
     <div class='col-2'><%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
   </div>
-  <div class='row' style="margin-top:3%">
+  <div class='row' style="margin-top:2.5%">
     <div class='col'><%= form.input :"ballistic_method_2", placeholder: "Method 2", label: false %></div>
     <div class='col'><%= form.input :"ballistic_samples_2", placeholder: "Samples 2", label: false %></div>
     <div class='col'><%= form.input :"ballistic_spalls_2", placeholder: "Spalls 2", label: false %></div>
     <div class='col'><%= form.input :"ballistic_fractures_2", placeholder: "Fractures 2", label: false %></div>
-    <div class='col-2'><%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
+    <div class='col-2'><%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: false, prompt: "" %></div>
   </div>
 </div>
 </div>
 <%= form.button :submit, "Save Tests", class: "btn btn-success" %>
+<div class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+
+      <%= form.button :submit, "Save Current Progress", class: "btn btn-primary navbar-btn" %>
+      <%= form.button :submit, "Submit Test Data", class: "btn btn-success navbar-btn" %>
+      <%= form.button :submit, "Reset All Fields", class: "btn btn-danger navbar-btn" %>
+      
+    </div>
+</div>
 <% end %>

@@ -1,8 +1,34 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 
 $('#job_haze_abraded_1').change(function() {
     haze_gain_1();
+
 });
+
+$('#job_haze_abraded_2').change(function() {
+    haze_gain_2();
+});
+
+$('#job_haze_abraded_3').change(function() {
+    haze_gain_3();
+});
+
+$('#job_haze_abraded_4').change(function() {
+    haze_gain_4();
+});
+
+$('#job_haze_abraded_5').change(function() {
+    haze_gain_5();
+});
+
+$('#job_haze_abraded_6').change(function() {
+    haze_gain_6();
+});
+
+$('.test_toggle').click( function(){
+    $(this).find('span').toggleClass('glyphicon-minus').toggleClass('glyphicon-plus');
+});
+
 });
 
 function haze_gain_1()
@@ -16,13 +42,6 @@ haze_gain_1 = (haze_abraded_1 - haze_initial_1).toFixed(2);
 $('#job_haze_gain_1').val(haze_gain_1);
 }
 
-$(document).ready(function(){
-
-$('#job_haze_abraded_2').change(function() {
-    haze_gain_2();
-});
-});
-
 function haze_gain_2()
 {
 var haze_gain_2 = 0;
@@ -33,13 +52,6 @@ haze_gain_2 = (haze_abraded_2 - haze_initial_2).toFixed(2);
 
 $('#job_haze_gain_2').val(haze_gain_2);
 }
-
-$(document).ready(function(){
-
-$('#job_haze_abraded_3').change(function() {
-    haze_gain_3();
-});
-});
 
 function haze_gain_3()
 {
@@ -52,13 +64,6 @@ haze_gain_3 = (haze_abraded_3 - haze_initial_3).toFixed(2);
 $('#job_haze_gain_3').val(haze_gain_3);
 }
 
-$(document).ready(function(){
-
-$('#job_haze_abraded_4').change(function() {
-    haze_gain_4();
-});
-});
-
 function haze_gain_4()
 {
 var haze_gain_4 = 0;
@@ -69,13 +74,6 @@ haze_gain_4 = (haze_abraded_4 - haze_initial_4).toFixed(2);
 
 $('#job_haze_gain_4').val(haze_gain_4);
 }
-
-$(document).ready(function(){
-
-$('#job_haze_abraded_5').change(function() {
-    haze_gain_5();
-});
-});
 
 function haze_gain_5()
 {
@@ -88,13 +86,6 @@ haze_gain_5 = (haze_abraded_5 - haze_initial_5).toFixed(2);
 $('#job_haze_gain_5').val(haze_gain_5);
 }
 
-$(document).ready(function(){
-
-$('#job_haze_abraded_6').change(function() {
-    haze_gain_6();
-});
-});
-
 function haze_gain_6()
 {
 var haze_gain_6 = 0;
@@ -105,3 +96,4 @@ haze_gain_6 = (haze_abraded_6 - haze_initial_6).toFixed(2);
 
 $('#job_haze_gain_6').val(haze_gain_6);
 }
+
