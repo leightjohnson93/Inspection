@@ -26,15 +26,15 @@
     <td><%= job.lot_quantity %></td>
     <td><%= job.test_quantity %></td>
     <td width="15%"><div>
-      <%= link_to 'Show', job, class: 'btn btn-primary btn-xs' %>
-      <%= link_to 'Test', edit_job_path(job), class: 'btn btn-info btn-xs' %>
-      <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+      <%= link_to 'Show', job, class: 'btn btn-dark btn-xs' %>
+      <%= link_to 'Test', edit_job_path(job), class: 'btn btn-dark btn-xs' %>
+      <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark btn-xs' %>
     </div>
     </td>
   </tr>
   <% end %>
 </table>
-<%= link_to "Export test data with Excel", jobs_path(format: "xlsx") %>
+<%= link_to "Export Data with Excel", jobs_path(format: "xlsx") %>
 </div>
 </body>
 </html>
