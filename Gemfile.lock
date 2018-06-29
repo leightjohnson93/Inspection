@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/randym/axlsx.git
+  revision: c8ac844572b25fda358cc01d2104720c4c42f450
+  ref: c8ac844
+  specs:
+    axlsx (2.1.0.pre)
+      htmlentities (~> 4.3.4)
+      mimemagic (~> 0.3)
+      nokogiri (>= 1.6.6)
+      rubyzip (>= 1.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -49,10 +60,6 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (8.6.4)
       execjs
-    axlsx (2.0.1)
-      htmlentities (~> 4.3.1)
-      nokogiri (>= 1.4.1)
-      rubyzip (~> 1.0.0)
     axlsx_rails (0.5.2)
       actionpack (>= 3.1)
       axlsx (>= 2.0.1)
@@ -155,7 +162,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    rubyzip (1.0.0)
+    rubyzip (1.2.1)
     sass (3.5.6)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -211,7 +218,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
-  axlsx (= 2.0.1)
+  axlsx!
   axlsx_rails
   bootsnap (>= 1.1.0)
   bootstrap-sass (~> 3.2.0)
@@ -224,7 +231,7 @@ DEPENDENCIES
   jquery-rails
   puma (~> 3.11)
   rails (~> 5.2.0)
-  rubyzip (= 1.0.0)
+  rubyzip (>= 1.2.1)
   sass-rails (~> 5.0)
   selenium-webdriver
   simple_form
