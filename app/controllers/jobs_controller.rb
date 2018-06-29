@@ -37,7 +37,7 @@ class JobsController < ApplicationController
         flash[:success] = 'Test data successfully saved.'
         redirect_to @job
       elsif params[:commit] == "Save Progress"
-        flash[:success] = 'Progress successfully saved.'
+        flash[:success] = 'Test data successfully saved.'
         redirect_back fallback_location: root_path
       else
         flash[:success] = "Job successfully updated."

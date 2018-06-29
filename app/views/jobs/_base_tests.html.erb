@@ -105,7 +105,7 @@
   </div>
   </div>
 </div>
-
+<% if !@job.part.description.include? "ANSI" %>
 <div class='form-group well'>
   <legend>
       <div class="row">
@@ -130,6 +130,7 @@
   </div>
   </div>
 </div>
+<% end %>
 
 <div class='form-group well'>
   <legend>
@@ -202,6 +203,7 @@
   </div>
 </div>
 
+<% if @job.part.coating == "AF" %>
 <div class='form-group well'>
   <legend>
       <div class="row">
@@ -224,6 +226,7 @@
   </div>
   </div>
 </div>
+<% end %>
 
 <div class='form-group well'>
   <legend>
