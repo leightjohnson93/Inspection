@@ -5,7 +5,6 @@
 .btn:hover {
   background-color:#cbdb2a
 }
-
 .btn:focus {
   background-color:#cbdb2a
 }
@@ -28,6 +27,7 @@
     <th>Actions</th>
   </tr>
   <% @jobs.each do |job| %>
+    <% if !job.lot_complete %>
   <tr>
     <td><%= job.wv %></td>
     <td><%= job.part_id %></td>
@@ -41,6 +41,7 @@
     </div>
     </td>
   </tr>
+  <% end %>
   <% end %>
 </table>
 <%= link_to "Export Data to Excel", jobs_path(format: "xlsx") %>

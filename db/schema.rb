@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_25_192048) do
+ActiveRecord::Schema.define(version: 2018_06_29_162010) do
 
   create_table "items", primary_key: "part", id: :string, force: :cascade do |t|
     t.string "description"
@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2018_06_25_192048) do
     t.float "neutrality_1"
     t.float "chromaticity_x_1"
     t.float "uv_1"
-    t.text "od_1", default: "--- []\n"
     t.float "haze_initial_1"
     t.float "haze_abraded_1"
     t.float "haze_gain_1"
@@ -76,7 +75,6 @@ ActiveRecord::Schema.define(version: 2018_06_25_192048) do
     t.float "neutrality_2"
     t.float "chromaticity_x_2"
     t.float "uv_2"
-    t.text "od_2", default: "--- []\n"
     t.float "haze_initial_2"
     t.float "haze_abraded_2"
     t.float "haze_gain_2"
@@ -91,7 +89,6 @@ ActiveRecord::Schema.define(version: 2018_06_25_192048) do
     t.float "neutrality_3"
     t.float "chromaticity_x_3"
     t.float "uv_3"
-    t.text "od_3", default: "--- []\n"
     t.float "haze_initial_3"
     t.float "haze_abraded_3"
     t.float "haze_gain_3"
@@ -106,7 +103,6 @@ ActiveRecord::Schema.define(version: 2018_06_25_192048) do
     t.float "neutrality_4"
     t.float "chromaticity_x_4"
     t.float "uv_4"
-    t.text "od_4", default: "--- []\n"
     t.float "haze_initial_4"
     t.float "haze_abraded_4"
     t.float "haze_gain_4"
@@ -121,7 +117,6 @@ ActiveRecord::Schema.define(version: 2018_06_25_192048) do
     t.float "neutrality_5"
     t.float "chromaticity_x_5"
     t.float "uv_5"
-    t.text "od_5", default: "--- []\n"
     t.float "haze_initial_5"
     t.float "haze_abraded_5"
     t.float "haze_gain_5"
@@ -136,7 +131,6 @@ ActiveRecord::Schema.define(version: 2018_06_25_192048) do
     t.float "neutrality_6"
     t.float "chromaticity_x_6"
     t.float "uv_6"
-    t.text "od_6", default: "--- []\n"
     t.float "haze_initial_6"
     t.float "haze_abraded_6"
     t.float "haze_gain_6"
@@ -238,17 +232,25 @@ ActiveRecord::Schema.define(version: 2018_06_25_192048) do
     t.float "astigmatism_right_6"
     t.float "horizontal_right_6"
     t.float "vertical_right_6"
-  end
-
-  create_table "parts", force: :cascade do |t|
-    t.string "part"
-    t.string "description"
-    t.string "shape"
-    t.string "color"
-    t.string "coating"
-    t.string "mfg"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "nm_1"
+    t.string "nm_2"
+    t.string "qc_int"
+    t.boolean "lot_assess"
+    t.boolean "lot_complete"
+    t.integer "mrr_id"
+    t.integer "receiver"
+    t.float "od_1_nm_1"
+    t.float "od_1_nm_2"
+    t.float "od_2_nm_1"
+    t.float "od_2_nm_2"
+    t.float "od_3_nm_1"
+    t.float "od_3_nm_2"
+    t.float "od_4_nm_1"
+    t.float "od_4_nm_2"
+    t.float "od_5_nm_1"
+    t.float "od_5_nm_2"
+    t.float "od_6_nm_1"
+    t.float "od_6_nm_2"
   end
 
 end

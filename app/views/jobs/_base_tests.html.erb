@@ -13,22 +13,27 @@
   <div class="collapse" id="obs_tests">
   <div class='row form-group'>
     <div class='col'><%= form.input :visual_inspection, label: "Visual Inspection" ,placeholder: "Inspect #{@quantity_t4} Samples & Record Observations" %></div>
-    <div class='col-2'><%= form.input :visual_inspection_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
+    <div class='col-2'><%= form.input :visual_inspection_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
   </div>
 
   <div class='row form-group'>
     <div class='col'><%= form.input :dimensions, label: "Dimensions" ,placeholder: "Measure #{@quantity_t1} Samples & Record Observations" %></div>
-    <div class='col-2'><%= form.input :dimensions_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
+    <div class='col-2'><%= form.input :dimensions_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
   </div>
 
   <div class='row form-group'>
     <div class='col'><%= form.input :fit, label: "Fit & Function" ,placeholder: "Test #{@quantity_t1} Samples & Record Observations" %></div>
-    <div class='col-2'><%= form.input :fit_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
+    <div class='col-2'><%= form.input :fit_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
+  </div>
+
+  <div class='row form-group'>
+    <div class='col'><%= form.input :markings, label: "Markings" ,placeholder: "Inspect #{@quantity_t1} Samples & Record Observations" %></div>
+    <div class='col-2'><%= form.input :markings_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
   </div>
 
   <div class='row form-group'>
     <div class='col'><%= form.input :adhesion, label: "Adhesion" ,placeholder: "Test #{@quantity_t1} Samples & Record Observations" %></div>
-    <div class='col-2'><%= form.input :adhesion_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
+    <div class='col-2'><%= form.input :adhesion_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
   </div>
   </div>
 </div>
@@ -45,6 +50,9 @@
     </div>
   </legend>
   <div class="collapse" id="trans_tests">
+  <div class='row form-group'>
+    <div class='col-3'><%= form.input :illuminate, as: :select, collection: ['Illuminant A','Illuminant C', 'Illuminant D65', 'P43 Light Source'] %></div>
+  </div>
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
       <div class='col'><%= (n == 1) ? (form.label :"vlt_#{n}", "Luminous Transmittance (%)") : (form.label :"vlt_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"vlt_#{n}", placeholder: "VLT S#{n}", label: false %></div>
@@ -73,6 +81,33 @@
   </div>
   </div>
 </div>
+
+<% if ['lsr', 'E2-5', 'FT-2', 'C5-6-10', 'T64', 'GF-8', 'Vital', 'V6-10'].any? { |laser| @job.part.description.include? laser } %>
+<div class='form-group well'>
+  <legend>
+    <div class="row">
+      <div class="col-xs-8 text-left">
+        <p>Optical Density</p>
+      </div>
+      <div class="col-xs-4 text-right">
+        <button type="button" class="btn btn-primary test_toggle" data-toggle="collapse" data-target="#od_tests"><span class="glyphicon glyphicon-plus"></span></button>
+      </div>
+    </div>
+  </legend>
+  <div class="collapse" id="od_tests">
+    <% (1..2).each do |i| %>
+  <div class='row form-group'>
+    <div class='col-3'><%= form.input :"nm_#{i}", as: :select, collection: ['532', '633', '694', '808', '810', '820-850'] %></div>
+  </div>
+  <div class='row form-group'>
+    <% (1..@quantity_t1).each do |n| %>
+      <div class='col'><%= (n == 1) ? (form.label :"od_#{n}_nm_#{i}") : (form.label :"od_#{n}_nm_#{i}", label: '&nbsp;'.html_safe) %><%= form.input :"od_#{n}_nm_#{i}", placeholder: "OD @ wavelength #{i} S#{n}", label: false %></div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+</div>
+<% end %>
 
 <div class='form-group well'>
     <legend>
@@ -254,7 +289,7 @@
   </div>
 </div>
 
-<div class='form-group well' style="margin-bottom:7%">
+<div class='form-group well'>
   <legend>
       <div class="row">
         <div class="col-xs-8 text-left">
@@ -271,17 +306,43 @@
     <div class='col'><%= form.input :"ballistic_samples_1", placeholder: "Samples 1" %></div>
     <div class='col'><%= form.input :"ballistic_spalls_1", placeholder: "Spalls 1"%></div>
     <div class='col'><%= form.input :"ballistic_fractures_1", placeholder: "Fractures 1" %></div>
-    <div class='col-2'><%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment", prompt: "" %></div>
+    <div class='col-2'><%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
   </div>
   <div class='row' style="margin-top:2.5%">
     <div class='col'><%= form.input :"ballistic_method_2", placeholder: "Method 2", label: false %></div>
     <div class='col'><%= form.input :"ballistic_samples_2", placeholder: "Samples 2", label: false %></div>
     <div class='col'><%= form.input :"ballistic_spalls_2", placeholder: "Spalls 2", label: false %></div>
     <div class='col'><%= form.input :"ballistic_fractures_2", placeholder: "Fractures 2", label: false %></div>
-    <div class='col-2'><%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: false, prompt: "" %></div>
+    <div class='col-2'><%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: false%></div>
+  </div>
+  <div class='row'>
+    <div class='col-2'><%= form.input :"ballistic_v50", placeholder: "V50" %></div>
   </div>
 </div>
 </div>
+
+<div class='form-group well' style="margin-bottom:7%">
+  <legend>
+      <div class="row">
+        <div class="col-xs-8 text-left">
+          <p>Release</p>
+        </div>
+        <div class="col-xs-4 text-right">
+          <button type="button" class="btn btn-primary test_toggle" data-toggle="collapse" data-target="#release"><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+      </div>
+  </legend>
+  <div class="collapse" id="release">
+  <div class='row'>
+    <div class='col'><%= form.input :lot_complete, as: :select, collection: [['Complete', true],['In Progress', false]]%></div>
+    <div class='col'><%= form.input :lot_assess, as: :select, collection: [['Pass', true],['Fail', false]]%></div>
+    <div class='col'><%= form.input :"receiver" %></div>
+    <div class='col'><%= form.input :"mrr_id", placeholder: "Only if non-conforming" %></div>
+    <div class='col'><%= form.input :qc_int %></div>
+  </div>
+</div>
+</div>
+
 
 <div class="navbar navbar-default navbar-fixed-bottom" style="background-color:#333">
     <div class="btn-group">
