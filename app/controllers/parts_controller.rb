@@ -7,6 +7,12 @@ class PartsController < ApplicationController
   def create
   end
 
+  def destroy
+    @part = Part.find(params[:id])
+    @part.destroy
+    redirect_to parts_path
+  end
+
   private
     def sortable_columns
       ['part', 'description', 'shape', 'color', 'coating', 'mfg']

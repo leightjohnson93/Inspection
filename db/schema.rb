@@ -253,4 +253,15 @@ ActiveRecord::Schema.define(version: 2018_06_29_162010) do
     t.float "od_6_nm_2"
   end
 
+  create_table "parts", force: :cascade do |t|
+    t.string "part"
+    t.string "description"
+    t.string "shape"
+    t.string "color"
+    t.string "coating"
+    t.string "mfg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end

@@ -36,9 +36,8 @@
     <td><%= part.color %></td>
     <td><%= part.coating %></td>
     <td><%= part.mfg %></td>
-    <td width="15%"><div>
-      <%= link_to 'Show', part, class: 'btn btn-dark btn-xs' %>
-      <%= link_to 'Test', edit_part_path(part), class: 'btn btn-dark btn-xs' %>
+    <td width="10%"><div>
+      <%= link_to 'Edit', edit_part_path(part), class: 'btn btn-dark btn-xs' %>
       <%= link_to 'Delete', part, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark btn-xs' %>
     </div>
     </td>
