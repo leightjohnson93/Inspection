@@ -7,6 +7,8 @@
     <ul class="nav nav-tabs" role="tablist">
       <li><%= link_to 'View List', jobs_path %></li>
       <li class="active"><%= link_to 'New Job', new_job_path %></li>
+      <li><%= link_to 'Parts View', parts_path %></li>
+      <li><%= link_to 'New Part', new_part_path %></li>
   </ul>
 
   <%= form_with scope: :job, url: jobs_path, local: true do |form| %>

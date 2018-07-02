@@ -16,6 +16,7 @@
   <li class="active"><%= link_to 'Jobs View', jobs_path %></li>
   <li><%= link_to 'New Job', new_job_path %></li>
   <li><%= link_to 'Parts View', parts_path %></li>
+  <li><%= link_to 'New Part', new_part_path %></li>
 </ul>
 
 <table class="table table-sm table-striped">
@@ -25,6 +26,7 @@
     <th>Description</th>
     <th>Lot Quantity</th>
     <th>Test Quantity</th>
+    <th>Created</th>
     <th>Actions</th>
   </tr>
   <% @jobs.each do |job| %>
@@ -35,6 +37,7 @@
     <td><%= job.part.description %></td>
     <td><%= job.lot_quantity %></td>
     <td><%= job.test_quantity %></td>
+    <td><%= job.created_at.strftime("%B %d, %Y") %></td>
     <td width="15%"><div>
       <%= link_to 'Show', job, class: 'btn btn-dark btn-xs' %>
       <%= link_to 'Test', edit_job_path(job), class: 'btn btn-dark btn-xs' %>

@@ -5,13 +5,16 @@
 <body>
   <div class="container">
     <ul class="nav nav-tabs" role="tablist">
-      <li><%= link_to 'View List', jobs_path %></li>
+      <li><%= link_to 'Jobs View', jobs_path %></li>
       <li><%= link_to 'New Job', new_job_path %></li>
+      <li><%= link_to 'Parts View', parts_path %></li>
+      <li><%= link_to 'New Part', new_part_path %></li>
+      <li class="active"><%= link_to 'Show Job', job_path(@job) %></li>
       <li><%= link_to 'Test Job', edit_job_path(@job) %></li>
-      <li class="active"><%= link_to @job.wv, job_path(@job) %></li>
     </ul>
 <div class='row'>
   <div class='col-3'>
+    <h3> Manufacturing</h3>
   <p>
   <strong>WV:</strong>
   <%= @job.wv %>
@@ -29,11 +32,12 @@
   <%= @job.test_quantity %>
 </p>
 <p>
-  <strong>Initial:</strong>
+  <strong>MFG Initial:</strong>
   <%= @job.mfg_int %>
 </p>
 </div>
-<div class='col'>
+<div class='col-4'>
+  <h3>Part</h3>
   <p>
     <strong>Description:</strong>
     <%= @job.part.description %>
@@ -53,6 +57,35 @@
   <p>
     <strong>Manufacturer:</strong>
     <%= @job.part.mfg %>
+  </p>
+</div>
+<div class=col>
+  <h3>Testing</h3>
+  <p>
+    <strong>Status:</strong>
+    <% if @job.lot_complete %>
+      Complete
+    <% else %>
+      In Progress
+    <% end %>
+  </p>
+  <% if @job.lot_assess %>
+  <p>
+    <strong>Assessment:</strong>
+    Pass
+  </p>
+  <% end %>
+  <p>
+    <strong>MRR:</strong>
+    <%= @job.mrr_id %>
+  </p>
+  <p>
+    <strong>Receiver:</strong>
+    <%= @job.receiver %>
+  </p>
+  <p>
+    <strong>QC Initial:</strong>
+    <%= @job.qc_int %>
   </p>
 </div>
 </div>
