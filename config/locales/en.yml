@@ -27,3 +27,5 @@ en:
         lot_assess: "Lot Assessment"
         mrr_id: "MRR"
         qc_int: "Initial"
+      part:
+        mfg: "Manufacturer"

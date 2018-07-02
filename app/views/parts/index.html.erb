@@ -16,6 +16,7 @@
     <li><%= link_to 'Jobs View', jobs_path %></li>
     <li><%= link_to 'New Job', new_job_path %></li>
     <li class="active"><%= link_to 'Parts View', parts_path %></li>
+    <li><%= link_to 'New Part', new_part_path %></li>
 </ul>
 
 <table class="table table-sm table-striped">
@@ -25,7 +26,7 @@
     <th><%= sort_link "shape" %></th>
     <th><%= sort_link "color" %></th>
     <th><%= sort_link "coating" %></th>
-    <th><%= sort_link "mfg" %></th>
+    <th><%= sort_link "mfg", "Manufacturer" %></th>
     <th>Actions</th>
   </tr>
   <% @parts.each do |part| %>
