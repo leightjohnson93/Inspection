@@ -4,7 +4,35 @@ class PartsController < ApplicationController
   def index
     @parts = Part.order("#{sort_column} #{sort_direction}")
   end
+
+  def new
+    @part = Part.new
+  end
+
   def create
+    @part = Part.new(part_params)
+    if @part.save
+      flash[:success] = 'Part was successfully created.'
+      redirect_to parts_path
+    else
+      flash[:danger] = 'There was a problem creating the part.'
+      render 'new'
+    end
+  end
+
+  def edit
+    @part = Part.find(params[:id])
+  end
+
+  def update
+    @part = Part.find(params[:id])
+    if @part.update(part_params)
+      flash[:success] = 'Part successfully updated.'
+      redirect_to parts_path
+    else
+      flash[:danger] = 'There was a problem updating the part.'
+      render 'edit'
+    end
   end
 
   def destroy

@@ -11,6 +11,7 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
   end
+  
   def new
     @job = Job.new
   end
@@ -30,6 +31,7 @@ class JobsController < ApplicationController
       render 'new'
     end
   end
+
   def update
     @job = Job.find(params[:id])
     if @job.update(job_params)
