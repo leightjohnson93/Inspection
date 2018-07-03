@@ -2,8 +2,7 @@ class JobsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @jobs = Job.all
-
+    @jobs = smart_listing_create(:jobs, Job.all.joins(:part), partial: "jobs/list", default_sort: {wv: "desc"})
     respond_to do |format|
       format.html
       format.xlsx
