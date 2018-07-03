@@ -281,11 +281,13 @@
     <% end %>
   </div>
 
+  <% if @job.part.coating == 'AF' %>
   <div class='row form-group'>
     <% (1..@quantity_t2).each do |n| %>
       <div class='col'><%= (n == 1) ? (form.label :"antifog_thickness_#{n}", "Anti-Fog Coat (μm)") : (form.label :"antifog_thickness_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"antifog_thickness_#{n}", placeholder: "AF S#{n}", label: false %></div>
     <% end %>
   </div>
+  <% end %>
   </div>
 </div>
 
@@ -337,7 +339,7 @@
     <div class='col'><%= form.input :lot_complete, as: :select, collection: [['Complete', true],['In Progress', false]]%></div>
     <div class='col'><%= form.input :lot_assess, as: :select, collection: [['Pass', true],['Fail', false]]%></div>
     <div class='col'><%= form.input :"receiver" %></div>
-    <div class='col'><%= form.input :"mrr_id", placeholder: "only if non-conforming" %></div>
+    <div class='col'><%= form.input :"mrr_id", placeholder: "If non-conforming" %></div>
     <div class='col'><%= form.input :qc_int %></div>
   </div>
 </div>
