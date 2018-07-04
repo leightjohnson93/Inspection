@@ -1,11 +1,12 @@
 <table class="table table-sm table-striped">
   <tr>
-    <th><%= smart_listing.sortable "WV/PV", "wv" %></th>
-    <th><%= smart_listing.sortable "Part", "part_id" %></th>
-    <th>Description</th>
-    <th>Lot Quantity</th>
-    <th>Test Quantity</th>
-    <th>Created</th>
+    <th><%= smart_listing.sortable "WV/PV", :wv %></th>
+    <th><%= smart_listing.sortable "Part", :part_id %></th>
+    <th><%= smart_listing.sortable "Description", :description %></th>
+    <th><%= smart_listing.sortable "Lot Quantity", :lot_quantity %></th>
+    <th><%= smart_listing.sortable "Test Quantity", :test_quantity %></th>
+    <th><%= smart_listing.sortable "Create Date", :created_at %></th>
+    <th><%= smart_listing.sortable "Status", :lot_complete %></th>
     <th>Actions</th>
   </tr>
   <% smart_listing.collection.each do |job| %>
@@ -16,6 +17,7 @@
     <td><%= job.lot_quantity %></td>
     <td><%= job.test_quantity %></td>
     <td><%= job.created_at.strftime("%B %d, %Y") %></td>
+    <td><%= job.lot_complete ? "Complete" : "In Progress" %>
     <td width="15%"><div>
       <%= link_to 'Show', job, class: 'btn btn-dark btn-xs' %>
       <%= link_to 'Test', edit_job_path(job), class: 'btn btn-dark btn-xs' %>

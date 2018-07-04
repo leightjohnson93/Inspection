@@ -18,36 +18,8 @@
   <li><%= link_to 'Parts View', parts_path %></li>
   <li><%= link_to 'New Part', new_part_path %></li>
 </ul>
-<!-- <%= smart_listing_render(:jobs) %> -->
-<table class="table table-sm table-striped">
-  <tr>
-    <th>WV/PV</th>
-    <th>Part</th>
-    <th>Description</th>
-    <th>Lot Quantity</th>
-    <th>Test Quantity</th>
-    <th>Created</th>
-    <th>Actions</th>
-  </tr>
-  <% @jobs.each do |job| %>
-    <% if !job.lot_complete %>
-  <tr>
-    <td><%= job.wv %></td>
-    <td><%= job.part_id %></td>
-    <td><%= job.part.description %></td>
-    <td><%= job.lot_quantity %></td>
-    <td><%= job.test_quantity %></td>
-    <td><%= job.created_at.strftime("%B %d, %Y") %></td>
-    <td width="15%"><div>
-      <%= link_to 'Show', job, class: 'btn btn-dark btn-xs' %>
-      <%= link_to 'Test', edit_job_path(job), class: 'btn btn-dark btn-xs' %>
-      <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark btn-xs' %>
-    </div>
-    </td>
-  </tr>
-  <% end %>
-  <% end %>
-</table>
+<%= smart_listing_render(:jobs) %>
+
 <%= link_to "Export Data to Excel", jobs_path(format: "xlsx") %>
 </div>
 </body>

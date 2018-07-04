@@ -1,5 +1,4 @@
 class JobsController < ApplicationController
-  helper_method :sort_column, :sort_direction
 
   def index
     @jobs = smart_listing_create(:jobs, Job.all.joins(:part), partial: "jobs/list", default_sort: {wv: "desc"})
@@ -72,18 +71,6 @@ class JobsController < ApplicationController
   end
 
   private
-    def sortable_columns
-      ["wv", "part_id", "description", "lot_quantity", 'test_quantity', 'created_at']
-    end
-
-    def sort_column
-      sortable_columns.include?(params[:column]) ? params[:column] : "wv"
-    end
-
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
-    end
-
     def job_params
       params.require(:job).permit!
     end
