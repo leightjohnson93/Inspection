@@ -1,0 +1,22 @@
+  <table class="table table-sm table-striped">
+  <tr>
+    <th><%= smart_listing.sortable "Part", :part %></th>
+    <th><%= smart_listing.sortable "Description", :description %></th>
+    <th><%= smart_listing.sortable "Shape", :shape %></th>
+    <th><%= smart_listing.sortable "Color", :color %></th>
+    <th><%= smart_listing.sortable "Coating", :coating %></th>
+    <th><%= smart_listing.sortable "Manufacturer", :mfg %></th>
+    <th>Actions</th>
+  </tr>
+  <% smart_listing.collection.each do |part| %>
+    <tr>
+      <td><%= part.part %></td>
+      <td><%= part.description %></td>
+      <td><%= part.shape %></td>
+      <td><%= part.color %></td>
+      <td><%= part.coating %></td>
+      <td><%= part.mfg %></td>
+    </tr>
+  <% end %>
+  </table>
+  <%= smart_listing.paginate %>

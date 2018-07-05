@@ -1,0 +1,10 @@
+
+<td><%= part.part %></td>
+<td><%= part.description %></td>
+<td><%= part.shape %></td>
+<td><%= part.color %></td>
+<td><%= part.coating %></td>
+<td><%= part.mfg %></td>
+<td class='actions'><%= smart_listing_item_actions [
+  {name: :edit,    url: edit_part_path(part)},
+  {name: :destroy, url: part_path(part), confirmation: "Are you sure you want to delete this?"}] %></td>
