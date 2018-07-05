@@ -1,8 +1,6 @@
 class PartsController < ApplicationController
-  helper_method :sort_column, :sort_direction
-
   def index
-    @parts = Part.order("#{sort_column} #{sort_direction}")
+    @parts = smart_listing_create(:parts, Part.all, partial: "parts/list", default_sort: {part: "desc"})
   end
 
   def new
@@ -42,18 +40,6 @@ class PartsController < ApplicationController
   end
 
   private
-    def sortable_columns
-      ['part', 'description', 'shape', 'color', 'coating', 'mfg']
-    end
-
-    def sort_column
-      sortable_columns.include?(params[:column]) ? params[:column] : 'part'
-    end
-
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    end
-
     def part_params
       params.require(:part).permit(:part, :description, :color, :coating, :shape, :mfg)
     end
