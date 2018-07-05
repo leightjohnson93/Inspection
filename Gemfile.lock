@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/leightjohnson93/smart_listing
+  remote: https://github.com/leightjohnson93/smart_listing
   revision: 12962ea6192566c496d3befc14a5489595db5b1e
   specs:
     smart_listing (1.2.2)
