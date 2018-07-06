@@ -63,7 +63,7 @@
     <% (1..@quantity_t1).each do |n| %>
       <div class='col'>
         <%= (n == 1) ? (form.label :"chromaticity_x_#{n}", "Chromaticity") : (form.label :"chromaticity_x_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"chromaticity_x_#{n}", placeholder: "X Coordinate S#{n}", label: false %>
-        <%= form.label :"chromaticity_y_#{n}", label: '&nbsp;'.html_safe %><%= form.input :"chromaticity_y_#{n}", placeholder: "Y Coordinate S#{n}", label: false %>
+        <%= form.input :"chromaticity_y_#{n}", placeholder: "Y Coordinate S#{n}", label: false %>
       </div>
       <% end %>
   </div>
@@ -82,7 +82,7 @@
   </div>
 </div>
 
-<% if ['lsr', 'E2-5', 'FT-2', 'C5-6-10', 'T64', 'GF-8', 'Vital', 'V6-10'].any? { |laser| @job.part.description.include? laser } %>
+<% if ['lsr', 'E2-5', 'FT-2', 'C5-6-10', 'T64', 'GF-8', 'Vital', 'V6-10', 'SD-17'].any? { |laser| @job.part.description.include? laser } %>
 <div class='form-group well'>
   <legend>
     <div class="row">
@@ -140,33 +140,87 @@
   </div>
   </div>
 </div>
+
 <% if !@job.part.description.include? "ANSI" %>
 <div class='form-group well'>
   <legend>
       <div class="row">
         <div class="col-xs-8 text-left">
-          <p>Diffusion of Light & Falling Sand</p>
+          <p>Diffusion of Light</p>
         </div>
         <div class="col-xs-4 text-right">
-          <button type="button" class="btn btn-primary test_toggle" data-toggle="collapse" data-target="#dol"><span class="glyphicon glyphicon-plus"></span></button>
+          <button type="button" class="btn btn-primary test_toggle" data-toggle="collapse" data-target="#dol_initial"><span class="glyphicon glyphicon-plus"></span></button>
         </div>
       </div>
   </legend>
-  <div class="collapse" id="dol">
+  <div class="collapse" id="dol_initial">
+    <div class='row form-group'>
+      <div class='col-2'>
+        <%= form.label :"annular_machine_initial", "Baseline Readings" %>
+        <%= form.input :"annular_machine_initial", placeholder: "Annular Open", label: false%>
+        <%= form.input :"circular_machine_initial", placeholder: "Circular Open", label: false%>
+      </div>
+    </div>
+  <div class='row form-group'>
+    <% (1..5).each do |n| %>
+    <div class='col'>
+      <%= form.input :"reading_initial_#{n}", placeholder: "Reading S#{n}"%>
+    </div>
+    <% end %>
+  </div>
+  <div class='row form-group'>
+    <% (1..@quantity_t3).each do |n| %>
+      <div class='col'>
+        <%= (n == 1) ? (form.label :"annular_initial_#{n}", "Annular") : (form.label :"annular_initial_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"annular_initial_#{n}", placeholder: "Annular S#{n}", label: false %>
+        <%= (n== 1) ? (form.label :"circular_initial_#{n}", 'Circular') : (form.label :"circular_initial_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"circular_initial_#{n}", placeholder: "Circular S#{n}", label: false %>
+      </div>
+    <% end %>
+  </div>
   <div class='row form-group'>
     <% (1..@quantity_t3).each do |n| %>
       <div class='col'><%= (n == 1) ? (form.label :"dol_#{n}", "Diffusion") : (form.label :"dol_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"dol_#{n}", placeholder: "Initial S#{n}", label: false %></div>
     <% end %>
   </div>
-  <div class='row form-group'>
-    <% (1..@quantity_t2).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"en_abrasion_#{n}", "Falling Sand") : (form.label :"en_abrasion_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"en_abrasion_#{n}", placeholder: "Abraded S#{n}", label: false %></div>
-    <% end %>
-  </div>
   </div>
 </div>
-<% end %>
 
+<div class='form-group well'>
+  <legend>
+      <div class="row">
+        <div class="col-xs-8 text-left">
+          <p>Falling Sand</p>
+        </div>
+        <div class="col-xs-4 text-right">
+          <button type="button" class="btn btn-primary test_toggle" data-toggle="collapse" data-target="#dol_final"><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+      </div>
+  </legend>
+  <div class="collapse" id="dol_final">
+    <div class='row form-group'>
+      <div class='col-2'>
+        <%= form.label :"annular_machine_final", "Baseline Readings" %>
+        <%= form.input :"annular_machine_final", placeholder: "Annular Open", label: false%>
+        <%= form.input :"circular_machine_final", placeholder: "Circular Open", label: false%>
+      </div>
+    </div>
+  <div class='row form-group'>
+    <% (1..5).each do |n| %>
+    <div class='col'>
+      <%= form.input :"reading_final_#{n}", placeholder: "Reading S#{n}"%>
+    </div>
+    <% end %>
+  </div>
+  <div class='row form-group'>
+    <% (1..@quantity_t3).each do |n| %>
+      <div class='col'>
+        <%= (n == 1) ? (form.label :"annular_sample_#{n}", "Annular") : (form.label :"annular_sample_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"annular_sample_#{n}", placeholder: "Annular S#{n}", label: false %>
+        <%= (n== 1) ? (form.label :"circular_sample_#{n}", 'Circular') : (form.label :"circular_sample_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"circular_sample_#{n}", placeholder: "Circular S#{n}", label: false %>
+      </div>
+    <% end %>
+  </div>
+    <% end %>
+  </div>
+</div>
 <div class='form-group well'>
   <legend>
       <div class="row">
@@ -183,7 +237,7 @@
     <% (1..@quantity_t1).each do |n| %>
       <div class='col'>
         <%= (n == 1) ? (form.label :"resolving_left_#{n}", "Resolving Power (cy/mm)") : (form.label :"resolving_left_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"resolving_left_#{n}", placeholder: "Left S#{n}", label: false %>
-        <%= form.label :"resolving_right_#{n}", label: '&nbsp;'.html_safe %><%= form.input :"resolving_right_#{n}", placeholder: "Right S#{n}", label: false %>
+        <%= form.input :"resolving_right_#{n}", placeholder: "Right S#{n}", label: false %>
       </div>
       <% end %>
   </div>
@@ -192,7 +246,7 @@
     <% (1..@quantity_t1).each do |n| %>
       <div class='col'>
         <%= (n == 1) ? (form.label :"refractive_left_#{n}", "Refractive Power (D)") : (form.label :"refractive_left_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"refractive_left_#{n}", placeholder: "Left S#{n}", label: false %>
-        <%= form.label :"refractive_right_#{n}", label: '&nbsp;'.html_safe %><%= form.input :"refractive_right_#{n}", placeholder: "Right S#{n}", label: false %>
+        <%= form.input :"refractive_right_#{n}", placeholder: "Right S#{n}", label: false %>
       </div>
       <% end %>
   </div>
@@ -201,7 +255,7 @@
     <% (1..@quantity_t1).each do |n| %>
       <div class='col'>
         <%= (n == 1) ? (form.label :"astigmatism_left_#{n}", "Astigmatism (D)") : (form.label :"astigmatism_left_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"astigmatism_left_#{n}", placeholder: "Left S#{n}", label: false %>
-        <%= form.label :"astigmatism_right_#{n}", label: '&nbsp;'.html_safe %><%= form.input :"astigmatism_right_#{n}", placeholder: "Right S#{n}", label: false %>
+        <%= form.input :"astigmatism_right_#{n}", placeholder: "Right S#{n}", label: false %>
       </div>
       <% end %>
   </div>
@@ -210,7 +264,7 @@
     <% (1..@quantity_t1).each do |n| %>
       <div class='col'>
         <%= (n == 1) ? (form.label :"horizontal_left_#{n}", "Horizontal Prism (Δ)") : (form.label :"horizontal_left_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"horizontal_left_#{n}", placeholder: "Left S#{n}", label: false %>
-        <%= form.label :"horizontal_right_#{n}", label: '&nbsp;'.html_safe %><%= form.input :"horizontal_right_#{n}", placeholder: "Right S#{n}", label: false %>
+        <%= form.input :"horizontal_right_#{n}", placeholder: "Right S#{n}", label: false %>
       </div>
       <% end %>
   </div>
@@ -219,7 +273,7 @@
     <% (1..@quantity_t1).each do |n| %>
       <div class='col'>
         <%= (n == 1) ? (form.label :"vertical_left_#{n}", "Vertical Prism (Δ)") : (form.label :"vertical_left_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"vertical_left_#{n}", placeholder: "Left S#{n}", label: false %>
-        <%= form.label :"vertical_right_#{n}", label: '&nbsp;'.html_safe %><%= form.input :"vertical_right_#{n}", placeholder: "Right S#{n}", label: false %>
+        <%= form.input :"vertical_right_#{n}", placeholder: "Right S#{n}", label: false %>
       </div>
       <% end %>
   </div>
@@ -304,18 +358,26 @@
   </legend>
   <div class="collapse" id="ballistics">
   <div class='row'>
-    <div class='col'><%= form.input :"ballistic_method_1", placeholder: "Method 1" %></div>
-    <div class='col'><%= form.input :"ballistic_samples_1", placeholder: "Samples 1" %></div>
-    <div class='col'><%= form.input :"ballistic_spalls_1", placeholder: "Spalls 1"%></div>
-    <div class='col'><%= form.input :"ballistic_fractures_1", placeholder: "Fractures 1" %></div>
-    <div class='col-2'><%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
-  </div>
-  <div class='row' style="margin-top:2.5%">
-    <div class='col'><%= form.input :"ballistic_method_2", placeholder: "Method 2", label: false %></div>
-    <div class='col'><%= form.input :"ballistic_samples_2", placeholder: "Samples 2", label: false %></div>
-    <div class='col'><%= form.input :"ballistic_spalls_2", placeholder: "Spalls 2", label: false %></div>
-    <div class='col'><%= form.input :"ballistic_fractures_2", placeholder: "Fractures 2", label: false %></div>
-    <div class='col-2'><%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: false%></div>
+    <div class='col'>
+      <%= form.input :"ballistic_method_1", placeholder: "Method 1" %>
+      <%= form.input :"ballistic_method_2", placeholder: "Method 2", label: false %>
+    </div>
+    <div class='col'>
+      <%= form.input :"ballistic_samples_1", placeholder: "Samples 1" %>
+      <%= form.input :"ballistic_samples_2", placeholder: "Samples 2", label: false %>
+    </div>
+    <div class='col'>
+      <%= form.input :"ballistic_spalls_1", placeholder: "Spalls 1"%>
+      <%= form.input :"ballistic_spalls_2", placeholder: "Spalls 2", label: false %>
+    </div>
+    <div class='col'>
+      <%= form.input :"ballistic_fractures_1", placeholder: "Fractures 1" %>
+      <%= form.input :"ballistic_fractures_2", placeholder: "Fractures 2", label: false %>
+    </div>
+    <div class='col-2'>
+      <%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%>
+      <%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: false%>
+    </div>
   </div>
   <div class='row'>
     <div class='col-2'><%= form.input :"ballistic_v50", placeholder: "V50" %></div>

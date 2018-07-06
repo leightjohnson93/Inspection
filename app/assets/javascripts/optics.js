@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 
 $('#job_horizontal_right_1').change(function() {
     horizontal_imbalance_1();
@@ -16,7 +16,7 @@ horizontal_imbalance_1 = (horizontal_left_1 - horizontal_right_1).toFixed(3);
 $('#job_horizontal_imbalance_1').val(horizontal_imbalance_1);
 }
 
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 
 $('#job_horizontal_right_2').change(function() {
     horizontal_imbalance_2();
@@ -34,7 +34,7 @@ horizontal_imbalance_2 = (horizontal_left_2 - horizontal_right_2).toFixed(3);
 $('#job_horizontal_imbalance_2').val(horizontal_imbalance_2);
 }
 
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 
 $('#job_horizontal_right_3').change(function() {
     horizontal_imbalance_3();
@@ -52,7 +52,7 @@ horizontal_imbalance_3 = (horizontal_left_3 - horizontal_right_3).toFixed(3);
 $('#job_horizontal_imbalance_3').val(horizontal_imbalance_3);
 }
 
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 
 $('#job_horizontal_right_4').change(function() {
     horizontal_imbalance_4();
@@ -70,7 +70,7 @@ horizontal_imbalance_4 = (horizontal_left_4 - horizontal_right_4).toFixed(3);
 $('#job_horizontal_imbalance_4').val(horizontal_imbalance_4);
 }
 
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 
 $('#job_horizontal_right_5').change(function() {
     horizontal_imbalance_5();
@@ -88,7 +88,7 @@ horizontal_imbalance_5 = (horizontal_left_5 - horizontal_right_5).toFixed(3);
 $('#job_horizontal_imbalance_5').val(horizontal_imbalance_5);
 }
 
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 
 $('#job_horizontal_right_6').change(function() {
     horizontal_imbalance_6();
@@ -106,7 +106,7 @@ horizontal_imbalance_6 = (horizontal_left_6 - horizontal_right_6).toFixed(3);
 $('#job_horizontal_imbalance_6').val(horizontal_imbalance_6);
 }
 
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 
 $('#job_vertical_right_1').change(function() {
     vertical_imbalance_1();
@@ -124,7 +124,7 @@ vertical_imbalance_1 = Math.abs((vertical_left_1 - vertical_right_1).toFixed(3))
 $('#job_vertical_imbalance_1').val(vertical_imbalance_1);
 }
 
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 
 $('#job_vertical_right_2').change(function() {
     vertical_imbalance_2();
@@ -142,7 +142,7 @@ vertical_imbalance_2 = Math.abs((vertical_left_2 - vertical_right_2).toFixed(3))
 $('#job_vertical_imbalance_2').val(vertical_imbalance_2);
 }
 
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 
 $('#job_vertical_right_3').change(function() {
     vertical_imbalance_3();
@@ -160,7 +160,7 @@ vertical_imbalance_3 = Math.abs((vertical_left_3 - vertical_right_3).toFixed(3))
 $('#job_vertical_imbalance_3').val(vertical_imbalance_3);
 }
 
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 
 $('#job_vertical_right_4').change(function() {
     vertical_imbalance_4();
@@ -178,7 +178,7 @@ vertical_imbalance_4 = Math.abs((vertical_left_4 - vertical_right_4).toFixed(3))
 $('#job_vertical_imbalance_4').val(vertical_imbalance_4);
 }
 
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 
 $('#job_vertical_right_5').change(function() {
     vertical_imbalance_5();
@@ -196,7 +196,7 @@ vertical_imbalance_5 = Math.abs((vertical_left_5 - vertical_right_5).toFixed(3))
 $('#job_vertical_imbalance_5').val(vertical_imbalance_5);
 }
 
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 
 $('#job_vertical_right_6').change(function() {
     vertical_imbalance_6();
