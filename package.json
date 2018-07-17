@@ -1,5 +1,7 @@
 {
   "name": "Inspection",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "npm": "^6.2.0"
+  }
 }
