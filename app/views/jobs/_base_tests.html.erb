@@ -161,6 +161,7 @@
         <%= form.input :"circular_machine_initial", placeholder: "Circular Open", label: false%>
       </div>
     </div>
+  <!--
   <div class='row form-group'>
     <% (1..5).each do |n| %>
     <div class='col'>
@@ -168,6 +169,7 @@
     </div>
     <% end %>
   </div>
+  -->
   <div class='row form-group'>
     <% (1..@quantity_t3).each do |n| %>
       <div class='col'>
@@ -188,7 +190,7 @@
   <legend>
       <div class="row">
         <div class="col-xs-8 text-left">
-          <p>Falling Sand</p>
+          <p>EN Abrasion</p>
         </div>
         <div class="col-xs-4 text-right">
           <button type="button" class="btn btn-primary test_toggle" data-toggle="collapse" data-target="#dol_final"><span class="glyphicon glyphicon-plus"></span></button>
@@ -203,6 +205,7 @@
         <%= form.input :"circular_machine_final", placeholder: "Circular Open", label: false%>
       </div>
     </div>
+  <!--
   <div class='row form-group'>
     <% (1..5).each do |n| %>
     <div class='col'>
@@ -210,12 +213,31 @@
     </div>
     <% end %>
   </div>
+  -->
   <div class='row form-group'>
-    <% (1..@quantity_t3).each do |n| %>
+    <% (1..@quantity_t2).each do |n| %>
       <div class='col'>
-        <%= (n == 1) ? (form.label :"annular_sample_#{n}", "Annular") : (form.label :"annular_sample_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"annular_sample_#{n}", placeholder: "Annular S#{n}", label: false %>
-        <%= (n== 1) ? (form.label :"circular_sample_#{n}", 'Circular') : (form.label :"circular_sample_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"circular_sample_#{n}", placeholder: "Circular S#{n}", label: false %>
+        <% if n % 2 == 0 %>
+          <%= form.label :"annular_glass_#{n}", label: '&nbsp;'.html_safe %><%= form.input :"annular_glass_#{n}", placeholder: "Glass #{n-1} & #{n}", label: false %>
+          <%= form.label :"circular_glass_#{n}", label: '&nbsp;'.html_safe %><%= form.input :"circular_glass_#{n}", placeholder: "Glass #{n-1} & #{n}", label: false %>
+        <% else %>
+          <%= (n == 1) ? (form.label :"annular_pmma_#{n}", "Annular Reference") : (form.label :"annular_pmma_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"annular_pmma_#{n}", placeholder: "PMMA #{n} & #{n+1}", label: false %>
+          <%= (n== 1) ? (form.label :"circular_pmma_#{n}", 'Circular Reference') : (form.label :"circular_pmma_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"circular_pmma_#{n}", placeholder: "PMMA #{n} & #{n+1}", label: false %>
+        <% end %>
       </div>
+    <% end %>
+  </div>
+  <div class='row form-group'>
+    <% (1..@quantity_t2).each do |n| %>
+      <div class='col'>
+        <%= (n == 1) ? (form.label :"annular_sample_#{n}", "Annular Sample") : (form.label :"annular_sample_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"annular_sample_#{n}", placeholder: "Annular S#{n}", label: false %>
+        <%= (n== 1) ? (form.label :"circular_sample_#{n}", 'Circular Sample') : (form.label :"circular_sample_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"circular_sample_#{n}", placeholder: "Circular S#{n}", label: false %>
+      </div>
+    <% end %>
+  </div>
+  <div class='row form-group'>
+    <% (1..@quantity_t2).each do |n| %>
+      <div class='col'><%= (n == 1) ? (form.label :"en_abrasion_#{n}", "Diffusion") : (form.label :"en_abrasion_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"en_abrasion_#{n}", placeholder: "Final S#{n}", label: false %></div>
     <% end %>
   </div>
     <% end %>

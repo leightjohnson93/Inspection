@@ -28,11 +28,14 @@ class ParametersForEnAbrasionCalculations < ActiveRecord::Migration[5.2]
       add_column :jobs, :"circular_sample_#{n}", :decimal
     end
 
-    (1..4).each do |n|
-      add_column :jobs, :"annular_glass_#{n}", :decimal
-      add_column :jobs, :"annular_pmma_#{n}", :decimal
-      add_column :jobs, :"circular_glass_#{n}", :decimal
-      add_column :jobs, :"circular_pmma_#{n}", :decimal
+    (1..8).each do |n|
+      if n % 2 == 0
+        add_column :jobs, :"annular_glass_#{n}", :decimal
+        add_column :jobs, :"circular_glass_#{n}", :decimal
+      else
+        add_column :jobs, :"annular_pmma_#{n}", :decimal
+        add_column :jobs, :"circular_pmma_#{n}", :decimal
+      end
     end
   end
 end

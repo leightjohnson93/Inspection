@@ -39,6 +39,17 @@ $(`#job_annular_initial_${i}`).change(function() {
     initial_dol();
 });
 }
+
+for (let i = 1; i <= 8; i++) {
+$(`#job_circular_sample_${i}`).change(function() {
+    final_dol();
+});
+$(`#job_annular_sample_${i}`).change(function() {
+    final_dol();
+});
+}
+
+
 });
 
 function haze_gain_1()
@@ -139,7 +150,36 @@ const final_diffusion = (annular_machine, circular_machine, annular_sample, circ
 }
 
 /*Function to update outputs */
-function initial_dol()
+const final_dol = () => {
+
+  var annular_machine_final = $("#job_annular_machine_final").val();
+  var circular_machine_final = $("#job_circular_machine_final").val();
+
+  var finalDOL = [];
+  var annular_final = [];
+  var circular_final = [];
+  var annular_glass = [];
+  var circular_glass = [];
+  var annular_pmma = [];
+  var circular_pmma = [];
+
+  for (let i = 0; i < 8; i++) {
+    annular_final[i] = $(`#job_annular_sample_${i}`).val();
+    circular_final[i] = $(`#job_circular_sample_${i}`).val();
+
+    if ($(`#job_annular_glass_${i}`).val()) { annular_glass[i] = $(`#job_annular_glass_${i}`).val(); } else {annular_glass[i] = $(`#job_annular_glass_${i+1}`).val();}
+    if ($(`#job_circular_glass_${i}`).val()) { circular_glass[i] = $(`#job_circular_glass_${i}`).val(); } else {circular_glass[i] = $(`#job_circular_glass_${i+1}`).val();}
+
+    if ($(`#job_annular_pmma_${i}`).val()) { annular_pmma[i] = $(`#job_annular_pmma_${i}`).val(); } else {annular_pmma[i] = $(`#job_annular_pmma_${i-1}`).val();}
+    if ($(`#job_circular_pmma_${i}`).val()) { circular_pmma[i] = $(`#job_circular_pmma_${i}`).val(); } else {circular_pmma[i] = $(`#job_circular_pmma_${i-1}`).val();}
+
+    finalDOL[i] = final_diffusion(annular_machine_final, circular_machine_final, annular_final[i], circular_final[i], annular_glass[i], circular_glass[i], annular_pmma[i], circular_pmma[i]).toFixed(2);
+
+    $(`#job_en_abrasion_${i}`).val(finalDOL[i]);
+  }
+}
+
+const initial_dol = () =>
 {
 var dol_1 = 0;
 var dol_2 = 0;
