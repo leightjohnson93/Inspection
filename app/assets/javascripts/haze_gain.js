@@ -120,32 +120,32 @@ $('#job_haze_gain_6').val(haze_gain_6);
  /* Equations for Diffusion */
 Factor = 644.144;
 
-const reading_correction = (measurement, reading_1=0.0004, reading_2=0.003,reading_3=0.03, reading_4=0.3, reading_5=3.0) => {
+  const reading_correction = (measurement, reading=[0.0004, 0.003, 0.03, 0.3, 3.0]) => {
   if (measurement < 0.2) {
-    return reading_1
+    return reading[0]
   } else if (measurement < 2) {
-    return reading_2
+    return reading[1]
   } else if (measurement < 20) {
-    return reading_3
+    return reading[2]
   } else if (measurement < 200) {
-    return reading_4
+    return reading[3]
   } else
-    return reading_5
+    return reading[4]
 };
 
 
-const calculate_RIF = (annular, circular) => {
-  return Factor*(annular - reading_correction(annular))/(circular - reading_correction(circular));
+const calculate_RIF = (annular, circular, reading) => {
+  return Factor*(annular - reading_correction(annular, reading))/(circular - reading_correction(circular, reading));
 }
 
-const initial_diffusion = (annular_machine, circular_machine, annular_sample, circular_sample) => {
-  return calculate_RIF(annular_sample, circular_sample) - calculate_RIF(annular_machine, circular_machine);
+const initial_diffusion = (annular_machine, circular_machine, annular_sample, circular_sample, reading) => {
+  return calculate_RIF(annular_sample, circular_sample, reading) - calculate_RIF(annular_machine, circular_machine, reading);
 }
 
-const final_diffusion = (annular_machine, circular_machine, annular_sample, circular_sample, annular_glass, circular_glass, annular_pmma, circular_pmma) => {
-  sample = initial_diffusion(annular_machine, circular_machine, annular_sample, circular_sample);
-  glass = initial_diffusion(annular_machine, circular_machine, annular_glass, circular_glass);
-  pmma = initial_diffusion(annular_machine, circular_machine, annular_pmma, circular_pmma);
+const final_diffusion = (annular_machine, circular_machine, annular_sample, circular_sample, annular_glass, circular_glass, annular_pmma, circular_pmma, reading) => {
+  sample = initial_diffusion(annular_machine, circular_machine, annular_sample, circular_sample, reading);
+  glass = initial_diffusion(annular_machine, circular_machine, annular_glass, circular_glass, reading);
+  pmma = initial_diffusion(annular_machine, circular_machine, annular_pmma, circular_pmma, reading);
   return sample * (((glass-sample)*(23/pmma) + (sample - pmma) * (3/glass))/(glass - pmma));
 }
 
@@ -154,6 +154,11 @@ const final_dol = () => {
 
   var annular_machine_final = $("#job_annular_machine_final").val();
   var circular_machine_final = $("#job_circular_machine_final").val();
+
+  final_reading = [];
+  for (let i = 0; i < 5; i++) {
+    final_reading[i] = $(`#job_reading_final_${i+1}`).val();
+  }
 
   var finalDOL = [];
   var annular_final = [];
@@ -164,18 +169,18 @@ const final_dol = () => {
   var circular_pmma = [];
 
   for (let i = 0; i < 8; i++) {
-    annular_final[i] = $(`#job_annular_sample_${i}`).val();
-    circular_final[i] = $(`#job_circular_sample_${i}`).val();
+    annular_final[i] = $(`#job_annular_sample_${i+1}`).val();
+    circular_final[i] = $(`#job_circular_sample_${i+1}`).val();
 
-    if ($(`#job_annular_glass_${i}`).val()) { annular_glass[i] = $(`#job_annular_glass_${i}`).val(); } else {annular_glass[i] = $(`#job_annular_glass_${i+1}`).val();}
-    if ($(`#job_circular_glass_${i}`).val()) { circular_glass[i] = $(`#job_circular_glass_${i}`).val(); } else {circular_glass[i] = $(`#job_circular_glass_${i+1}`).val();}
+    if ($(`#job_annular_glass_${i+1}`).length > 0) { annular_glass[i] = $(`#job_annular_glass_${i+1}`).val(); } else {annular_glass[i] = $(`#job_annular_glass_${i+2}`).val();}
+    if ($(`#job_circular_glass_${i+1}`).length > 0) { circular_glass[i] = $(`#job_circular_glass_${i+1}`).val(); } else {circular_glass[i] = $(`#job_circular_glass_${i+2}`).val();}
 
-    if ($(`#job_annular_pmma_${i}`).val()) { annular_pmma[i] = $(`#job_annular_pmma_${i}`).val(); } else {annular_pmma[i] = $(`#job_annular_pmma_${i-1}`).val();}
-    if ($(`#job_circular_pmma_${i}`).val()) { circular_pmma[i] = $(`#job_circular_pmma_${i}`).val(); } else {circular_pmma[i] = $(`#job_circular_pmma_${i-1}`).val();}
+    if ($(`#job_annular_pmma_${i+1}`).length > 0) { annular_pmma[i] = $(`#job_annular_pmma_${i+1}`).val(); } else {annular_pmma[i] = $(`#job_annular_pmma_${i}`).val();}
+    if ($(`#job_circular_pmma_${i+1}`).length > 0) { circular_pmma[i] = $(`#job_circular_pmma_${i+1}`).val(); } else {circular_pmma[i] = $(`#job_circular_pmma_${i}`).val();}
 
-    finalDOL[i] = final_diffusion(annular_machine_final, circular_machine_final, annular_final[i], circular_final[i], annular_glass[i], circular_glass[i], annular_pmma[i], circular_pmma[i]).toFixed(2);
+    finalDOL[i] = final_diffusion(annular_machine_final, circular_machine_final, annular_final[i], circular_final[i], annular_glass[i], circular_glass[i], annular_pmma[i], circular_pmma[i], final_reading).toFixed(2);
 
-    $(`#job_en_abrasion_${i}`).val(finalDOL[i]);
+    $(`#job_en_abrasion_${i+1}`).val(finalDOL[i]);
   }
 }
 
@@ -196,11 +201,11 @@ var dol_12 = 0;
 
 var annular_machine_initial = $("#job_annular_machine_initial").val();
 var circular_machine_initial = $("#job_circular_machine_initial").val();
-var reading_initial_1 = $("#job_reading_initial_1").val();
-var reading_initial_2 = $("#job_reading_initial_2").val();
-var reading_initial_3 = $("#job_reading_initial_3").val();
-var reading_initial_4 = $("#job_reading_initial_4").val();
-var reading_initial_5 = $("#job_reading_initial_5").val();
+
+initial_reading = [];
+for (let i = 0; i < 5; i++) {
+  initial_reading[i] = $(`#job_reading_initial_${i}`).val();
+}
 
 var annular_initial_1 = $("#job_annular_initial_1").val();
 var annular_initial_2 = $("#job_annular_initial_2").val();
@@ -228,18 +233,18 @@ var circular_initial_10 = $("#job_circular_initial_10").val();
 var circular_initial_11 = $("#job_circular_initial_11").val();
 var circular_initial_12 = $("#job_circular_initial_12").val();
 
-dol_1 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_1, circular_initial_1).toFixed(2);
-dol_2 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_2, circular_initial_2).toFixed(2);
-dol_3 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_3, circular_initial_3).toFixed(2);
-dol_4 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_4, circular_initial_4).toFixed(2);
-dol_5 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_5, circular_initial_5).toFixed(2);
-dol_6 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_6, circular_initial_6).toFixed(2);
-dol_7 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_7, circular_initial_7).toFixed(2);
-dol_8 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_8, circular_initial_8).toFixed(2);
-dol_9 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_9, circular_initial_9).toFixed(2);
-dol_10 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_10, circular_initial_10).toFixed(2);
-dol_11 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_11, circular_initial_11).toFixed(2);
-dol_12 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_12, circular_initial_12).toFixed(2);
+dol_1 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_1, circular_initial_1, initial_reading).toFixed(2);
+dol_2 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_2, circular_initial_2, initial_reading).toFixed(2);
+dol_3 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_3, circular_initial_3, initial_reading).toFixed(2);
+dol_4 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_4, circular_initial_4, initial_reading).toFixed(2);
+dol_5 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_5, circular_initial_5, initial_reading).toFixed(2);
+dol_6 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_6, circular_initial_6, initial_reading).toFixed(2);
+dol_7 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_7, circular_initial_7, initial_reading).toFixed(2);
+dol_8 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_8, circular_initial_8, initial_reading).toFixed(2);
+dol_9 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_9, circular_initial_9, initial_reading).toFixed(2);
+dol_10 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_10, circular_initial_10, initial_reading).toFixed(2);
+dol_11 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_11, circular_initial_11, initial_reading).toFixed(2);
+dol_12 = initial_diffusion(annular_machine_initial, circular_machine_initial, annular_initial_12, circular_initial_12, initial_reading).toFixed(2);
 
 
 $('#job_dol_1').val(dol_1);

@@ -161,15 +161,13 @@
         <%= form.input :"circular_machine_initial", placeholder: "Circular Open", label: false%>
       </div>
     </div>
-  <!--
-  <div class='row form-group'>
-    <% (1..5).each do |n| %>
-    <div class='col'>
-      <%= form.input :"reading_initial_#{n}", placeholder: "Reading S#{n}"%>
+    <div class='row form-group'>
+      <% (1..5).each do |n| %>
+      <div class='col'>
+        <%= form.input :"reading_initial_#{n}", placeholder: "Reading S#{n}"%>
+      </div>
+      <% end %>
     </div>
-    <% end %>
-  </div>
-  -->
   <div class='row form-group'>
     <% (1..@quantity_t3).each do |n| %>
       <div class='col'>
@@ -205,7 +203,6 @@
         <%= form.input :"circular_machine_final", placeholder: "Circular Open", label: false%>
       </div>
     </div>
-  <!--
   <div class='row form-group'>
     <% (1..5).each do |n| %>
     <div class='col'>
@@ -213,7 +210,6 @@
     </div>
     <% end %>
   </div>
-  -->
   <div class='row form-group'>
     <% (1..@quantity_t2).each do |n| %>
       <div class='col'>
