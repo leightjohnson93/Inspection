@@ -18,6 +18,7 @@ class JobsController < ApplicationController
   def edit
     @job = Job.find(params[:id])
     calculate_test_quantities
+    calculate_imbalance
   end
 
   def create
@@ -67,6 +68,22 @@ class JobsController < ApplicationController
       @quantity_t3 = (@job.lot_quantity / 750.to_f).ceil
       @quantity_t4 = (@job.lot_quantity / 450.to_f).ceil
     end
+  end
+
+  def calculate_imbalance
+    @job.horizontal_imbalance_1 = @job.horizontal_left_1 - @job.horizontal_right_1 if !(@job.horizontal_left_1.nil? && @job.horizontal_right_1.nil?)
+    @job.horizontal_imbalance_2 = @job.horizontal_left_2 - @job.horizontal_right_2 if !(@job.horizontal_left_2.nil? && @job.horizontal_right_2.nil?)
+    @job.horizontal_imbalance_3 = @job.horizontal_left_3 - @job.horizontal_right_3 if !(@job.horizontal_left_3.nil? && @job.horizontal_right_3.nil?)
+    @job.horizontal_imbalance_4 = @job.horizontal_left_4 - @job.horizontal_right_4 if !(@job.horizontal_left_4.nil? && @job.horizontal_right_4.nil?)
+    @job.horizontal_imbalance_5 = @job.horizontal_left_5 - @job.horizontal_right_5 if !(@job.horizontal_left_5.nil? && @job.horizontal_right_5.nil?)
+    @job.horizontal_imbalance_6 = @job.horizontal_left_6 - @job.horizontal_right_6 if !(@job.horizontal_left_6.nil? && @job.horizontal_right_6.nil?)
+
+    @job.vertical_imbalance_1 = @job.vertical_left_1 - @job.vertical_right_1 if !(@job.vertical_left_1.nil? && @job.vertical_right_1.nil?)
+    @job.vertical_imbalance_2 = @job.vertical_left_2 - @job.vertical_right_2 if !(@job.vertical_left_2.nil? && @job.vertical_right_2.nil?)
+    @job.vertical_imbalance_3 = @job.vertical_left_3 - @job.vertical_right_3 if !(@job.vertical_left_3.nil? && @job.vertical_right_3.nil?)
+    @job.vertical_imbalance_4 = @job.vertical_left_4 - @job.vertical_right_4 if !(@job.vertical_left_4.nil? && @job.vertical_right_4.nil?)
+    @job.vertical_imbalance_5 = @job.vertical_left_5 - @job.vertical_right_5 if !(@job.vertical_left_5.nil? && @job.vertical_right_5.nil?)
+    @job.vertical_imbalance_6 = @job.vertical_left_6 - @job.vertical_right_6 if !(@job.vertical_left_6.nil? && @job.vertical_right_6.nil?)
   end
 
   private
