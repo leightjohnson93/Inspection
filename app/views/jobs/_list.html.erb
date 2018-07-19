@@ -1,6 +1,6 @@
 <table class="table table-sm table-striped">
   <tr>
-    <th><%= smart_listing.sortable "WV/PV", :wv %></th>
+    <th><%= smart_listing.sortable "WV/PV", :id %></th>
     <th><%= smart_listing.sortable "Part", :part_id %></th>
     <th><%= smart_listing.sortable "Description", :description %></th>
     <th><%= smart_listing.sortable "Lot Quantity", :lot_quantity %></th>
@@ -11,7 +11,7 @@
   </tr>
   <% smart_listing.collection.each do |job| %>
   <tr>
-    <td><%= job.wv %></td>
+    <td><%= job.id %></td>
     <td><%= job.part_id %></td>
     <td><%= job.part.description %></td>
     <td><%= job.lot_quantity %></td>

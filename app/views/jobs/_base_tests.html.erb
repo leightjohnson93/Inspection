@@ -51,7 +51,7 @@
   </legend>
   <div class="collapse" id="trans_tests">
   <div class='row form-group'>
-    <div class='col-3'><%= form.input :illuminate, as: :select, collection: ['Illuminant A','Illuminant C', 'Illuminant D65', 'P43 Light Source'] %></div>
+    <div class='col-3'><%= form.input :illuminate%></div>
   </div>
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
@@ -428,7 +428,7 @@
 
 <div class="navbar navbar-default navbar-fixed-bottom" style="background-color:#333">
     <div class="btn-group">
-      <%= form.button :submit, "Save Progress", class: "btn btn-primary navbar-btn" %>
+      <%= form.button :submit, "Save Progress", class: "btn btn-primary navbar-btn", :id => "save_progress"  %>
       <%= form.button :submit, "Testing Complete", data: { disable_with: false }, class: "btn btn-info navbar-btn" %>
       <%= submit_tag("Discard Changes", { :name => 'reset', :id => 'reset', :type => 'reset', :class => 'btn btn-danger navbar-btn'}) %>
     </div>

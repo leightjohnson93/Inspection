@@ -3,6 +3,7 @@ en:
     attributes:
       job:
         wv: "WV/PV"
+        id: "WV/PV"
         part: "Part"
         coat_date: "Coating Date"
         coat_time: "Coating Time"
