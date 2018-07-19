@@ -71,12 +71,27 @@ class JobsController < ApplicationController
   end
 
   def calculate_imbalance
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 09aed6583960b4dd8b4d25abcc9a20ba3109f51b
     @job.horizontal_imbalance_1 = (@job.horizontal_left_1 - @job.horizontal_right_1).round(3) if !(@job.horizontal_left_1.nil? && @job.horizontal_right_1.nil?)
     @job.horizontal_imbalance_2 = (@job.horizontal_left_2 - @job.horizontal_right_2).round(3) if !(@job.horizontal_left_2.nil? && @job.horizontal_right_2.nil?)
     @job.horizontal_imbalance_3 = (@job.horizontal_left_3 - @job.horizontal_right_3).round(3) if !(@job.horizontal_left_3.nil? && @job.horizontal_right_3.nil?)
     @job.horizontal_imbalance_4 = (@job.horizontal_left_4 - @job.horizontal_right_4).round(3) if !(@job.horizontal_left_4.nil? && @job.horizontal_right_4.nil?)
     @job.horizontal_imbalance_5 = (@job.horizontal_left_5 - @job.horizontal_right_5).round(3) if !(@job.horizontal_left_5.nil? && @job.horizontal_right_5.nil?)
     @job.horizontal_imbalance_6 = (@job.horizontal_left_6 - @job.horizontal_right_6).round(3) if !(@job.horizontal_left_6.nil? && @job.horizontal_right_6.nil?)
+<<<<<<< HEAD
+=======
+=======
+    @job.horizontal_imbalance_1 = @job.horizontal_left_1 - @job.horizontal_right_1 if !(@job.horizontal_left_1.nil? && @job.horizontal_right_1.nil?)
+    @job.horizontal_imbalance_2 = @job.horizontal_left_2 - @job.horizontal_right_2 if !(@job.horizontal_left_2.nil? && @job.horizontal_right_2.nil?)
+    @job.horizontal_imbalance_3 = @job.horizontal_left_3 - @job.horizontal_right_3 if !(@job.horizontal_left_3.nil? && @job.horizontal_right_3.nil?)
+    @job.horizontal_imbalance_4 = @job.horizontal_left_4 - @job.horizontal_right_4 if !(@job.horizontal_left_4.nil? && @job.horizontal_right_4.nil?)
+    @job.horizontal_imbalance_5 = @job.horizontal_left_5 - @job.horizontal_right_5 if !(@job.horizontal_left_5.nil? && @job.horizontal_right_5.nil?)
+    @job.horizontal_imbalance_6 = @job.horizontal_left_6 - @job.horizontal_right_6 if !(@job.horizontal_left_6.nil? && @job.horizontal_right_6.nil?)
+>>>>>>> ffa6dbb7e9f30a3e54cd566b4f22f0f2d854819e
+>>>>>>> 09aed6583960b4dd8b4d25abcc9a20ba3109f51b
 
     @job.vertical_imbalance_1 = (@job.vertical_left_1 - @job.vertical_right_1).round(3) if !(@job.vertical_left_1.nil? && @job.vertical_right_1.nil?)
     @job.vertical_imbalance_2 = (@job.vertical_left_2 - @job.vertical_right_2).round(3) if !(@job.vertical_left_2.nil? && @job.vertical_right_2.nil?)
