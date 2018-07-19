@@ -36,7 +36,7 @@ $(`#job_circular_initial_${i}`).change(function() {
     initial_dol();
 });
 $(`#job_annular_initial_${i}`).change(function() {
-    final_dol();
+    initial_dol();
 });
 }
 
@@ -172,11 +172,11 @@ const final_dol = () => {
     annular_final[i] = $(`#job_annular_sample_${i+1}`).val();
     circular_final[i] = $(`#job_circular_sample_${i+1}`).val();
 
-    if ($(`#job_annular_glass_${i+1}`).length > 0) { annular_glass[i] = $(`#job_annular_glass_${i+2}`).val(); } else {annular_glass[i] = $(`#job_annular_glass_${i+2}`).val();}
-    if ($(`#job_circular_glass_${i+1}`).length > 0) { circular_glass[i] = $(`#job_circular_glass_${i+2}`).val(); } else {circular_glass[i] = $(`#job_circular_glass_${i+2}`).val();}
+    if ($(`#job_annular_glass_${i+1}`).length > 0) { annular_glass[i] = $(`#job_annular_glass_${i+1}`).val(); } else {annular_glass[i] = $(`#job_annular_glass_${i+2}`).val();}
+    if ($(`#job_circular_glass_${i+1}`).length > 0) { circular_glass[i] = $(`#job_circular_glass_${i+1}`).val(); } else {circular_glass[i] = $(`#job_circular_glass_${i+2}`).val();}
 
-    if ($(`#job_annular_pmma_${i+1}`).length > 0) { annular_pmma[i] = $(`#job_annular_pmma_${i}`).val(); } else {annular_pmma[i] = $(`#job_annular_pmma_${i}`).val();}
-    if ($(`#job_circular_pmma_${i+1}`).length > 0) { circular_pmma[i] = $(`#job_circular_pmma_${i}`).val(); } else {circular_pmma[i] = $(`#job_circular_pmma_${i}`).val();}
+    if ($(`#job_annular_pmma_${i+1}`).length > 0) { annular_pmma[i] = $(`#job_annular_pmma_${i+1}`).val(); } else {annular_pmma[i] = $(`#job_annular_pmma_${i}`).val();}
+    if ($(`#job_circular_pmma_${i+1}`).length > 0) { circular_pmma[i] = $(`#job_circular_pmma_${i+1}`).val(); } else {circular_pmma[i] = $(`#job_circular_pmma_${i}`).val();}
 
     finalDOL[i] = final_diffusion(annular_machine_final, circular_machine_final, annular_final[i], circular_final[i], annular_glass[i], circular_glass[i], annular_pmma[i], circular_pmma[i], final_reading).toFixed(2);
 
