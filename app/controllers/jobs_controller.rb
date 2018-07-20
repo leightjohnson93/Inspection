@@ -61,7 +61,7 @@ class JobsController < ApplicationController
       @quantity_t1 = 3
       @quantity_t2 = 4
       @quantity_t3 = 6
-      @quantity_t4 = 20
+      @quantity_t4 = 10
     else
       @quantity_t1 = (@job.lot_quantity / 1500.to_f).ceil
       @quantity_t2 = (@job.lot_quantity / 1125.to_f).ceil
