@@ -126,6 +126,7 @@
       <div class='col'><%= (n == 1) ? (form.label :"haze_initial_#{n}", "Initial Haze (%)") : (form.label :"haze_intial_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"haze_initial_#{n}", placeholder: "Initial S#{n}", label: false %></div>
     <% end %>
   </div>
+</div>
 
   <div class='row form-group'>
     <% (1..@quantity_t1).each do |n| %>
@@ -139,7 +140,7 @@
     <% end %>
   </div>
   </div>
-</div>
+
 
 <% if !@job.part.description.include? "ANSI" %>
 <div class='form-group well'>
@@ -239,6 +240,7 @@
     <% end %>
   </div>
 </div>
+
 <div class='form-group well'>
   <legend>
       <div class="row">
