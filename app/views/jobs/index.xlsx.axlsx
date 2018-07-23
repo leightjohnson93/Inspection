@@ -39,7 +39,10 @@ wb.add_worksheet(name: "QC Lot Data") do |sheet|
     "Diffusion S3", "Diffusion S4", "Diffusion S5", "Diffusion S6", "Diffusion S7", "Diffusion S8",
     "Diffusion S9", "Diffusion S10", "Diffusion S11", "Diffusion S12", "EN Abras S1", "EN Abras S2",
     "EN Abras S3", "EN Abras S4", "EN Abras S5", "EN Abras S6", "EN Abras S7", "EN Abras S8",
-    "Vis Inspec", "Vis Assess", "Mark Insp", "Mark Assess", "Dimensions", "Dimensions Assess", "MFG Tech", "QC Tech"])
+    "Vis Inspec", "Vis Assess", "Mark Insp", "Mark Assess", "Dimensions", "Dimensions Assess",
+    "Wavelength 1", "OD1 S1", "OD1 S2", "OD1 S3", "OD1 S4", "OD1 S5", "OD1 S6",
+    "Wavelength 2", "OD1 S2", "OD2 S2", "OD2 S3", "OD2 S4", "OD2 S5", "OD2 S6",
+    "MFG Tech", "QC Tech"])
 
   @jobs.each do |job|
     sheet.add_row([job.updated_at, job.id, job.line, "", job.receiver, job.part.part,
@@ -67,7 +70,10 @@ wb.add_worksheet(name: "QC Lot Data") do |sheet|
       job.ballistic_method_2, job.ballistic_samples_2, job.ballistic_fractures_2, job.ballistic_spalls_2, job.ballistic_assess, job.ballistic_v50,
       job.dol_1, job.dol_2, job.dol_3, job.dol_4, job.dol_5, job.dol_6, job.dol_7, job.dol_8, job.dol_9, job.dol_10, job.dol_11, job.dol_12,
       job.en_abrasion_1, job.en_abrasion_2, job.en_abrasion_3, job.en_abrasion_4, job.en_abrasion_5, job.en_abrasion_6, job.en_abrasion_7, job.en_abrasion_8,
-      job.visual_inspection, job.visual_inspection_assess, job.markings, job.markings_assess, job.dimensions, job.dimensions_assess, job.mfg_int, job.qc_inital])
+      job.visual_inspection, job.visual_inspection_assess, job.markings, job.markings_assess, job.dimensions, job.dimensions_assess,
+      job.nm_1, job.od_1_nm_1, job.od_2_nm_1, job.od_3_nm_1, job.od_4_nm_1, job.od_5_nm_1, job.od_6_nm_1,
+      job.nm_2, job.od_1_nm_2, job.od_2_nm_2, job.od_3_nm_2, job.od_4_nm_2, job.od_5_nm_2, job.od_6_nm_2,
+      job.mfg_int, job.qc_inital])
   end
   #sheet.add_table "A1:GV9999", :name => 'Data', :style_info => { :name => "TableStyleMedium23" }
 end

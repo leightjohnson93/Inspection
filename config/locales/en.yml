@@ -12,6 +12,7 @@ en:
         mfg_int: "Initial"
         line: Release/Line
         bin: "Bin/Box Count"
+        visual_inspection_assess: "Assessment"
         chromaticity_x_1: "ChromaticityX 1"
         relative_humidity: "Relative Humidity (%)"
         ballistic_method_1: "Ballistic Method"

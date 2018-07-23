@@ -14,7 +14,7 @@
 
     <div class='row form-group'>
       <div class='col'><%= form.input :visual_inspection, label: "Visual Inspection" ,placeholder: "Inspect #{@quantity_t4} Samples & Record Observations" %></div>
-      <div class='col-2'><%= form.input :visual_inspection_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
+      <div class='col-2'><%= form.input :visual_inspection_assess, as: :select, collection: [['Pass', true],['Fail', false]], :html => { :height => '34px' }, label: "Assessment"%></div>
     </div>
 
     <div class='row form-group'>
