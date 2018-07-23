@@ -11,30 +11,34 @@
     </div>
   </legend>
   <div class="collapse" id="obs_tests">
-  <div class='row form-group'>
-    <div class='col'><%= form.input :visual_inspection, label: "Visual Inspection" ,placeholder: "Inspect #{@quantity_t4} Samples & Record Observations" %></div>
-    <div class='col-2'><%= form.input :visual_inspection_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
-  </div>
 
-  <div class='row form-group'>
-    <div class='col'><%= form.input :dimensions, label: "Dimensions" ,placeholder: "Measure #{@quantity_t1} Samples & Record Observations" %></div>
-    <div class='col-2'><%= form.input :dimensions_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
-  </div>
+    <div class='row form-group'>
+      <div class='col'><%= form.input :visual_inspection, label: "Visual Inspection" ,placeholder: "Inspect #{@quantity_t4} Samples & Record Observations" %></div>
+      <div class='col-2'><%= form.input :visual_inspection_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
+    </div>
 
-  <div class='row form-group'>
-    <div class='col'><%= form.input :fit, label: "Fit & Function" ,placeholder: "Test #{@quantity_t1} Samples & Record Observations" %></div>
-    <div class='col-2'><%= form.input :fit_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
-  </div>
+    <div class='row form-group'>
+      <div class='col'><%= form.input :fit, label: "Fit & Function" ,placeholder: "Test #{@quantity_t1} Samples & Record Observations" %></div>
+      <div class='col-2'><%= form.input :fit_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
+    </div>
 
-  <div class='row form-group'>
-    <div class='col'><%= form.input :markings, label: "Markings" ,placeholder: "Inspect #{@quantity_t1} Samples & Record Observations" %></div>
-    <div class='col-2'><%= form.input :markings_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
-  </div>
+    <% if @job.part.description.include? "ANSI" %>
+      <div class='row form-group'>
+        <div class='col'><%= form.input :dimensions, label: "Dimensions" ,placeholder: "Measure #{@quantity_t1} Samples & Record Observations" %></div>
+        <div class='col-2'><%= form.input :dimensions_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
+      </div>
 
-  <div class='row form-group'>
-    <div class='col'><%= form.input :adhesion, label: "Adhesion" ,placeholder: "Test #{@quantity_t1} Samples & Record Observations" %></div>
-    <div class='col-2'><%= form.input :adhesion_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
-  </div>
+      <div class='row form-group'>
+        <div class='col'><%= form.input :markings, label: "Markings" ,placeholder: "Inspect #{@quantity_t1} Samples & Record Observations" %></div>
+        <div class='col-2'><%= form.input :markings_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
+      </div>
+    <% end %>
+
+    <div class='row form-group'>
+      <div class='col'><%= form.input :adhesion, label: "Adhesion" ,placeholder: "Test #{@quantity_t1} Samples & Record Observations" %></div>
+      <div class='col-2'><%= form.input :adhesion_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
+    </div>
+
   </div>
 </div>
 
@@ -96,15 +100,15 @@
   </legend>
   <div class="collapse" id="od_tests">
     <% (1..2).each do |i| %>
-  <div class='row form-group'>
-    <div class='col-3'><%= form.input :"nm_#{i}", as: :select, collection: ['532', '633', '694', '808', '810', '820-850'] %></div>
-  </div>
-  <div class='row form-group'>
-    <% (1..@quantity_t1).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"od_#{n}_nm_#{i}") : (form.label :"od_#{n}_nm_#{i}", label: '&nbsp;'.html_safe) %><%= form.input :"od_#{n}_nm_#{i}", placeholder: "OD @ wavelength #{i} S#{n}", label: false %></div>
+    <div class='row form-group'>
+      <div class='col-3'><%= form.input :"nm_#{i}", as: :select, collection: ['532', '633', '694', '808', '810', '820-850'] %></div>
+    </div>
+    <div class='row form-group'>
+      <% (1..@quantity_t1).each do |n| %>
+        <div class='col'><%= (n == 1) ? (form.label :"od_#{n}_nm_#{i}") : (form.label :"od_#{n}_nm_#{i}", label: '&nbsp;'.html_safe) %><%= form.input :"od_#{n}_nm_#{i}", placeholder: "OD @ wavelength #{i} S#{n}", label: false %></div>
+      <% end %>
+    </div>
     <% end %>
-  </div>
-  <% end %>
 </div>
 </div>
 <% end %>

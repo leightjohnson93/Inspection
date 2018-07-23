@@ -1,6 +1,6 @@
 class PartsController < ApplicationController
   def index
-    @parts = smart_listing_create(:parts, Part.all, partial: "parts/list", default_sort: {part: "desc"})
+    @parts = smart_listing_create(:parts, Part.all, partial: "parts/list", page_sizes:[50, 100])
   end
 
   def new

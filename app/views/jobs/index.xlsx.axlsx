@@ -69,4 +69,5 @@ wb.add_worksheet(name: "QC Lot Data") do |sheet|
       job.en_abrasion_1, job.en_abrasion_2, job.en_abrasion_3, job.en_abrasion_4, job.en_abrasion_5, job.en_abrasion_6, job.en_abrasion_7, job.en_abrasion_8,
       job.visual_inspection, job.visual_inspection_assess, job.markings, job.markings_assess, job.dimensions, job.dimensions_assess, job.mfg_int, job.qc_inital])
   end
+  #sheet.add_table "A1:GV9999", :name => 'Data', :style_info => { :name => "TableStyleMedium23" }
 end
