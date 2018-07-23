@@ -1,4 +1,6 @@
 class PartsController < ApplicationController
+  before_action :find_part, except: [:index, :new, :create]
+
   def index
     @parts = smart_listing_create(:parts, Part.all, partial: "parts/list", page_sizes:[50, 100])
   end
@@ -40,6 +42,11 @@ class PartsController < ApplicationController
   end
 
   private
+
+    def find_part
+      @part = Part.find(params[:id])
+    end
+
     def part_params
       params.require(:part).permit(:part, :description, :color, :coating, :shape, :mfg)
     end

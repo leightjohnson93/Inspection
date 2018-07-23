@@ -5,6 +5,8 @@
 <td><%= part.color %></td>
 <td><%= part.coating %></td>
 <td><%= part.mfg %></td>
-<td class='actions'><%= smart_listing_item_actions [
-  {name: :edit,    url: edit_part_path(part)},
-  {name: :destroy, url: part_path(part), confirmation: "Are you sure you want to delete this?"}] %></td>
+<td width="15%"><div>
+  <%= link_to 'Edit', edit_part_path(part), class: 'btn btn-dark btn-xs' %>
+  <%= link_to 'Delete', part, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark btn-xs' %>
+</div>
+</td>
