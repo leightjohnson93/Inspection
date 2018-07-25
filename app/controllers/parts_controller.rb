@@ -2,7 +2,7 @@ class PartsController < ApplicationController
   before_action :find_part, except: [:index, :new, :create]
 
   def index
-    @parts = smart_listing_create(:parts, Part.all, partial: "parts/list", page_sizes:[50, 100])
+    @parts = smart_listing_create(:parts, Part.all, partial: "parts/list", page_sizes:[10000, 1000])
   end
 
   def new
