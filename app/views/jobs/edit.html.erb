@@ -6,12 +6,12 @@
 <body>
   <div class="container">
     <ul class="nav nav-tabs" role="tablist">
-      <li><%= link_to 'Jobs View', jobs_path %></li>
-      <li><%= link_to 'New Job', new_job_path %></li>
+      <li><%= link_to 'Lots View', jobs_path %></li>
+      <li><%= link_to 'New Lot', new_job_path %></li>
       <li><%= link_to 'Parts View', parts_path %></li>
       <li><%= link_to 'New Part', new_part_path %></li>
       <li><%= link_to 'Show Job', job_path(@job) %></li>
-      <li class="active"><%= link_to "Test Job: #{ @job.part.description}" %></li>
+      <li class="active"><%= link_to "Test Lot: #{ @job.part.description}" %></li>
   </ul>
   <%= form_with(model: @job, local: true) do |form| %>
     <% if @job.errors.any? %>
