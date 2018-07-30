@@ -86,6 +86,15 @@ class JobsController < ApplicationController
     @job.vertical_imbalance_6 = (@job.vertical_left_6 - @job.vertical_right_6).round(3).abs if !(@job.vertical_left_6.nil? && @job.vertical_right_6.nil?)
   end
 
+  def name_folder
+    time_stamp = Time.now.strftime("%Y%m%d")
+    folder_name = "#{time_stamp} #{@job.part.description} - "
+    @job.id[0] == "P" ? folder_name = folder_name + @job.id : folder_name = folder_name + "WV #{@job.id}"
+    @job.line ? folder_name + " Part #{@job.line} .vbs" : folder_name + ".vbs"
+  end
+
+  helper_method :name_folder
+
   private
     def job_params
       params.require(:job).permit!

@@ -1,34 +1,28 @@
-Dim g_oSB : Set g_oSB = CreateObject("System.Text.StringBuilder")
-Dim dt : dt = now()
-Function sprintf(sFmt, aData)
-   g_oSB.AppendFormat_4 sFmt, (aData)
-   sprintf = g_oSB.ToString()
-   g_oSB.Length = 0
-End Function
+TestFolderName = Trim(Split(Left(Wscript.ScriptName, Len(Wscript.ScriptName)-4),"(")(0))
 
-
-If Wscript.ScriptName = "Initialize.vbs" Then Wscript.Quit
-
-wbName = Wscript.ScriptName
-arrName = Split(wbName, " ", 3)
-WV = arrName(1)
-Description = Left(Split(arrName(2), "(")(0), Len(arrName(2))-4)
-TimeStamp = sprintf("{0:yyyyMMdd}", Array(dt))
-TestFolderName = TimeStamp & " " & Trim(Description) & " WV" & WV
+If InStr(TestFolderName, "WV") Then
+	WV = Mid(TestFolderName, InStr(TestFolderName, "WV"))
+Else
+	WV = Mid(TestFolderName, InStr(TestFolderName, "PV"))
+End If
 
 Set objFSO = CreateObject("Scripting.FileSystemObject")
 Set objFolder = objFSO.GetFolder("V:\QC Vermont\Incoming Lens Inspection")
 Set subfolders = objFolder.subfolders
 TestFolderPath = "V:\QC Vermont\Incoming Lens Inspection\" & TestFolderName
+
 For Each subfolder In subfolders
     If InStr(subfolder, WV) > 0 Then
-        MsgBox "A folder for WV" & WV & " alread exists."
+        MsgBox "A folder for " & WV & " already exists."
 	Wscript.Quit
     End If
 Next
+
 objFSO.copyFolder "V:\QC Vermont\Incoming Lens Inspection\Lens Testing Template", TestFolderPath
 
-
+objFSO.MoveFile TestFolderPath & "\Optics.xlsm", TestFolderPath & "\Optics - " & WV & ".xlsm"
+objFSO.MoveFile TestFolderPath & "\Fog.xlsm", TestFolderPath & "\Fog - " & WV & ".xlsm"
+objFSO.MoveFile TestFolderPath & "\F-96 MCEPS Ballistic Data.xlsx", TestFolderPath & "\F-96 MCEPS Ballistic Data - " & WV & ".xlsx"
 
 Dim shell
 Set shell = wscript.CreateObject("Shell.Application")
