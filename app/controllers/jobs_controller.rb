@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  helper_method :name_folder
   def index
     @jobs = smart_listing_create(:jobs, Job.all.joins(:part), partial: "jobs/list", page_sizes:[10000, 1000], default_sort: {updated_at: "desc"})
     respond_to do |format|
@@ -92,8 +93,6 @@ class JobsController < ApplicationController
     @job.id[0] == "P" ? folder_name = folder_name + @job.id : folder_name = folder_name + "WV #{@job.id}"
     @job.line ? folder_name + " Part #{@job.line} .vbs" : folder_name + ".vbs"
   end
-
-  helper_method :name_folder
 
   private
     def job_params

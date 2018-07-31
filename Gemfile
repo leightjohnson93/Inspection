@@ -70,3 +70,5 @@ gem 'rubyzip', '>= 1.2.1'
 gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
 gem 'axlsx_rails'
 gem 'smart_listing', :git => 'https://github.com/leightjohnson93/smart_listing'
+
+gem 'nokogiri'
