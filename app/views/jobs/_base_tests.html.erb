@@ -353,19 +353,19 @@
       </div>
   </legend>
   <div class="collapse" id="thickness">
+    <% if @job.part.coating == 'AF' %>
+    <div class='row form-group'>
+      <% (1..@quantity_t2).each do |n| %>
+        <div class='col'><%= (n == 1) ? (form.label :"antifog_thickness_#{n}", "Anti-Fog Coat (μm)") : (form.label :"antifog_thickness_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"antifog_thickness_#{n}", placeholder: "AF S#{n}", label: false %></div>
+      <% end %>
+    </div>
+    <% end %>
+
   <div class='row form-group'>
     <% (1..@quantity_t2).each do |n| %>
       <div class='col'><%= (n == 1) ? (form.label :"hard_thickness_#{n}", "Hardcoat (μm)") : (form.label :"hard_thickness_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"hard_thickness_#{n}", placeholder: "HC S#{n}", label: false %></div>
     <% end %>
   </div>
-
-  <% if @job.part.coating == 'AF' %>
-  <div class='row form-group'>
-    <% (1..@quantity_t2).each do |n| %>
-      <div class='col'><%= (n == 1) ? (form.label :"antifog_thickness_#{n}", "Anti-Fog Coat (μm)") : (form.label :"antifog_thickness_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"antifog_thickness_#{n}", placeholder: "AF S#{n}", label: false %></div>
-    <% end %>
-  </div>
-  <% end %>
   </div>
 </div>
 
