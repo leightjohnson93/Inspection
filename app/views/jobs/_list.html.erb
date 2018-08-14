@@ -17,7 +17,7 @@
     <td><%= job.lot_quantity %></td>
     <td><%= job.test_quantity %></td>
     <td><%= job.created_at.strftime("%B %d, %Y") %></td>
-    <td><%= job.lot_complete ? "Complete" : "In Progress" %>
+    <td><%= job.lot_complete %>
     <td width="15%"><div>
       <%= link_to 'Show', job, class: 'btn btn-dark btn-xs' %>
       <%= link_to 'Test', edit_job_path(job), class: 'btn btn-dark btn-xs' %>

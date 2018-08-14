@@ -4,7 +4,7 @@ en:
       job:
         wv: "Lot"
         id: "Lot Number"
-        part: "Part"
+        part: "Part Number"
         coat_date: "Coating Date"
         coat_time: "Coating Time"
         lot_quantity: "Lot Quantity"
@@ -42,4 +42,5 @@ en:
         annular_machine_initial: "Annular Machine"
         circular_machine_initial: "Circular Machine"
       part:
+        id: "Part Number"
         mfg: "Manufacturer"

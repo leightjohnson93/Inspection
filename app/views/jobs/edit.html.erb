@@ -10,7 +10,7 @@
       <li><%= link_to 'New Lot', new_job_path %></li>
       <li><%= link_to 'Parts View', parts_path %></li>
       <li><%= link_to 'New Part', new_part_path %></li>
-      <li><%= link_to 'Show Job', job_path(@job) %></li>
+      <li><%= link_to 'Show Lot', job_path(@job) %></li>
       <li class="active"><%= link_to @job.part ? "Test Lot: #{@job.part.description}": "Test Lot"%></li>
   </ul>
 

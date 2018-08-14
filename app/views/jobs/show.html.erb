@@ -9,7 +9,7 @@
       <li><%= link_to 'New Lot', new_job_path %></li>
       <li><%= link_to 'Parts View', parts_path %></li>
       <li><%= link_to 'New Part', new_part_path %></li>
-      <li class="active"><%= link_to 'Show Job', job_path(@job) %></li>
+      <li class="active"><%= link_to 'Show Lot', job_path(@job) %></li>
       <li><%= link_to 'Test Lot', edit_job_path(@job) %></li>
     </ul>
 <div class='row'>
@@ -63,11 +63,7 @@
   <h3>Testing</h3>
   <p>
     <strong>Status:</strong>
-    <% if @job.lot_complete %>
-      Complete
-    <% else %>
-      In Progress
-    <% end %>
+    <%= @job.lot_complete %>
   </p>
   <% if @job.lot_assess %>
   <p>
