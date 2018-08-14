@@ -14,7 +14,7 @@
   <%= form_with scope: :job, url: jobs_path, local: true do |form| %>
     <% if @job.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+        <h2><%= pluralize(@job.errors.count, "error") %> prohibited this lot from being saved:</h2>
         <ul>
         <% @job.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -37,7 +37,7 @@
       <div class="col"><%= form.label :lot_quantity, "Lot Quantity"%><%= form.text_field :lot_quantity, class: 'form-control'%></div>
       <div class="col"><%= form.label :test_quantity, "Sample Quantity" %><%= form.text_field :test_quantity, class: 'form-control'%></div>
       <div class="col"><%= form.label :bin, "Bin/Box Count"%><%= form.text_field :bin, class: 'form-control'%></div>
-      <div class="col"><%= form.label :mfg_int, "Initial"%><%= form.text_field :mfg_int, class: 'form-control'%></div>
+      <div class="col"><%= form.label :lot_complete, "Status"%><%= form.text_field :lot_complete, class: 'form-control'%></div>
       <div class="col" style="padding-top: 24px"><%= form.submit "Save", class: "btn btn-primary btn-block", :id => "save"%></div>
     </div>
   </div>

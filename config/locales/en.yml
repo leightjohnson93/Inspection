@@ -2,8 +2,8 @@ en:
   activerecord:
     attributes:
       job:
-        wv: "WV/PV"
-        id: "WV/PV"
+        wv: "Lot"
+        id: "Lot Number"
         part: "Part"
         coat_date: "Coating Date"
         coat_time: "Coating Time"

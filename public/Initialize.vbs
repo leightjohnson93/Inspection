@@ -1,5 +1,5 @@
-TestFolderName = Trim(Split(Left("20180809 SF Lens SC Rg Smk AF/AR - WV 4 Part 2.vbs", Len("20180809 SF Lens SC Rg Smk AF/AR - WV 4 Part 2.vbs")-4),"(")(0))
-TestQuantity = 5
+TestFolderName = Trim(Split(Left("20180814 SF Lens Yel SC Lg - WV 112219.vbs", Len("20180814 SF Lens Yel SC Lg - WV 112219.vbs")-4),"(")(0))
+TestQuantity = 4
 
 If InStr(TestFolderName, "WV") Then
 WV = Mid(TestFolderName, InStr(TestFolderName, "WV"))

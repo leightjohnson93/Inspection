@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_26_165705) do
+ActiveRecord::Schema.define(version: 2018_08_13_181426) do
 
   create_table "items", primary_key: "part", id: :string, force: :cascade do |t|
     t.string "description"
@@ -236,7 +236,7 @@ ActiveRecord::Schema.define(version: 2018_07_26_165705) do
     t.string "nm_2"
     t.string "qc_int"
     t.boolean "lot_assess"
-    t.boolean "lot_complete"
+    t.string "lot_complete"
     t.integer "mrr_id"
     t.integer "receiver"
     t.float "od_1_nm_1"
@@ -321,18 +321,19 @@ ActiveRecord::Schema.define(version: 2018_07_26_165705) do
     t.decimal "circular_pmma_7"
     t.decimal "annular_glass_8"
     t.decimal "circular_glass_8"
+    t.float "prismatic_power_left_1"
+    t.float "prismatic_power_right_1"
+    t.float "prismatic_power_left_2"
+    t.float "prismatic_power_right_2"
+    t.float "prismatic_power_left_3"
+    t.float "prismatic_power_right_3"
+    t.float "prismatic_power_left_4"
+    t.float "prismatic_power_right_4"
+    t.float "prismatic_power_left_5"
+    t.float "prismatic_power_right_5"
+    t.float "prismatic_power_left_6"
+    t.float "prismatic_power_right_6"
     t.index ["id"], name: "sqlite_autoindex_jobs_1", unique: true
-  end
-
-  create_table "parts", force: :cascade do |t|
-    t.string "part"
-    t.string "description"
-    t.string "shape"
-    t.string "color"
-    t.string "coating"
-    t.string "mfg"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

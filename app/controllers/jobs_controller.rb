@@ -21,6 +21,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     calculate_test_quantities
     calculate_imbalance
+    calculate_prismatic_power
   end
 
   def create
@@ -73,19 +74,35 @@ class JobsController < ApplicationController
   end
 
   def calculate_imbalance
-    @job.horizontal_imbalance_1 = (@job.horizontal_left_1 - @job.horizontal_right_1).round(3) if !(@job.horizontal_left_1.nil? && @job.horizontal_right_1.nil?)
-    @job.horizontal_imbalance_2 = (@job.horizontal_left_2 - @job.horizontal_right_2).round(3) if !(@job.horizontal_left_2.nil? && @job.horizontal_right_2.nil?)
-    @job.horizontal_imbalance_3 = (@job.horizontal_left_3 - @job.horizontal_right_3).round(3) if !(@job.horizontal_left_3.nil? && @job.horizontal_right_3.nil?)
-    @job.horizontal_imbalance_4 = (@job.horizontal_left_4 - @job.horizontal_right_4).round(3) if !(@job.horizontal_left_4.nil? && @job.horizontal_right_4.nil?)
-    @job.horizontal_imbalance_5 = (@job.horizontal_left_5 - @job.horizontal_right_5).round(3) if !(@job.horizontal_left_5.nil? && @job.horizontal_right_5.nil?)
-    @job.horizontal_imbalance_6 = (@job.horizontal_left_6 - @job.horizontal_right_6).round(3) if !(@job.horizontal_left_6.nil? && @job.horizontal_right_6.nil?)
+    @job.horizontal_imbalance_1 = (@job.horizontal_left_1 - @job.horizontal_right_1).round(3) if !(@job.horizontal_left_1.nil? || @job.horizontal_right_1.nil?)
+    @job.horizontal_imbalance_2 = (@job.horizontal_left_2 - @job.horizontal_right_2).round(3) if !(@job.horizontal_left_2.nil? || @job.horizontal_right_2.nil?)
+    @job.horizontal_imbalance_3 = (@job.horizontal_left_3 - @job.horizontal_right_3).round(3) if !(@job.horizontal_left_3.nil? || @job.horizontal_right_3.nil?)
+    @job.horizontal_imbalance_4 = (@job.horizontal_left_4 - @job.horizontal_right_4).round(3) if !(@job.horizontal_left_4.nil? || @job.horizontal_right_4.nil?)
+    @job.horizontal_imbalance_5 = (@job.horizontal_left_5 - @job.horizontal_right_5).round(3) if !(@job.horizontal_left_5.nil? || @job.horizontal_right_5.nil?)
+    @job.horizontal_imbalance_6 = (@job.horizontal_left_6 - @job.horizontal_right_6).round(3) if !(@job.horizontal_left_6.nil? || @job.horizontal_right_6.nil?)
 
-    @job.vertical_imbalance_1 = (@job.vertical_left_1 - @job.vertical_right_1).round(3).abs if !(@job.vertical_left_1.nil? && @job.vertical_right_1.nil?)
-    @job.vertical_imbalance_2 = (@job.vertical_left_2 - @job.vertical_right_2).round(3).abs if !(@job.vertical_left_2.nil? && @job.vertical_right_2.nil?)
-    @job.vertical_imbalance_3 = (@job.vertical_left_3 - @job.vertical_right_3).round(3).abs if !(@job.vertical_left_3.nil? && @job.vertical_right_3.nil?)
-    @job.vertical_imbalance_4 = (@job.vertical_left_4 - @job.vertical_right_4).round(3).abs if !(@job.vertical_left_4.nil? && @job.vertical_right_4.nil?)
-    @job.vertical_imbalance_5 = (@job.vertical_left_5 - @job.vertical_right_5).round(3).abs if !(@job.vertical_left_5.nil? && @job.vertical_right_5.nil?)
-    @job.vertical_imbalance_6 = (@job.vertical_left_6 - @job.vertical_right_6).round(3).abs if !(@job.vertical_left_6.nil? && @job.vertical_right_6.nil?)
+    @job.vertical_imbalance_1 = (@job.vertical_left_1 - @job.vertical_right_1).round(3).abs if !(@job.vertical_left_1.nil? || @job.vertical_right_1.nil?)
+    @job.vertical_imbalance_2 = (@job.vertical_left_2 - @job.vertical_right_2).round(3).abs if !(@job.vertical_left_2.nil? || @job.vertical_right_2.nil?)
+    @job.vertical_imbalance_3 = (@job.vertical_left_3 - @job.vertical_right_3).round(3).abs if !(@job.vertical_left_3.nil? || @job.vertical_right_3.nil?)
+    @job.vertical_imbalance_4 = (@job.vertical_left_4 - @job.vertical_right_4).round(3).abs if !(@job.vertical_left_4.nil? || @job.vertical_right_4.nil?)
+    @job.vertical_imbalance_5 = (@job.vertical_left_5 - @job.vertical_right_5).round(3).abs if !(@job.vertical_left_5.nil? || @job.vertical_right_5.nil?)
+    @job.vertical_imbalance_6 = (@job.vertical_left_6 - @job.vertical_right_6).round(3).abs if !(@job.vertical_left_6.nil? || @job.vertical_right_6.nil?)
+  end
+
+  def calculate_prismatic_power
+    @job.prismatic_power_left_1 = ((@job.horizontal_left_1 ** 2 + @job.vertical_left_1 ** 2) ** (0.5)).round(3) if !(@job.horizontal_left_1.nil? || @job.vertical_left_1.nil?)
+    @job.prismatic_power_left_2 = ((@job.horizontal_left_2 ** 2 + @job.vertical_left_2 ** 2) ** (0.5)).round(3) if !(@job.horizontal_left_2.nil? || @job.vertical_left_2.nil?)
+    @job.prismatic_power_left_3 = ((@job.horizontal_left_3 ** 2 + @job.vertical_left_3 ** 2) ** (0.5)).round(3) if !(@job.horizontal_left_3.nil? || @job.vertical_left_3.nil?)
+    @job.prismatic_power_left_4 = ((@job.horizontal_left_4 ** 2 + @job.vertical_left_4 ** 2) ** (0.5)).round(3) if !(@job.horizontal_left_4.nil? || @job.vertical_left_4.nil?)
+    @job.prismatic_power_left_5 = ((@job.horizontal_left_5 ** 2 + @job.vertical_left_5 ** 2) ** (0.5)).round(3) if !(@job.horizontal_left_5.nil? || @job.vertical_left_5.nil?)
+    @job.prismatic_power_left_6 = ((@job.horizontal_left_6 ** 2 + @job.vertical_left_6 ** 2) ** (0.5)).round(3) if !(@job.horizontal_left_6.nil? || @job.vertical_left_6.nil?)
+
+    @job.prismatic_power_right_1 = ((@job.horizontal_right_1 ** 2 + @job.vertical_right_1 ** 2) ** (0.5)).round(3) if !(@job.horizontal_right_1.nil? || @job.vertical_right_1.nil?)
+    @job.prismatic_power_right_2 = ((@job.horizontal_right_2 ** 2 + @job.vertical_right_2 ** 2) ** (0.5)).round(3) if !(@job.horizontal_right_2.nil? || @job.vertical_right_2.nil?)
+    @job.prismatic_power_right_3 = ((@job.horizontal_right_3 ** 2 + @job.vertical_right_3 ** 2) ** (0.5)).round(3) if !(@job.horizontal_right_3.nil? || @job.vertical_right_3.nil?)
+    @job.prismatic_power_right_4 = ((@job.horizontal_right_4 ** 2 + @job.vertical_right_4 ** 2) ** (0.5)).round(3) if !(@job.horizontal_right_4.nil? || @job.vertical_right_4.nil?)
+    @job.prismatic_power_right_5 = ((@job.horizontal_right_5 ** 2 + @job.vertical_right_5 ** 2) ** (0.5)).round(3) if !(@job.horizontal_right_5.nil? || @job.vertical_right_5.nil?)
+    @job.prismatic_power_right_6 = ((@job.horizontal_right_6 ** 2 + @job.vertical_right_6 ** 2) ** (0.5)).round(3) if !(@job.horizontal_right_6.nil? || @job.vertical_right_6.nil?)
   end
 
   def create_script
