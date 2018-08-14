@@ -27,10 +27,10 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     if @job.save
-      flash[:success] = 'Job was successfully created.'
+      flash[:success] = 'Lot was successfully created.'
       redirect_to @job
     else
-      flash[:danger] = 'There was a problem creating the Job.'
+      flash[:danger] = 'There was a problem creating the Lot.'
       render 'new'
     end
   end
@@ -49,7 +49,7 @@ class JobsController < ApplicationController
         redirect_to @job
       end
     else
-      flash[:danger] = 'There was a problem updating the Job.'
+      flash[:danger] = 'There was a problem updating the Lot.'
       render 'edit'
     end
   end
