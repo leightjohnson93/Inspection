@@ -43,9 +43,9 @@ class JobsController < ApplicationController
         redirect_to @job
       elsif params[:commit] == "Save Progress"
         flash[:success] = 'Test data successfully saved.'
-        redirect_back fallback_location: root_path
+        redirect_to edit_job_path(@job)
       else
-        flash[:success] = "Job successfully updated."
+        flash[:success] = "Lot successfully updated."
         redirect_to @job
       end
     else
