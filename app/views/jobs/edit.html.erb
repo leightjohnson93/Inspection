@@ -33,16 +33,16 @@
   <div id="mfg" class="collapse in">
     <div class="row form-group">
       <div class="col"><%= form.input :id, placeholder: "Exclude 'WV'"%></div>
-      <div class="col"><%= form.input :line, placeholder: "If multiple"%></div>
       <div class="col"><%= form.input :part_id%></div>
       <div class="col"><%= form.input :coat_date, as: :date, html5: true%></div>
+      <div class="col"><%= form.input :coat_time, as: :time, html5: true%></div>
     </div>
 
     <div class="row form-group">
       <div class="col"><%= form.input :lot_quantity%></div>
       <div class="col"><%= form.input :test_quantity%></div>
       <div class="col"><%= form.input :bin%></div>
-      <div class="col"><%= form.input :coat_time, as: :time, html5: true%></div>
+      <div class="col"><%= form.input :lot_complete, as: :select, collection: ["Complete", "In Progress", "Pending"],include_blank: false, input_html: { id: "job_lot_complete_start" } %></div>
     </div>
   </div>
   </div>
@@ -484,6 +484,7 @@
       <div class='col'><%= form.input :"receiver" %></div>
       <div class='col'><%= form.input :"mrr_id", placeholder: "If Applicable" %></div>
       <div class='col'><%= form.input :qc_int %></div>
+      <div class='col'><%= form.input :lot_complete, as: :select, collection: ["Complete", "In Progress", "Pending"], include_blank: false, input_html: { id: "job_lot_complete_end" }%></div>
     </div>
   </div>
   </div>
@@ -494,9 +495,6 @@
         <%= form.button :submit, "Save Progress", class: "btn btn-primary navbar-btn", :id => "save_progress"  %>
         <%= form.button :submit, "Testing Complete", data: { disable_with: false }, class: "btn btn-info navbar-btn" %>
         <%= submit_tag("Discard Changes", { :name => 'reset', :id => 'reset', :type => 'reset', :class => 'btn btn-danger navbar-btn'}) %>
-      </div>
-      <div style="margin-left:-27%; width:133px; height:34px;">
-        <%= form.input :lot_complete, as: :select, collection: ["Complete", "In Progress", "Pending"], label: false%>
       </div>
   </div>
   <% end %>

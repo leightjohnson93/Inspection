@@ -49,6 +49,14 @@ $(`#job_annular_sample_${i}`).change(function() {
 });
 }
 
+$("#job_lot_complete_start").on("input", function() {
+  $("#job_lot_complete_end").val(this.value);
+});
+
+$("#job_lot_complete_end").on("input", function() {
+  $("#job_lot_complete_start").val(this.value);
+});
+
 
 });
 
