@@ -495,7 +495,9 @@
         <%= form.button :submit, "Testing Complete", data: { disable_with: false }, class: "btn btn-info navbar-btn" %>
         <%= submit_tag("Discard Changes", { :name => 'reset', :id => 'reset', :type => 'reset', :class => 'btn btn-danger navbar-btn'}) %>
       </div>
-      <div style="margin-left:-27%; width:133px; height:34px;"><%= form.input :lot_complete, as: :select, collection: ["Complete", "In Progress", "Pending"], label: false%></div>
+      <div style="margin-left:-27%; width:133px; height:34px;">
+        <%= form.input :lot_complete, as: :select, collection: ["Complete", "In Progress", "Pending"], label: false%>
+      </div>
   </div>
   <% end %>
 

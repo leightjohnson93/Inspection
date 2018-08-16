@@ -204,7 +204,7 @@ var circular_machine_initial = $("#job_circular_machine_initial").val();
 
 initial_reading = [];
 for (let i = 0; i < 5; i++) {
-  initial_reading[i] = $(`#job_reading_initial_${i}`).val();
+  initial_reading[i] = $(`#job_reading_initial_${i+1}`).val();
 }
 
 var annular_initial_1 = $("#job_annular_initial_1").val();
