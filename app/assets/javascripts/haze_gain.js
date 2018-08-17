@@ -1,5 +1,12 @@
 $(document).on('turbolinks:load',function(){
 
+if ($('#searchinput').val() == "") {
+  $('#searchclear').hide();
+} else {
+  $('#searchclear').show();
+};
+
+
 $('#job_haze_abraded_1').change(function() {
     haze_gain_1();
 

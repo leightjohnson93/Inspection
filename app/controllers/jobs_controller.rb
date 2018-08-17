@@ -1,7 +1,6 @@
 class JobsController < ApplicationController
   def index
     @q = Job.ransack(params[:q])
-    #@q.build_condition
     @jobs = @q.result
 
     respond_to do |format|

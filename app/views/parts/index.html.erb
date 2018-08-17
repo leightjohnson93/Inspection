@@ -5,8 +5,31 @@
 .btn:hover {
   background-color:#cbdb2a
 }
+
 .btn:focus {
   background-color:#cbdb2a
+}
+
+#searchclear {
+    position: absolute;
+    right: 23px;
+    top: 0;
+    bottom: 6px;
+    height: 14px;
+    margin: auto;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+#searchclear:hover {
+    color: #cbdb2a;
+    text-decoration: none;
+}
+
+#searchclear:focus {
+    color: #cbdb2a;
+    text-decoration: none;
 }
 </style>
 </head>
@@ -22,35 +45,38 @@
 <div class="form-group well" style="border:none; margin-left:-15px">
   <%= search_form_for @q do |form| %>
   <div class=row>
-    <div class=col-3><%= form.search_field :part_or_description_or_shape_or_coating_or_color_or_mfg, :class => "form-control" %></div>
-    <div class=col><%= form.submit :class => "btn btn-dark" %></div>
+    <div class="btn-group col-3">
+      <%= form.search_field :part_or_description_or_shape_or_coating_or_color_or_mfg_cont, :class => "form-control", :id => "searchinput", :type => "search" %>
+      <%= link_to "", request.path, :class => "glyphicon glyphicon-remove-circle", :id => "searchclear" %>
+    </div>
+    <div class=col-1><%= form.submit :class => "btn btn-dark" %></div>
   </div>
   <% end %>
 </div>
 
 <table class="table table-sm table-striped" style=margin-top:-20px>
-<tr>
-  <th><%= sort_link @q, :part, "Part" %></th>
-  <th><%= sort_link @q, :description, "Description" %></th>
-  <th><%= sort_link @q, :shape, "Shape"  %></th>
-  <th><%= sort_link @q, :color, "Color"  %></th>
-  <th><%= sort_link @q, :coating, "Coating" %></th>
-  <th><%= sort_link @q, :mfg, "Manufacturer" %></th>
-  <th>Actions<th>
-</tr>
-<% @parts.each do |part| %>
-<tr>
-  <td><%= link_to part.id, edit_part_path(part) %></td>
-  <td><%= part.description %></td>
-  <td><%= part.shape %></td>
-  <td><%= part.color %></td>
-  <td><%= part.coating %></td>
-  <td><%= part.mfg %></td>
-  <td width="4%"><div>
-    <!-- <%= link_to 'Edit', edit_part_path(part), class: 'btn btn-dark btn-xs' %> -->
-    <%= link_to 'Delete', part, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark btn-xs' %>
-  </div></td>
-</tr>
+  <tr>
+    <th><%= sort_link @q, :part, "Part" %></th>
+    <th><%= sort_link @q, :description, "Description" %></th>
+    <th><%= sort_link @q, :shape, "Shape"  %></th>
+    <th><%= sort_link @q, :color, "Color"  %></th>
+    <th><%= sort_link @q, :coating, "Coating" %></th>
+    <th><%= sort_link @q, :mfg, "Manufacturer" %></th>
+    <th>Actions<th>
+  </tr>
+  <% @parts.each do |part| %>
+  <tr>
+    <td><%= link_to part.id, edit_part_path(part) %></td>
+    <td><%= part.description %></td>
+    <td><%= part.shape %></td>
+    <td><%= part.color %></td>
+    <td><%= part.coating %></td>
+    <td><%= part.mfg %></td>
+    <td width="4%"><div>
+      <!-- <%= link_to 'Edit', edit_part_path(part), class: 'btn btn-dark btn-xs' %> -->
+      <%= link_to 'Delete', part, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark btn-xs' %>
+    </div></td>
+  </tr>
 <% end %>
 </table>
 

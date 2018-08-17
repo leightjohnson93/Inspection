@@ -3,7 +3,6 @@ class PartsController < ApplicationController
 
   def index
     @q = Part.ransack(params[:q])
-    #@q.build_condition
     @parts = @q.result
   end
 
