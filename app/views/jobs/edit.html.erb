@@ -42,7 +42,7 @@
       <div class="col"><%= form.input :lot_quantity%></div>
       <div class="col"><%= form.input :test_quantity%></div>
       <div class="col"><%= form.input :bin%></div>
-      <div class="col"><%= form.input :lot_complete, as: :select, collection: ["Complete", "In Progress", "Pending"],include_blank: false, input_html: { id: "job_lot_complete_start" } %></div>
+      <div class="col"><%= form.input :lot_complete, as: :select, collection: ["Pending", "In Progress", "Complete"], include_blank: false, input_html: { id: "job_lot_complete_start" } %></div>
     </div>
   </div>
   </div>
@@ -255,6 +255,7 @@
           <%= form.input :"annular_machine_final", placeholder: "Annular Open", label: false%>
           <%= form.input :"circular_machine_final", placeholder: "Circular Open", label: false%>
         </div>
+        <div class="col-2"><%= form.input :sand, as: :select, collection: ["Sub-Angular", "Round Wedron", "Aluminium Oxide"], include_blank: false %></div>
       </div>
     <div class='row form-group'>
       <% (1..5).each do |n| %>
@@ -484,7 +485,7 @@
       <div class='col'><%= form.input :"receiver" %></div>
       <div class='col'><%= form.input :"mrr_id", placeholder: "If Applicable" %></div>
       <div class='col'><%= form.input :qc_int %></div>
-      <div class='col'><%= form.input :lot_complete, as: :select, collection: ["Complete", "In Progress", "Pending"], include_blank: false, input_html: { id: "job_lot_complete_end" }%></div>
+      <div class='col'><%= form.input :lot_complete, as: :select, collection: ["Pending", "In Progress", "Complete"], include_blank: false, input_html: { id: "job_lot_complete_end" }%></div>
     </div>
   </div>
   </div>
