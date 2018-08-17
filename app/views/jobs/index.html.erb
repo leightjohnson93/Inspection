@@ -51,7 +51,7 @@
       <%= link_to "", request.path, :class => "glyphicon glyphicon-remove-circle", :id => "searchclear" %>
     </div>
     <div class=col-1><%= form.submit :class => "btn btn-dark" %></div>
-  </div>
+</div>
   <% end %>
 </div>
 
@@ -83,8 +83,8 @@
     </tr>
   <% end %>
 </table>
-
-<%= link_to "Export Data to Excel", jobs_path(format: "xlsx") %>
+<div class=row><%= paginate @jobs, :theme => 'twitter-bootstrap-3' %></div>
+<div class=row><%= link_to "Export Data to Excel", jobs_path(format: "xlsx") %></div>
 </div>
 </body>
 </html>

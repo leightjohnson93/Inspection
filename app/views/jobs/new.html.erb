@@ -27,7 +27,6 @@
     <legend>Manufacturing</legend>
     <div class="row form-group">
       <div class="col"><%= form.label :id%><%= form.text_field :id, class: 'form-control', placeholder: "Exclude 'WV'"%></div>
-      <div class="col"><%= form.label :line, "Release/Line"%><%= form.text_field :line, class: 'form-control', placeholder: "If multiple"%></div>
       <div class="col"><%= form.label :part_id%><%= form.text_field :part_id, class: 'form-control'%></div>
       <div class="col"><%= form.label :coat_date, "Coating Date"%><%= form.date_field :coat_date, class: 'form-control'%></div>
       <div class="col"><%= form.label :coat_time, "Coating Time"%><%= form.time_field :coat_time, class: 'form-control'%></div>
@@ -37,8 +36,10 @@
       <div class="col"><%= form.label :lot_quantity, "Lot Quantity"%><%= form.text_field :lot_quantity, class: 'form-control'%></div>
       <div class="col"><%= form.label :test_quantity, "Sample Quantity" %><%= form.text_field :test_quantity, class: 'form-control'%></div>
       <div class="col"><%= form.label :bin, "Bin/Box Count"%><%= form.text_field :bin, class: 'form-control'%></div>
-      <div class="col"><%= form.label :lot_complete, "Status"%><%= form.text_field :lot_complete, class: 'form-control'%></div>
-      <div class="col" style="padding-top: 24px"><%= form.submit "Save", class: "btn btn-primary btn-block", :id => "save"%></div>
+      <div class="col"><%= form.label :lot_complete, "Status"%><%= form.select :lot_complete, [["Pending", "Pending"], ["In Progress", "In Progress"], ["Complete", "Complete"]], {class: "form-control"}, class: "form-control"%></div>
+    </div>
+    <div class=row>
+      <div class="col-3"><%= form.submit "Save", class: "btn btn-primary btn-block", :id => "save"%></div>
     </div>
   </div>
   <% end %>

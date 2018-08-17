@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   def index
     @q = Job.ransack(params[:q])
     @jobs = @q.result
-
+    @jobs = @jobs.order('created_at DESC').page(params[:page]).per(15)
     respond_to do |format|
       format.html
       format.xlsx
@@ -24,13 +24,14 @@ class JobsController < ApplicationController
     calculate_test_quantities
     calculate_imbalance
     calculate_prismatic_power
+    create_script
   end
 
   def create
     @job = Job.new(job_params)
     if @job.save
       flash[:success] = 'Lot was successfully created.'
-      redirect_to @job
+      redirect_to edit_job_path(@job)
     else
       flash[:danger] = 'There was a problem creating the Lot.'
       render 'new'

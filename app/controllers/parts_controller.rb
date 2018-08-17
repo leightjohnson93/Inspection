@@ -4,6 +4,7 @@ class PartsController < ApplicationController
   def index
     @q = Part.ransack(params[:q])
     @parts = @q.result
+    @parts = @parts.order('created_at DESC').page(params[:page]).per(50)
   end
 
   def new

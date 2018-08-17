@@ -72,3 +72,4 @@ gem 'axlsx_rails'
 
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
