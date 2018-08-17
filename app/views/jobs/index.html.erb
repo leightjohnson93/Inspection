@@ -9,6 +9,7 @@
 .btn:focus {
   background-color:#cbdb2a
 }
+
 </style>
 </head>
 <body>
@@ -20,15 +21,24 @@
   <li><%= link_to 'New Part', new_part_path %></li>
 </ul>
 
-<table class="table table-sm table-striped">
+<div class="form-group well" style="border:none; margin-left:-15px">
+  <%= search_form_for @q do |form| %>
+  <div class=row>
+    <div class=col-3><%= form.search_field :id_or_part_id_or_lot_complete_or_part_description_cont, :class => "form-control" %></div>
+    <div class=col><%= form.submit :class => "btn btn-dark" %></div>
+  </div>
+  <% end %>
+</div>
+
+<table class="table table-sm table-striped" style=margin-top:-20px>
   <tr>
-    <th><%= "Lot" %></th>
-    <th><%= "Part" %></th>
-    <th><%= "Description" %></th>
-    <th><%= "Lot Quantity" %></th>
-    <th><%= "Test Quantity" %></th>
-    <th><%= "Create Date" %></th>
-    <th><%= "Status" %></th>
+    <th><%= sort_link @q, :id, "Lot" %></th>
+    <th><%= sort_link @q,:part_id, "Part" %></th>
+    <th><%= sort_link @q,:description, "Description" %></th>
+    <th><%= sort_link @q,:lot_quantity, "Lot Quantity" %></th>
+    <th><%= sort_link @q,:test_quantity, "Test Quantity" %></th>
+    <th><%= sort_link @q,:created_at, "Create Date" %></th>
+    <th><%= sort_link @q,:lot_complete, "Status" %></th>
     <th>Actions</th>
   </tr>
   <% @jobs.each do |job| %>

@@ -2,7 +2,9 @@ class PartsController < ApplicationController
   before_action :find_part, except: [:index, :new, :create]
 
   def index
-    @parts = Part.all
+    @q = Part.ransack(params[:q])
+    #@q.build_condition
+    @parts = @q.result
   end
 
   def new

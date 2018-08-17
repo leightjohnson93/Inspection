@@ -1,6 +1,9 @@
 class JobsController < ApplicationController
   def index
-    @jobs = Job.all
+    @q = Job.ransack(params[:q])
+    #@q.build_condition
+    @jobs = @q.result
+
     respond_to do |format|
       format.html
       format.xlsx
