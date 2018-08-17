@@ -19,7 +19,7 @@
 <% end %>
 
 <%= simple_form_for @job do |form| %>
-  <div class="form-group well" style="margin-top:2%">
+  <div class="form-group well" style="margin-top:2%;">
   <legend>
     <div class="row">
       <div class="col-xs-8 text-left">
@@ -44,6 +44,7 @@
       <div class="col"><%= form.input :bin%></div>
       <div class="col"><%= form.input :lot_complete, as: :select, collection: ["Pending", "In Progress", "Complete"], include_blank: false, input_html: { id: "job_lot_complete_start" } %></div>
     </div>
+    <%= link_to "Generate Test Folder", "/Initialize.vbs", download: @folder_name %>
   </div>
   </div>
   <% if @quantity_t1 %>

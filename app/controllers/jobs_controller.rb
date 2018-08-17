@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   def index
-    @jobs = smart_listing_create(:jobs, Job.all.joins(:part), partial: "jobs/list", page_sizes:[10000, 1000], default_sort: {updated_at: "desc"})
+    @jobs = Job.all
     respond_to do |format|
       format.html
       format.xlsx

@@ -19,7 +19,31 @@
     <li><%= link_to 'New Part', new_part_path %></li>
 </ul>
 
-<%= smart_listing_render(:parts) %>
+<table class="table table-sm table-striped">
+<tr>
+  <th><%= "Part"  %></th>
+  <th><%= "Description" %></th>
+  <th><%= "Shape"  %></th>
+  <th><%= "Color"  %></th>
+  <th><%= "Coating" %></th>
+  <th><%= "Manufacturer" %></th>
+  <th>Actions<th>
+</tr>
+<% @parts.each do |part| %>
+<tr>
+  <td><%= link_to part.id, edit_part_path(part) %></td>
+  <td><%= part.description %></td>
+  <td><%= part.shape %></td>
+  <td><%= part.color %></td>
+  <td><%= part.coating %></td>
+  <td><%= part.mfg %></td>
+  <td width="4%"><div>
+    <!-- <%= link_to 'Edit', edit_part_path(part), class: 'btn btn-dark btn-xs' %> -->
+    <%= link_to 'Delete', part, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark btn-xs' %>
+  </div></td>
+</tr>
+<% end %>
+</table>
 
 
 </body>
