@@ -337,4 +337,15 @@ ActiveRecord::Schema.define(version: 2018_08_17_134913) do
     t.index ["id"], name: "sqlite_autoindex_jobs_1", unique: true
   end
 
+  create_table "parts", force: :cascade do |t|
+    t.string "part"
+    t.string "description"
+    t.string "shape"
+    t.string "color"
+    t.string "coating"
+    t.string "mfg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
