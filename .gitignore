@@ -26,8 +26,8 @@
 /public/assets
 .byebug_history
 
-/public/Initialize.vbs
+public/Initialize.vbs
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-public/Initialize.vbs
+

@@ -1,4 +1,4 @@
-TestFolderName = Trim(Split(Left("20180818 Base 6.8 Sphr Blank GF-8 AF - WV 7 Part 2.vbs", Len("20180818 Base 6.8 Sphr Blank GF-8 AF - WV 7 Part 2.vbs")-4),"(")(0))
+TestFolderName = Trim(Split(Left("20180818 SF Lens Smk Max AF Sm CH - WV 3 Part 2.vbs", Len("20180818 SF Lens Smk Max AF Sm CH - WV 3 Part 2.vbs")-4),"(")(0))
 TestQuantity = 4
 
 If InStr(TestFolderName, "WV") Then

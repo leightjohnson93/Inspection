@@ -42,8 +42,10 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     if @job.update(job_params)
       if params[:commit] == "Testing Complete"
+        @job.lot_complete = "Complete"
+        @job.save
         flash[:success] = 'Test data successfully saved.'
-        redirect_to @job
+        redirect_to jobs_path
       elsif params[:commit] == "Save Progress"
         flash[:success] = 'Test data successfully saved.'
         redirect_to edit_job_path(@job)
@@ -56,6 +58,7 @@ class JobsController < ApplicationController
       render 'edit'
     end
   end
+
   def destroy
     @job = Job.find(params[:id])
     @job.destroy
