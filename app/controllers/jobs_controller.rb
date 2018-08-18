@@ -62,6 +62,7 @@ class JobsController < ApplicationController
   def destroy
     @job = Job.find(params[:id])
     @job.destroy
+    flash[:success] = "Lot #{@job.id} deleted."
     redirect_to jobs_path
   end
 
