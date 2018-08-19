@@ -1,8 +1,7 @@
 wb = xlsx_package.workbook
 
 wb.add_worksheet(name: "QC Lot Data") do |sheet|
-  #this is the head row of spreadsheet
-  sheet.add_row([:Date, :WV, "Release/Line", "Sub Group", "Receiver", "Part",
+  sheet.add_row(["Date", "Lot", "Sub Group", "Receiver", "Part",
     "Description", "Shape", "Color", "Coating", "Manufacturer", "Lot Size",
     "Sample Size", "Sample Pull", "MRR", "UV Type", "Illuminant", "VLT S1",
     "VLT S2", "VLT S3", "VLT S4", "VLT S5", "VLT S6", "Neutrality S1",
@@ -41,11 +40,10 @@ wb.add_worksheet(name: "QC Lot Data") do |sheet|
     "EN Abras S3", "EN Abras S4", "EN Abras S5", "EN Abras S6", "EN Abras S7", "EN Abras S8",
     "Vis Inspec", "Vis Assess", "Mark Insp", "Mark Assess", "Dimensions", "Dimensions Assess",
     "Wavelength 1", "OD1 S1", "OD1 S2", "OD1 S3", "OD1 S4", "OD1 S5", "OD1 S6",
-    "Wavelength 2", "OD1 S2", "OD2 S2", "OD2 S3", "OD2 S4", "OD2 S5", "OD2 S6",
-    "MFG Tech", "QC Tech"])
+    "Wavelength 2", "OD1 S2", "OD2 S2", "OD2 S3", "OD2 S4", "OD2 S5", "OD2 S6", "QC Tech"])
 
   @jobs.each do |job|
-    sheet.add_row([job.updated_at, job.id, job.line, "", job.receiver, job.part.part,
+    sheet.add_row([job.updated_at, job.id, "", job.receiver, job.part.part,
       job.part.description, job.part.shape, job.part.color, job.part.coating,
       job.part.mfg, job.lot_quantity, job.test_quantity, "", job.mrr_id, "",
       job.illuminate, job.vlt_1, job.vlt_2, job.vlt_3, job.vlt_4, job.vlt_5, job.vlt_6,
@@ -72,8 +70,7 @@ wb.add_worksheet(name: "QC Lot Data") do |sheet|
       job.en_abrasion_1, job.en_abrasion_2, job.en_abrasion_3, job.en_abrasion_4, job.en_abrasion_5, job.en_abrasion_6, job.en_abrasion_7, job.en_abrasion_8,
       job.visual_inspection, job.visual_inspection_assess, job.markings, job.markings_assess, job.dimensions, job.dimensions_assess,
       job.nm_1, job.od_1_nm_1, job.od_2_nm_1, job.od_3_nm_1, job.od_4_nm_1, job.od_5_nm_1, job.od_6_nm_1,
-      job.nm_2, job.od_1_nm_2, job.od_2_nm_2, job.od_3_nm_2, job.od_4_nm_2, job.od_5_nm_2, job.od_6_nm_2,
-      job.mfg_int, job.qc_inital])
+      job.nm_2, job.od_1_nm_2, job.od_2_nm_2, job.od_3_nm_2, job.od_4_nm_2, job.od_5_nm_2, job.od_6_nm_2, job.qc_inital])
   end
-  #sheet.add_table "A1:GV9999", :name => 'Data', :style_info => { :name => "TableStyleMedium23" }
+  #sheet.add_table "A1:HH#{@jobs.length+1}", :name => 'Data'
 end
