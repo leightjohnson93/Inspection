@@ -5,14 +5,12 @@ class JobsController < ApplicationController
     @jobs = @jobs.order('created_at DESC').page(params[:page]).per(15)
     respond_to do |format|
       format.html
-      format.xlsx
+      format.xlsx { response.headers['Content-Disposition'] = 'attachment; filename="QC Lens Data.xlsx"' }
     end
   end
 
   def show
     @job = Job.find(params[:id])
-    calculate_test_quantities
-    create_script
   end
 
   def new
@@ -42,8 +40,10 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     if @job.update(job_params)
       if params[:commit] == "Testing Complete"
+        @job.lot_complete = "Complete"
+        @job.save
         flash[:success] = 'Test data successfully saved.'
-        redirect_to @job
+        redirect_to jobs_path
       elsif params[:commit] == "Save Progress"
         flash[:success] = 'Test data successfully saved.'
         redirect_to edit_job_path(@job)
@@ -56,9 +56,11 @@ class JobsController < ApplicationController
       render 'edit'
     end
   end
+
   def destroy
     @job = Job.find(params[:id])
     @job.destroy
+    flash[:success] = "Lot #{@job.id} deleted."
     redirect_to jobs_path
   end
 

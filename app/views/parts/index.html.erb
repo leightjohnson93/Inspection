@@ -34,7 +34,6 @@
 </style>
 </head>
 <body>
-<div class="container">
   <ul class="nav nav-tabs" role="tablist">
     <li><%= link_to 'Lots View', jobs_path %></li>
     <li><%= link_to 'New Lot', new_job_path %></li>
@@ -42,7 +41,7 @@
     <li><%= link_to 'New Part', new_part_path %></li>
 </ul>
 
-<div class="form-group well" style="border:none; margin-left:-15px">
+<div class="form-group well" style="border-top:none; border-bottom:none; border-right:none; border-radius:0; background-color:white;">
   <%= search_form_for @q do |form| %>
   <div class=row>
     <div class="btn-group col-3">
