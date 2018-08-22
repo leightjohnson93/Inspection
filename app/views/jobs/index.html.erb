@@ -83,7 +83,7 @@
   <% end %>
 </table>
 <div style=float:right><%= "Total Lots: #{Job.all.length}" %></div>
-<div class=row><%= paginate @jobs, :theme => 'twitter-bootstrap-3' %></div>
-<div class=row><%= link_to "Export Data to Excel", jobs_path(format: "xlsx") %></div>
+<div><%= paginate @jobs, :theme => 'twitter-bootstrap-3' %></div>
+<div><%= link_to "Export Data to Excel", jobs_path(format: "xlsx") %></div>
 </body>
 </html>
