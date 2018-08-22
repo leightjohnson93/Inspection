@@ -2,45 +2,45 @@
 <html>
 <head>
 <style>
-.btn:hover {
-  background-color:#cbdb2a
-}
+  .btn:hover {
+    background-color:#cbdb2a
+  }
 
-.btn:focus {
-  background-color:#cbdb2a
-}
+  .btn:focus {
+    background-color:#cbdb2a
+  }
 
-#searchclear {
-    position: absolute;
-    right: 23px;
-    top: 0;
-    bottom: 6px;
-    height: 14px;
-    margin: auto;
-    font-size: 20px;
-    cursor: pointer;
-    color: #333;
-}
+  #searchclear {
+      position: absolute;
+      right: 23px;
+      top: 0;
+      bottom: 6px;
+      height: 14px;
+      margin: auto;
+      font-size: 20px;
+      cursor: pointer;
+      color: #333;
+  }
 
-#searchclear:hover {
-    color: #cbdb2a;
-    text-decoration: none;
-}
+  #searchclear:hover {
+      color: #cbdb2a;
+      text-decoration: none;
+  }
 
-#searchclear:focus {
-    color: #cbdb2a;
-    text-decoration: none;
-}
+  #searchclear:focus {
+      color: #cbdb2a;
+      text-decoration: none;
+  }
 
 </style>
 </head>
 <body>
   <ul class="nav nav-tabs" role="tablist">
-  <li class="active"><%= link_to 'Lots View', jobs_path %></li>
-  <li><%= link_to 'New Lot', new_job_path %></li>
-  <li><%= link_to 'Parts View', parts_path %></li>
-  <li><%= link_to 'New Part', new_part_path %></li>
-</ul>
+    <li class="active"><%= link_to 'Lots View', jobs_path %></li>
+    <li><%= link_to 'New Lot', new_job_path %></li>
+    <li><%= link_to 'Parts View', parts_path %></li>
+    <li><%= link_to 'New Part', new_part_path %></li>
+  </ul>
 
 <div class="form-group well" style="border-top:none; border-bottom:none; border-right:none; border-radius:0; background-color:white;">
   <%= search_form_for @q do |form| %>
@@ -50,19 +50,19 @@
       <%= link_to "", request.path, :class => "glyphicon glyphicon-remove-circle", :id => "searchclear" %>
     </div>
     <div class=col-1><%= form.submit :class => "btn btn-dark" %></div>
-</div>
+  </div>
   <% end %>
 </div>
 
 <table class="table table-sm table-striped" style=margin-top:-20px>
   <tr>
-    <th><%= sort_link @q, :id, "Lot" %></th>
-    <th><%= sort_link @q,:part_id, "Part" %></th>
-    <th><%= sort_link @q,:description, "Description" %></th>
-    <th><%= sort_link @q,:lot_quantity, "Lot Quantity" %></th>
-    <th><%= sort_link @q,:test_quantity, "Test Quantity" %></th>
-    <th><%= sort_link @q,:created_at, "Create Date" %></th>
-    <th><%= sort_link @q,:lot_complete, "Status" %></th>
+    <th><%= sort_link @q, :id, "Lot" %>                     </th>
+    <th><%= sort_link @q,:part_id, "Part" %>                </th>
+    <th><%= sort_link @q,:description, "Description" %>     </th>
+    <th><%= sort_link @q,:lot_quantity, "Lot Quantity" %>   </th>
+    <th><%= sort_link @q,:test_quantity, "Test Quantity" %> </th>
+    <th><%= sort_link @q,:created_at, "Create Date" %>      </th>
+    <th><%= sort_link @q,:lot_complete, "Status" %>         </th>
     <th>Actions</th>
   </tr>
   <% @jobs.each do |job| %>
@@ -77,12 +77,13 @@
       <td width="4%"><div>
         <!-- <%= link_to 'Show', job, class: 'btn btn-dark btn-xs' %> -->
         <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark btn-xs' %>
-      </div>
+        </div>
       </td>
     </tr>
   <% end %>
 </table>
+<div style=float:right><%= "Total Lots: #{Job.all.length}" %></div>
 <div class=row><%= paginate @jobs, :theme => 'twitter-bootstrap-3' %></div>
-<div class=row><%= link_to "Export Data to Excel (#{Job.all.length} Lots)", jobs_path(format: "xlsx") %></div>
+<div class=row><%= link_to "Export Data to Excel", jobs_path(format: "xlsx") %></div>
 </body>
 </html>
