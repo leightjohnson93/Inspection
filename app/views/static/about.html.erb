@@ -1,22 +1,154 @@
+<style>
+#toc_container {
+    background: #f9f9f9 none repeat scroll 0 0;
+    border: 1px solid #aaa;
+    display: table;
+    font-size: 95%;
+    margin-bottom: 1em;
+    padding: 20px;
+    width: auto;
+}
+.toc_title {
+    font-weight: 700;
+    text-align: center;
+}
+#toc_container li, #toc_container ol, #toc_container ol li{
+    list-style: outside none none !important;
+}
+</style>
+
 <ul class="nav nav-tabs" role="tablist">
   <li><%= link_to 'Lots View', jobs_path %></li>
   <li><%= link_to 'New Lot', new_job_path %></li>
-  <li><%= link_to 'Parts View', parts_path %></li>
+  <li ><%= link_to 'Parts View', parts_path %></li>
   <li><%= link_to 'New Part', new_part_path %></li>
 </ul>
 
-<h1>About this Application</h1>
+<h2>About</h2>
   <p>
     The Lens Testing Application offers a comprehensive solution for Lens Testing.
     It provides a single online location for conducting and recording the many tests that Revision Lenses require.
     It aims to reduce the amount of time spent setting up test, recording data, analyzing data, and entering the data into a database,
     so that you can spend your time testing and evaluating product.
   </p>
-  <h2>Table of Contents<h2>
-    <h4>
-      <ul>
-        <li><a href="#creation">Creating a Lot</a></li>
-        <li><a href="#testing">Testing a Lot</a></li>
-        <li><a href="#completion">Completing a Lot</a></li>
-        <li><a href="#alert">Automatic Lot Generation</a></li>
-    </h4>
+
+<div id=toc_container>
+  <p class=toc_title>Contents</p>
+      <ol>
+        <li><a href="#use">Lens Testing</a></li>
+        <li><a href="#alert">Automatic Lot Creation</a></li>
+      </ol>
+</div>
+
+<h2 id="use">Lens Testing</h2>
+  <p>
+    This application was built and tested for Google Chrome.  It may work on others browsers but it is
+    highly recommended that you use this website with Chrome.  You can download this
+    <%= link_to "shortcut" %> that will launch the website in Chrome, regardless of your default browser.
+  </p>
+  <h3 id="creation">Creation</h3>
+    <p>
+      If the lot you wish to test has not already been created automatically, you must add it manually.  
+      Click the “New Lot” link near the top of the page.  Enter the information from the F-63 of the lens 
+      lot that you wish to test.  Take care when entering the lot number, this is the identifier that will allow 
+      Excel to send data to the app. The lot number should remain exactly the same every time it is entered. 
+      (Excel worksheets, ROMI Optics, Lens Testing). Set the status to “In Progress”.  Once the lot has been saved
+      you will be sent to the main testing page. Click the “Generate Test Folder” link to create a properly 
+      named test folder.  You are now ready to start collecting data.
+    </p>
+    <p>
+      If the part number you are trying to test does not exist or contains incorrect information, a part can be added or edited in the “Parts View”.
+    </p>
+  <h3 id="testing">Testing</h3>
+    <p>
+      Many tests have been integrated into the website in some way.  For some tests, the data is sent to site with the 
+      click of a button from an excel sheet.  For others, the logic has been completely integrated into the site.  The 
+      testing page separates tests into blocks that can be opened and closed to reduce screen clutter and scrolling.
+    </p>
+    <p>
+      Fields highlighted in green have been saved to database, and any data that is uploaded by excel is saved automatically.  
+      After manually entering data remember to click “Save progress” to save your data. It is recommended to save after each test block has been filled out.  
+      Once saved you can leave the page and come back later.
+    </p>
+    <h4>Observational Tests</h4>
+      </p>
+        Visual Inspection, Fit, Adhesion, etc. have been placed together at the beginning.  They have information about test sample quantities,
+        a field for observations, and a dropdown for assessment.
+      </p>
+    <h4>Transmittance</h4>
+      <p>
+        Use the WinLab “VLT_UV Scan – Add 1% Attenuator” method when starting a new scan on the spectrophotometer.
+      </p>
+      <p>
+        The <%= link_to "VLT Workbook" %> will allow analysis of the data as well as a means to upload it to the app. Ensure the correct illuminate is selected and click "upload". 
+        It will prompt you for the WV; enter it exactly how it appears in the app.
+      </p>
+    <h4>Optical Density</h4>
+      <p>
+        For laser lenses there is a test block that contains fields for a wavelength and optical density at that wavelength.
+        It allows for data collection at two distinct wavelengths.
+      </p>
+    <h4>Diffusion of Light & EN Abrasion</h4>
+      <p>
+        The logic for these tests have been completely integrated into the app. Excel is not required to complete these tests.
+      </p>
+    <h4>Optics</h4>
+      <p>
+        The <%= link_to "Optics Workbook" %> contains a sheet where you can import optics data from the ROMI database and upload it to the site.  
+        In order for this to work, the WV must be entered exactly the same across all applications (ROMI, Excel, and Lens Testing).  
+      <p>
+        In the Optical Aberrations application, the first text field contains the sample ID; name this however you want.
+        The next field is for the WV; remember to omit “WV” and to click “Save to Database” after every sample.  
+        Save a screenshot and record only the resolving power.  Once all samples have been tested, navigate to the “Data” tab of the excel workbook.  
+        Click “Import”, and the optics data should appear.  Click “Upload” to send the data online.
+      </p>
+    <h4>Anti-Fog</h4>
+      <p>
+        The <%= link_to "Fog Workbook" %> contains a sheet that will analyze the fog curve and calculate time to fog.
+        Click run once all the samples have been tested and the results will appear.  Click "Upload" to send the data online.
+        Relative Humidity must still be entered manually.
+      </p>
+    <h4>Ballistics</h4>
+      <p>
+        This block allows for results to be recorded once ballistic testing has been conducted.
+        It has fields for three different ballistic methods, each with fields for samples impacted, spalls, fractures, penetrations, results, and assessment.
+      </p>
+    <h3 id="release">Release</h3>
+      <p>
+        Once all required tests have been conducted, release the lot in SyteLine as you normally would.  A receiver number is required to complete the lot.
+        Clicking "Testing Complete" will automatically set the status to Complete.  All that remains is physically releasing the lot in the warehouse.
+      </p>
+
+<h2 id="alert">Automatic Lot Creation</h2>
+  <p>
+    A macro in outlook can be created that generates new lots from the priority lot tracker whenever they are added.
+    This reduces time spent entering data from the F-63 into the app, and cuts down on transcription errors.
+  </p>
+    <ol>
+      <li>Create an email alert on the <a href=https://portal.revisionmilitary.com/optics/mm/_layouts/SubChoos.aspx>Priority Lot Tracker</a> so that every time a new lot is created an alert is sent to your email.</li>
+      <li>Create a new Outlook Inbox subfolder named "Lot Tracker"</li>
+      <li>Create a new rule that moves emails from “Materials Management” to the “Lot Tracker” folder.
+      <li>Download this <%= link_to "VBA Module" %></li>
+      <li>In Outlook press "Alt" + "F11" to open the Developer Console.</li>
+      <li>In the taskpane on the left right click, select "Import Module", and navigate to the file you downloaded in step 4.</li>
+      <li>Close the Developer Console, right click the task bar, and select "Customize Taskbar".</li>
+      <li>Add the module that we just created to the Taskbar.</li>
+      <li>Select: file, options, trust center, and allow macros to run.</li>
+    </ol>
+    </p>
+      The new button we just created in the top left of Outlook will attempt to create new entries in the Lens Testing App based on the contents of the "Lot Tracker" folder.
+      The app will not allow multiple entries to be created; if the button does not appear to be working it is likely because the lot already exists.
+    <p>
+
+    <br><center><i><b>Developed by Leight Johnson for Revision Military</b></i></center>
+        <center><i>Application built with Ruby on Rails</i></center>
+    </br>
+      
+      
+
+
+
+
+
+
+
