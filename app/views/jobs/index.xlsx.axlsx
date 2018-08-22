@@ -42,7 +42,7 @@ wb.add_worksheet(name: "QC Lot Data") do |sheet|
     "Wavelength 1", "OD1 S1", "OD1 S2", "OD1 S3", "OD1 S4", "OD1 S5", "OD1 S6",
     "Wavelength 2", "OD1 S2", "OD2 S2", "OD2 S3", "OD2 S4", "OD2 S5", "OD2 S6", "QC Tech"])
 
-  @jobs.each do |job|
+  Job.all.each do |job|
     sheet.add_row([job.updated_at, job.id, "", job.receiver, job.part.part,
       job.part.description, job.part.shape, job.part.color, job.part.coating,
       job.part.mfg, job.lot_quantity, job.test_quantity, "", job.mrr_id, "",
