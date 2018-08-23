@@ -16,6 +16,6 @@ class BallisticFields < ActiveRecord::Migration[5.2]
     (1..4).each do |n|
       add_column :jobs, "ballistic_penetrations_#{n}", :integers
       add_column :jobs, "ballistic_results_#{n}", :float
-    enda
+    end
   end
 end
