@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_17_134913) do
+ActiveRecord::Schema.define(version: 2018_08_22_231958) do
 
   create_table "items", primary_key: "part", id: :string, force: :cascade do |t|
     t.string "description"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2018_08_17_134913) do
     t.string "fit"
     t.boolean "fit_assess"
     t.float "ballistic_v50"
-    t.boolean "ballistic_assess"
+    t.boolean "ballistic_assess_1"
     t.string "ballistic_method_1"
     t.integer "ballistic_samples_1"
     t.integer "ballistic_fractures_1"
@@ -334,18 +334,26 @@ ActiveRecord::Schema.define(version: 2018_08_17_134913) do
     t.float "prismatic_power_left_6"
     t.float "prismatic_power_right_6"
     t.string "sand"
+    t.string "ballistic_method_3"
+    t.string "ballistic_method_4"
+    t.integer "ballistic_samples_3"
+    t.integer "ballistic_samples_4"
+    t.integer "ballistic_fractures_3"
+    t.integer "ballistic_fractures_4"
+    t.integer "ballistic_spalls_3"
+    t.integer "ballistic_spalls_4"
+    t.boolean "ballistic_assess_2"
+    t.boolean "ballistic_assess_3"
+    t.boolean "ballistic_assess_4"
+    t.integer "ballistic_penetrations_1"
+    t.float "ballistic_results_1"
+    t.integer "ballistic_penetrations_2"
+    t.float "ballistic_results_2"
+    t.integer "ballistic_penetrations_3"
+    t.float "ballistic_results_3"
+    t.integer "ballistic_penetrations_4"
+    t.float "ballistic_results_4"
     t.index ["id"], name: "sqlite_autoindex_jobs_1", unique: true
-  end
-
-  create_table "parts", force: :cascade do |t|
-    t.string "part"
-    t.string "description"
-    t.string "shape"
-    t.string "color"
-    t.string "coating"
-    t.string "mfg"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

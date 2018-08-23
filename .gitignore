@@ -27,7 +27,8 @@
 .byebug_history
 
 public/Initialize.vbs
+config/credentials.yml.enc
+config/environments/production.rb
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-

@@ -34,7 +34,7 @@ For Each Msg In Inbox
         If i = 35 Then CoatTime = Trim(Split(element.innerText, " ", 2)(1))
     Next
     
-    If InStr(WV, "WV") > 0 Then WV = Split(WV, "WV")(1)
+    If InStr(WV, "WV") > 0 Then WV = Trim(Split(WV, "WV")(1))
     
     On Error GoTo ErrHandler
         Set IE = CreateObject("InternetExplorer.Application")
