@@ -444,26 +444,45 @@
       <div class='col'>
         <%= form.input :"ballistic_method_1", placeholder: "Method 1" %>
         <%= form.input :"ballistic_method_2", placeholder: "Method 2", label: false %>
+        <%= form.input :"ballistic_method_3", placeholder: "Method 3", label: false %>
+        <%= form.input :"ballistic_method_4", placeholder: "Method 4", label: false %>
       </div>
       <div class='col'>
         <%= form.input :"ballistic_samples_1", placeholder: "Samples 1" %>
         <%= form.input :"ballistic_samples_2", placeholder: "Samples 2", label: false %>
+        <%= form.input :"ballistic_samples_3", placeholder: "Samples 3", label: false %>
+        <%= form.input :"ballistic_samples_4", placeholder: "Samples 4", label: false %>
       </div>
       <div class='col'>
         <%= form.input :"ballistic_spalls_1", placeholder: "Spalls 1"%>
         <%= form.input :"ballistic_spalls_2", placeholder: "Spalls 2", label: false %>
+        <%= form.input :"ballistic_spalls_3", placeholder: "Spalls 3", label: false %>
+        <%= form.input :"ballistic_spalls_4", placeholder: "Spalls 4", label: false %>
       </div>
       <div class='col'>
         <%= form.input :"ballistic_fractures_1", placeholder: "Fractures 1" %>
         <%= form.input :"ballistic_fractures_2", placeholder: "Fractures 2", label: false %>
+        <%= form.input :"ballistic_fractures_3", placeholder: "Fractures 3", label: false %>
+        <%= form.input :"ballistic_fractures_4", placeholder: "Fractures 4", label: false %>
       </div>
-      <div class='col-2'>
-        <%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%>
-        <%= form.input :ballistic_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: false%>
+      <div class='col'>
+        <%= form.input :"ballistic_penetrations_1", placeholder: "Penetrations 1" %>
+        <%= form.input :"ballistic_penetrations_2", placeholder: "Penetrations 2", label: false %>
+        <%= form.input :"ballistic_penetrations_3", placeholder: "Penetrations 3", label: false %>
+        <%= form.input :"ballistic_penetrations_4", placeholder: "Penetrations 4", label: false %>
       </div>
-    </div>
-    <div class='row'>
-      <div class='col-2'><%= form.input :"ballistic_v50", placeholder: "V50" %></div>
+      <div class='col'>
+        <%= form.input :"ballistic_results_1", placeholder: "V50 1" %>
+        <%= form.input :"ballistic_results_2", placeholder: "V50 2", label: false %>
+        <%= form.input :"ballistic_results_3", placeholder: "V50 3", label: false %>
+        <%= form.input :"ballistic_results_4", placeholder: "V50 4", label: false %>
+      </div>
+      <div class='col'>
+        <%= form.input :ballistic_assess_1, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%>
+        <%= form.input :ballistic_assess_2, as: :select, collection: [['Pass', true],['Fail', false]], label: false%>
+        <%= form.input :ballistic_assess_3, as: :select, collection: [['Pass', true],['Fail', false]], label: false%>
+        <%= form.input :ballistic_assess_4, as: :select, collection: [['Pass', true],['Fail', false]], label: false%>
+      </div>
     </div>
   </div>
   </div>
