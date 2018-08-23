@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+  document.body.addEventListener("keydown", function (event) {
+    if (event.keyCode === 27) {
+        window.location.replace("/jobs/");
+    }
+  });
+</script>
 <style>
   .btn:hover {
     background-color:#cbdb2a
