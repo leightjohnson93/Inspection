@@ -144,7 +144,7 @@ objFSO.copyFolder "V:\QC Vermont\Incoming Lens Inspection\Lens Testing Template"
 
 objFSO.MoveFile TestFolderPath & "\Optics.xlsm", TestFolderPath & "\Optics - " & WV & ".xlsm"
 objFSO.MoveFile TestFolderPath & "\Fog.xlsm", TestFolderPath & "\Fog - " & WV & ".xlsm"
-objFSO.MoveFile TestFolderPath & "\F-96 MCEPS Ballistic Data.xlsx", TestFolderPath & "\F-96 MCEPS Ballistic Data - " & WV & ".xlsx"
+objFSO.MoveFile TestFolderPath & "\Ballistics.xlsm", TestFolderPath & "\Ballistics - " & WV & ".xlsm"
 
 If TestQuantity > 4 Then
 For i = 5 to TestQuantity

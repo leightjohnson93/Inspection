@@ -15,6 +15,10 @@
 #toc_container li, #toc_container ol, #toc_container ol li{
     list-style: outside none none !important;
 }
+
+h4, h3, h2, h1 {
+  margin-top: 30px;
+}
 </style>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -81,7 +85,7 @@
         Use the WinLab “VLT_UV Scan – Add 1% Attenuator” method when starting a new scan on the spectrophotometer.
       </p>
       <p>
-        The <%= link_to "VLT Workbook", "Transmittance.xlsm" %> will allow analysis of both luminous and ultraviolet transmittance data as well as a means to upload it to the app. Ensure the correct illuminate is selected and click "upload".
+        The <%= link_to "VLT Workbook", "Transmittance.xlsm", download: "Transmittance.xlsm" %> will allow analysis of both luminous and ultraviolet transmittance data as well as a means to upload it to the app. Ensure the correct illuminate is selected and click "upload".
         It will prompt you for the WV; enter it exactly how it appears in the app.
       </p>
     <h4>Optical Density</h4>
@@ -91,11 +95,11 @@
       </p>
     <h4>Diffusion of Light & EN Abrasion</h4>
       <p>
-        The logic for these tests have been completely integrated into the app. Excel is not required to complete these tests.
+        The logic for these tests have been completely integrated into the app. Excel is not required to conduct these tests.
       </p>
     <h4>Optics</h4>
       <p>
-        The <%= link_to "Optics Workbook", "Optics.xlsm" %> contains a sheet where you can import optics data from the ROMI database and upload it to the site.
+        The <%= link_to "Optics Workbook", "Optics.xlsm", download: "Optics.xlsm" %> contains a sheet where you can import optics data from the ROMI database and upload it to the site.
         In order for this to work, the WV must be entered exactly the same across all applications (ROMI, Excel, and Lens Testing).
       <p>
         In the Optical Aberrations application, the first text field contains the sample ID; name this however you want.
@@ -105,14 +109,15 @@
       </p>
     <h4>Anti-Fog</h4>
       <p>
-        The <%= link_to "Fog Workbook", "Fog.xlsm" %> contains a sheet that will analyze the fog curve and calculate time to fog.
+        The <%= link_to "Fog Workbook", "Fog.xlsm", download: "Fog.xlsm" %> contains a sheet that will analyze the fog curve and calculate time to fog.
         Click run once all the samples have been tested and the results will appear.  Click "Upload" to send the data online.
         Relative Humidity must still be entered manually.
       </p>
     <h4>Ballistics</h4>
       <p>
-        This block allows for results to be recorded once ballistic testing has been conducted.
-        It has fields for three different ballistic methods, each with fields for samples impacted, spalls, fractures, penetrations, results, and assessment.
+        The <%= link_to "Ballistics Workbook", "Ballistics.xlsm", download: "Ballistics.xlsm" %> contains sheets for recording ballistic data and calculating V50 results.
+        The test block can be filled out after ballistic testing has been conducted.
+        It has fields for four different ballistic methods, each with fields for samples impacted, spalls, fractures, penetrations, results, and assessment.
       </p>
     <h3 id="release">Release</h3>
       <p>
@@ -132,10 +137,10 @@
       <li>Download this <%= link_to "VBA Module", "CreateLot.bas", download: "CreateLot.bas" %>.</li>
       <li>In Outlook press "Alt" + "F11" to open the Developer Console.</li>
       <li>In the taskpane on the left right click, select "Import Module", and navigate to the file you downloaded in step 4.</li>
-      <li>Close the Developer Console, right click the task bar, and select "Customize Taskbar".</li>
-      <li>Add the module that we just created to the Taskbar.</li>
-      <li>Select: file, options, trust center, and allow macros to run.</li>
-      <li>Open Internet Explorer, log into the site, save the password, and quit.  This will allow Outlook access to the site.</li>
+      <li>Close the Developer Console, right click the ribbon in the top left, and select "Customize the Ribbon...".</li>
+      <li>Choose commands from Macros and add Project1.</li>
+      <li>Select: File, Options, Trust Center, Trust Center Settings, Macros Settings, and check Enable all macros.</li>
+      <li>Use your newly created button to generate entries based on the contents of the "Lot Tracker" folder.</li>
     </ol>
     </p>
       The new button we just created in the top left of Outlook will attempt to create new entries in the Lens Testing App based on the contents of the "Lot Tracker" folder.

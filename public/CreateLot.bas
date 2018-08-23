@@ -7,7 +7,7 @@ Dim elements    As Object
 Dim CoatDate    As Date
 Start:
 
-appURL = "https://shrouded-atoll-12007.herokuapp.com/jobs"
+appURL = "http://10.11.40.130:4000/jobs/"
 newURL = appURL & "/new"
 Set myNamespace = Application.GetNamespace("MAPI")
 Set Inbox = myNamespace.GetDefaultFolder(olFolderInbox).Folders("Lot Tracker").Items
