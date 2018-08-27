@@ -438,6 +438,21 @@
     </div>
   </div>
 
+  <%
+    ballistic_methods = [
+      "MIL-PRF 32432A (Class 1)",
+      "MIL-PRF 32432A (Class 2, 3)",
+      "MIL-PRF 32432GL (Class 1)",
+      "MIL-PRF 32432GL (Class 2, 3)",
+      "ANSI High Velocity (150 ft/s)",
+      "ANSI High Velocity (250 ft/s)",
+      "ANSI High Velocity (300 ft/s)",
+      "V50 (.15 FSP)",
+      "V50 (.22 FSP)",
+      "V50 (.25 Steel Ball)"
+    ]
+  %>
+
   <div class='form-group well'>
     <legend>
         <div class="row">
@@ -452,10 +467,10 @@
     <div class="collapse" id="ballistics">
     <div class='row'>
       <div class='col'>
-        <%= form.input :"ballistic_method_1", placeholder: "Method 1" %>
-        <%= form.input :"ballistic_method_2", placeholder: "Method 2", label: false %>
-        <%= form.input :"ballistic_method_3", placeholder: "Method 3", label: false %>
-        <%= form.input :"ballistic_method_4", placeholder: "Method 4", label: false %>
+        <%= form.input :"ballistic_method_1", as: :select, collection: ballistic_methods, placeholder: "Method 1" %>
+        <%= form.input :"ballistic_method_2", as: :select, collection: ballistic_methods, placeholder: "Method 2", label: false %>
+        <%= form.input :"ballistic_method_3", as: :select, collection: ballistic_methods, placeholder: "Method 3", label: false %>
+        <%= form.input :"ballistic_method_4", as: :select, collection: ballistic_methods, placeholder: "Method 4", label: false %>
       </div>
       <div class='col'>
         <%= form.input :"ballistic_samples_1", placeholder: "Samples 1" %>
