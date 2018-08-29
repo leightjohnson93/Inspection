@@ -113,7 +113,7 @@
     </legend>
     <div class="collapse" id="trans_tests">
     <div class='row form-group'>
-      <div class='col-3'><%= form.input :illuminate%></div>
+      <div class='col-3'><%= form.input :illuminate, as: :select, collection: ["Illum. A Light Source", "Illum. C Light Source", "D65 Light Source", "P43 Light Source"]%></div>
     </div>
     <div class='row form-group'>
       <% (1..@quantity_t1).each do |n| %>
@@ -136,11 +136,24 @@
       <% end %>
     </div>
 
-    <div class='row form-group'>
+    <div class='row form-group' style="display:none";>
       <% (1..@quantity_t1).each do |n| %>
-        <div class='col'><%= (n == 1) ? (form.label :"uv_#{n}", "Maximum Ultraviolet Transmission (%)") : (form.label :"uv_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"uv_#{n}", placeholder: "UV S#{n}", label: false %></div>
+        <div class='col'><%= (n == 1) ? (form.label :"uv_#{n}", "Maximum UV Transmittance (%)") : (form.label :"uv_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"uv_#{n}", placeholder: "UV Max S#{n}", label: false %></div>
       <% end %>
     </div>
+
+    <div class='row form-group'>
+      <% (1..@quantity_t1).each do |n| %>
+        <div class='col'><%= (n == 1) ? (form.label :"uv380_#{n}", "Mean UV Absorption [290-380nm] (%)") : (form.label :"uv380_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"uv380_#{n}", placeholder: "UV 380 S#{n}", label: false %></div>
+      <% end %>
+    </div>
+
+    <div class='row form-group'>
+      <% (1..@quantity_t1).each do |n| %>
+        <div class='col'><%= (n == 1) ? (form.label :"uv400_#{n}", "Mean UV Absorption [280-400nm] (%)") : (form.label :"uv400_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"uv400_#{n}", placeholder: "UV 400 S#{n}", label: false %></div>
+      <% end %>
+    </div>
+
     </div>
   </div>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_231958) do
+ActiveRecord::Schema.define(version: 2018_08_29_113337) do
 
   create_table "items", primary_key: "part", id: :string, force: :cascade do |t|
     t.string "description"
@@ -353,6 +353,18 @@ ActiveRecord::Schema.define(version: 2018_08_22_231958) do
     t.float "ballistic_results_3"
     t.integer "ballistic_penetrations_4"
     t.float "ballistic_results_4"
+    t.float "uv400_1"
+    t.float "uv380_1"
+    t.float "uv400_2"
+    t.float "uv380_2"
+    t.float "uv400_3"
+    t.float "uv380_3"
+    t.float "uv400_4"
+    t.float "uv380_4"
+    t.float "uv400_5"
+    t.float "uv380_5"
+    t.float "uv400_6"
+    t.float "uv380_6"
     t.index ["id"], name: "sqlite_autoindex_jobs_1", unique: true
   end
 
