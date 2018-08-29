@@ -1,15 +1,18 @@
 wb = xlsx_package.workbook
 
 wb.add_worksheet(name: "QC Lot Data") do |sheet|
-  sheet.add_row(["Date", "Lot", "Sub Group", "Receiver", "Part",
+  sheet.add_row(["Date", "Lot", "Receiver", "Part",
     "Description", "Shape", "Color", "Coating", "Manufacturer", "Lot Size",
-    "Sample Size", "Sample Pull", "MRR", "UV Type", "Illuminant", "VLT S1",
+    "Sample Size", "MRR", "Illuminant", "VLT S1",
     "VLT S2", "VLT S3", "VLT S4", "VLT S5", "VLT S6", "Neutrality S1",
     "Neutrality S2", "Neutrality S3", "Neutrality S4", "Neutrality S5",
     "Neutrality S6", "Chrom X S1", "Chrom Y S1", "Chrom X S2", "Chrom Y S2",
     "Chrom X S3", "Chrom Y S3", "Chrom X S4", "Chrom Y S4", "Chrom X S5",
-    "Chrom Y S5", "Chrom X S6", "Chrom Y S6", "UVT S1", "UVT S2", "UVT S3",
-    "UVT S4", "UVT S5", "UVT S6", "Initial Haze S1", "Initial Haze S2",
+    "Chrom Y S5", "Chrom X S6", "Chrom Y S6",
+    "Max UV S1", "Max UV S2", "Max UV S3", "Max UV S4", "Max UV S5", "Max UV S6",
+    "UV 380 S1", "UV 380 S2", "UV 380 S3", "UV 380 S4", "UV 380 S5", "UV 380 S6",
+    "UV 400 S1", "UV 400 S2", "UV 400 S3", "UV 400 S4", "UV 400 S5", "UV 400 S6",
+    "Initial Haze S1", "Initial Haze S2",
     "Initial Haze S3", "Initial Haze S4", "Initial Haze S5", "Initial Haze S6",
     "Abraded Haze S1", "Abraded Haze S2", "Abraded Haze S3", "Abraded Haze S4",
     "Abraded Haze S5", "Abraded Haze S6", "Haze Gain S1", "Haze Gain S2",
@@ -49,14 +52,17 @@ wb.add_worksheet(name: "QC Lot Data") do |sheet|
     "Wavelength 2", "OD1 S2", "OD2 S2", "OD2 S3", "OD2 S4", "OD2 S5", "OD2 S6", "QC Tech"])
 
   Job.all.each do |job|
-    sheet.add_row([job.updated_at, job.id, "", job.receiver, job.part.part,
+    sheet.add_row([job.updated_at, job.id, job.receiver, job.part.part,
       job.part.description, job.part.shape, job.part.color, job.part.coating,
-      job.part.mfg, job.lot_quantity, job.test_quantity, "", job.mrr_id, "",
+      job.part.mfg, job.lot_quantity, job.test_quantity, job.mrr_id,
       job.illuminate, job.vlt_1, job.vlt_2, job.vlt_3, job.vlt_4, job.vlt_5, job.vlt_6,
       job.neutrality_1, job.neutrality_2, job.neutrality_3, job.neutrality_4, job.neutrality_5, job.neutrality_6,
       job.chromaticity_x_1, job.chromaticity_y_1, job.chromaticity_x_2, job.chromaticity_y_2, job.chromaticity_x_3, job.chromaticity_y_3,
       job.chromaticity_x_4, job.chromaticity_y_4, job.chromaticity_x_5, job.chromaticity_y_5, job.chromaticity_x_6, job.chromaticity_y_6,
-      job.uv_1, job.uv_2, job.uv_3, job.uv_4, job.uv_5, job.uv_6, job.haze_initial_1, job.haze_initial_2, job.haze_initial_3,
+      job.uv_1, job.uv_2, job.uv_3, job.uv_4, job.uv_5, job.uv_6,
+      job.uv380_1, job.uv400_2, job.uv380_3, job.uv380_4, job.uv380_5, job.uv380_6,
+      job.uv400_1, job.uv400_2, job.uv400_3, job.uv400_4, job.uv400_5, job.uv400_6,
+      job.haze_initial_1, job.haze_initial_2, job.haze_initial_3,
       job.haze_initial_4, job.haze_initial_5, job.haze_initial_6, job.haze_abraded_1, job.haze_abraded_2, job.haze_abraded_3,
       job.haze_abraded_4, job.haze_abraded_5, job.haze_abraded_6, job.haze_gain_1, job.haze_gain_2, job.haze_gain_3,
       job.haze_gain_4, job.haze_gain_5, job.haze_gain_6, job.adhesion, job.adhesion_assess, job.fit, job.fit_assess,
@@ -81,7 +87,7 @@ wb.add_worksheet(name: "QC Lot Data") do |sheet|
       job.en_abrasion_1, job.en_abrasion_2, job.en_abrasion_3, job.en_abrasion_4, job.en_abrasion_5, job.en_abrasion_6, job.en_abrasion_7, job.en_abrasion_8,
       job.visual_inspection, job.visual_inspection_assess, job.markings, job.markings_assess, job.dimensions, job.dimensions_assess,
       job.nm_1, job.od_1_nm_1, job.od_2_nm_1, job.od_3_nm_1, job.od_4_nm_1, job.od_5_nm_1, job.od_6_nm_1,
-      job.nm_2, job.od_1_nm_2, job.od_2_nm_2, job.od_3_nm_2, job.od_4_nm_2, job.od_5_nm_2, job.od_6_nm_2, job.qc_inital])
+      job.nm_2, job.od_1_nm_2, job.od_2_nm_2, job.od_3_nm_2, job.od_4_nm_2, job.od_5_nm_2, job.od_6_nm_2, job.qc_int])
   end
   #sheet.add_table "A1:HH#{@jobs.length+1}", :name => 'Data'
 end
