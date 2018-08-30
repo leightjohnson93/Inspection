@@ -57,6 +57,17 @@
       <%= link_to "", request.path, :class => "glyphicon glyphicon-remove-circle", :id => "searchclear" %>
     </div>
     <div class=col-1><%= form.submit :class => "btn btn-dark" %></div>
+
+    <div class="dropdown" style=margin-left:2%>
+      <button class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown">
+        Excel
+      </button>
+      <ul class=dropdown-menu>
+        <li class=dropdown-item><%= link_to "View Data", jobs_path(format: "xlsx")%></li>
+        <li class=dropdown-item><%=link_to "Control Charts", "/ControlCharts.xlsm", download: "Control Charts.xlsm" %></li>
+      </ul>
+    </div>
+
   </div>
   <% end %>
 </div>
@@ -91,6 +102,5 @@
 </table>
 <div style=float:right><%= "Total Lots: #{Job.all.length}" %></div>
 <div><%= paginate @jobs, :theme => 'twitter-bootstrap-3' %></div>
-<div><%= link_to "Export Data to Excel", jobs_path(format: "xlsx") %></div>
 </body>
 </html>
