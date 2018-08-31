@@ -3,10 +3,6 @@ class JobsController < ApplicationController
     @q = Job.ransack(params[:q])
     @jobs = @q.result
     @jobs = @jobs.order('created_at DESC').page(params[:page]).per(15)
-    respond_to do |format|
-      format.html
-      format.xlsx { response.headers['Content-Disposition'] = 'attachment; filename="QC Lens Data.xlsx"' }
-    end
   end
 
   def show

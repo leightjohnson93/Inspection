@@ -56,6 +56,7 @@
     <%= link_to "Generate Test Folder", "/Initialize.vbs", download: @folder_name %>
   </div>
   </div>
+
   <% if @quantity_t1 %>
   <div class='form-group well'>
     <legend>
@@ -69,7 +70,6 @@
       </div>
     </legend>
     <div class="collapse" id="obs_tests">
-
       <div class='row form-group'>
         <div class='col'><%= form.input :visual_inspection, label: "Visual Inspection" ,placeholder: "Inspect #{@quantity_t4} Samples & Record Observations" %></div>
         <div class='col-2'><%= form.input :visual_inspection_assess, as: :select, collection: [['Pass', true],['Fail', false]], :html => { :height => '34px' }, label: "Assessment"%></div>
@@ -136,9 +136,9 @@
       <% end %>
     </div>
 
-    <div class='row form-group' style="display:none";>
+    <div class='row form-group'>
       <% (1..@quantity_t1).each do |n| %>
-        <div class='col'><%= (n == 1) ? (form.label :"uv_#{n}", "Maximum UV Transmittance (%)") : (form.label :"uv_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"uv_#{n}", placeholder: "UV Max S#{n}", label: false %></div>
+        <div class='col'><%= (n == 1) ? (form.label :"uv_#{n}", "Max UV Transmittance [280-380] (%)") : (form.label :"uv_#{n}", label: '&nbsp;'.html_safe) %><%= form.input :"uv_#{n}", placeholder: "UV Max S#{n}", label: false %></div>
       <% end %>
     </div>
 
@@ -555,6 +555,45 @@
         <%= submit_tag("Discard Changes", { :name => 'reset', :id => 'reset', :type => 'reset', :class => 'btn btn-danger navbar-btn'}) %>
       </div>
   </div>
+
+<!-- Hidden Transmittance Fields -->
+<div style='display:none'>
+  <% (1..@quantity_t1).each do |n| %>
+    <%= form.input :"d65_scotopic_#{n}" %>
+    <%= form.input :"d65_photopic_#{n}" %>
+    <%= form.input :"p43_photopic_#{n}" %>
+    <%= form.input :"p43_scotopic_#{n}" %>
+    <%= form.input :"a_photpic_#{n}" %>
+    <%= form.input :"a_scotopic_#{n}" %>
+    <%= form.input :"c_photopic_#{n}" %>
+    <%= form.input :"c_scotopic_#{n}" %>
+    <%= form.input :"en1836_650_#{n}" %>
+    <%= form.input :"d65_x_#{n}" %>
+    <%= form.input :"d65_y_#{n}" %>
+    <%= form.input :"Jr_#{n}" %>
+    <%= form.input :"Tred_#{n}" %>
+    <%= form.input :"Tyellow_#{n}" %>
+    <%= form.input :"Tgreen_#{n}" %>
+    <%= form.input :"Tblue_#{n}" %>
+    <%= form.input :"Qred_#{n}" %>
+    <%= form.input :"Qyellow_#{n}" %>
+    <%= form.input :"Qgreen_#{n}" %>
+    <%= form.input :"Qblue_#{n}" %>
+    <%= form.input :"x_green_#{n}" %>
+    <%= form.input :"y_green_#{n}" %>
+    <%= form.input :"x_yellow_#{n}" %>
+    <%= form.input :"y_yellow_#{n}" %>
+    <%= form.input :"en170_313_#{n}" %>
+    <%= form.input :"en170_365_#{n}" %>
+    <%= form.input :"en170_405_#{n}" %>
+    <%= form.input :"csa_efuv_#{n}" %>
+    <%= form.input :"csa_nuv_#{n}" %>
+    <%= form.input :"en172_315_#{n}" %>
+    <%= form.input :"en172_350_#{n}" %>
+    <%= form.input :"en172_380_#{n}" %>
+  <% end %>
+</div>
+
   <% end %>
 </body>
 </html>
