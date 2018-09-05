@@ -75,17 +75,21 @@
         <div class='col-2'><%= form.input :visual_inspection_assess, as: :select, collection: [['Pass', true],['Fail', false]], :html => { :height => '34px' }, label: "Assessment"%></div>
       </div>
 
+    <% if !['RCH', 'CCM', 'LION', 'Toroidal'].any? { |ansi| @job.part.description.include? ansi } %>
       <div class='row form-group'>
         <div class='col'><%= form.input :fit, label: "Fit & Function" ,placeholder: "Test #{@quantity_t1} Samples & Record Observations" %></div>
         <div class='col-2'><%= form.input :fit_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
       </div>
+    <% end %>
 
-      <% if @job.part.description.include? "ANSI" %>
+      <% if !['ANSI', 'LION', 'Toroidal'].any? { |ansi| @job.part.description.include? ansi } %>
         <div class='row form-group'>
           <div class='col'><%= form.input :dimensions, label: "Dimensions" ,placeholder: "Measure #{@quantity_t1} Samples & Record Observations" %></div>
           <div class='col-2'><%= form.input :dimensions_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
         </div>
+      <% end %>
 
+      <% if !['ANSI', 'RCH', 'CCM', 'LION', 'Toroidal'].any? { |ansi| @job.part.description.include? ansi } %>
         <div class='row form-group'>
           <div class='col'><%= form.input :markings, label: "Markings" ,placeholder: "Inspect #{@quantity_t1} Samples & Record Observations" %></div>
           <div class='col-2'><%= form.input :markings_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
@@ -217,7 +221,7 @@
   </div>
 
 
-  <% if !@job.part.description.include? "ANSI" %>
+  <% if !['ANSI', 'RCH', 'CCM', 'LION'].any? { |ansi| @job.part.description.include? ansi } %>
   <div class='form-group well'>
     <legend>
         <div class="row">

@@ -86,7 +86,7 @@
   <% @jobs.each do |job| %>
     <tr>
       <td><%= link_to job.id, edit_job_path(job) %></td>
-      <td><%= job.part_id %></td>
+      <td><%= link_to job.part_id, edit_part_path(job.part_id) %></td>
       <td><%= job.part.description %></td>
       <td><%= job.lot_quantity %></td>
       <td><%= job.test_quantity %></td>
