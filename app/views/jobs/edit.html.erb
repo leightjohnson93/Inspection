@@ -82,14 +82,14 @@
       </div>
     <% end %>
 
-      <% if !['ANSI', 'LION', 'Toroidal'].any? { |ansi| @job.part.description.include? ansi } %>
+      <% if !['ANSI', 'LION', 'Toroidal', 'Base'].any? { |ansi| @job.part.description.include? ansi } %>
         <div class='row form-group'>
           <div class='col'><%= form.input :dimensions, label: "Dimensions" ,placeholder: "Measure #{@quantity_t1} Samples & Record Observations" %></div>
           <div class='col-2'><%= form.input :dimensions_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
         </div>
       <% end %>
 
-      <% if !['ANSI', 'RCH', 'CCM', 'LION', 'Toroidal'].any? { |ansi| @job.part.description.include? ansi } %>
+      <% if !['ANSI', 'RCH', 'CCM', 'LION', 'Toroidal', 'Base'].any? { |ansi| @job.part.description.include? ansi } %>
         <div class='row form-group'>
           <div class='col'><%= form.input :markings, label: "Markings" ,placeholder: "Inspect #{@quantity_t1} Samples & Record Observations" %></div>
           <div class='col-2'><%= form.input :markings_assess, as: :select, collection: [['Pass', true],['Fail', false]], label: "Assessment"%></div>
