@@ -41,6 +41,7 @@ h4, h3, h2, h1 {
       <ol>
         <li><a href="#use">Lens Testing</a></li>
         <li><a href="#alert">Automatic Lot Creation</a></li>
+        <li><a href="#drivers">Database Drivers</a></li>
       </ol>
 </div>
 
@@ -130,22 +131,40 @@ h4, h3, h2, h1 {
     A macro in outlook can be created that generates new lots from the priority lot tracker whenever they are added.
     This reduces time spent entering data from the F-63 into the app, and cuts down on transcription errors.
   </p>
-    <ol>
-      <li>Create an email alert on the <a href=https://portal.revisionmilitary.com/optics/mm/_layouts/SubChoos.aspx>Priority Lot Tracker</a> so that every time a new lot is created an alert is sent to your email.</li>
-      <li>Create a new Outlook Inbox subfolder named "Lot Tracker".</li>
-      <li>Create a new rule that moves emails from “Materials Management” to the “Lot Tracker” folder. You may want to create a "test lot" in the tracker to apply your rule.
-      <li>Download this <%= link_to "VBA Module", "CreateLot.bas", download: "CreateLot.bas" %>.</li>
-      <li>In Outlook press "Alt" + "F11" to open the Developer Console.</li>
-      <li>In the taskpane on the left right click, select "Import Module", and navigate to the file you downloaded in step 4.</li>
-      <li>Close the Developer Console, right click the ribbon in the top left, and select "Customize the Ribbon...".</li>
-      <li>Choose commands from Macros and add Project1.</li>
-      <li>Select: File, Options, Trust Center, Trust Center Settings, Macros Settings, and check Enable all macros.</li>
-      <li>Use your newly created button to generate entries based on the contents of the "Lot Tracker" folder.</li>
-    </ol>
-    </p>
-      The new button we just created in the top left of Outlook will attempt to create new entries in the Lens Testing App based on the contents of the "Lot Tracker" folder.
-      The app will not allow multiple entries to be created; if the button does not appear to be working it is likely because the lot already exists.
-    <p>
+  <ol>
+    <li>Create an email alert on the <a href=https://portal.revisionmilitary.com/optics/mm/_layouts/SubChoos.aspx>Priority Lot Tracker</a> so that every time a new lot is created an alert is sent to your email.</li>
+    <li>Create a new Outlook Inbox subfolder named "Lot Tracker".</li>
+    <li>Create a new rule that moves emails from “Materials Management” to the “Lot Tracker” folder. You may want to create a "test lot" in the tracker to apply your rule.
+    <li>Download this <%= link_to "VBA Module", "CreateLot.bas", download: "CreateLot.bas" %>.</li>
+    <li>In Outlook press "Alt" + "F11" to open the Developer Console.</li>
+    <li>In the taskpane on the left right click, select "Import Module", and navigate to the file you downloaded in step 4.</li>
+    <li>Close the Developer Console, right click the ribbon in the top left, and select "Customize the Ribbon...".</li>
+    <li>Choose commands from Macros and add Project1.</li>
+    <li>Select: File, Options, Trust Center, Trust Center Settings, Macros Settings, and check Enable all macros.</li>
+    <li>Use your newly created button to generate entries based on the contents of the "Lot Tracker" folder.</li>
+  </ol>
+  </p>
+    The new button we just created in the top left of Outlook will attempt to create new entries in the Lens Testing App based on the contents of the "Lot Tracker" folder.
+    The app will not allow multiple entries to be created; if the button does not appear to be working it is likely because the lot already exists.
+  <p>
+
+<h2 id="drivers">Database Driver Installation</h2>
+  <p>
+    This application uses SQLite3 as the database.  The installation of drivers are required on your machine in order pull data from the database into Excel.
+    These drivers will allow "Control Charts" and "View Data" to function properly.
+  </p>
+  <ol>
+    <li>Check your version of Microsoft Office by opening Excel, File, Account, About Excel.</li>
+    <li>32-bit users download <%= link_to "sqliteodbc", "sqliteodbc.exe", download: "sqliteodbc.exe" %>.
+        64-bit users download <%= link_to "sqliteodbc_w64", "sqliteodbc_w64.exe", download: "sqliteodbc_w64.exe" %>.</li>
+    <li>Install the program. Do not select any extra drivers.</li>
+    <li>Open the start menu and seach for "Data Sources".</li>
+    <li>Open "Data Sources (ODBC)".</li>
+    <li>Under "User DSN" click Add..., select "SQLite3 ODBC Driver", Finish.</li>
+    <li>Name the Data Source "LensTestingDB".</li>
+    <li>Point the Database Name at "V:\QC Vermont\Incoming Lens Inspection\LensTestingDB.sqlite3"</li>
+    <li>Set Lock Timeout to 100ms.</li>
+
 
     <hr><center><i><b>Developed by Leight Johnson for Revision Military</b></i></center>
         <center><i>Application built with Ruby on Rails</i></center>
