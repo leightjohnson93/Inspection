@@ -75,7 +75,7 @@ class JobsController < ApplicationController
   end
 
   def calculate_imbalance
-    @job.horizontal_imbalance_1 = (@job.horizontal_left_1 - @job.horizontal_right_1).round(3) if !(@job.horizontal_left_1.nil? || @job.horizontal_right_1.nil?)
+     = (@job.horizontal_left_1 - @job.horizontal_right_1).round(3) if !(@job.horizontal_left_1.nil? || @job.horizontal_right_1.nil?)
     @job.horizontal_imbalance_2 = (@job.horizontal_left_2 - @job.horizontal_right_2).round(3) if !(@job.horizontal_left_2.nil? || @job.horizontal_right_2.nil?)
     @job.horizontal_imbalance_3 = (@job.horizontal_left_3 - @job.horizontal_right_3).round(3) if !(@job.horizontal_left_3.nil? || @job.horizontal_right_3.nil?)
     @job.horizontal_imbalance_4 = (@job.horizontal_left_4 - @job.horizontal_right_4).round(3) if !(@job.horizontal_left_4.nil? || @job.horizontal_right_4.nil?)
@@ -112,7 +112,7 @@ class JobsController < ApplicationController
     @job.id[0] == "P" ? @folder_name = @folder_name + @job.id : @folder_name = @folder_name + "WV #{@job.id}"
     @job.line ? @folder_name = @folder_name + " Part #{@job.line}.vbs" : @folder_name = @folder_name + ".vbs"
 
-    File.delete(Rails.root.join("public", "Initialize.vbs")) if File.exists?(Rails.root.join("public", "Initialize.vbs"))
+    File.delete(Rails.root.join("public", "Initialize.vbs")) if File.exist?(Rails.root.join("public", "Initialize.vbs"))
     File.open(Rails.root.join("public", "Initialize.vbs"), 'w') do |f|
       f.write(
 'TestFolderName = Trim(Split(Left("'+ @folder_name +'", Len("'+ @folder_name +'")-4),"(")(0))
